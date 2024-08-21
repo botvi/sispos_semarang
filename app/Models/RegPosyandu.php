@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MasterPuskesmas extends Model
+class RegPosyandu extends Model
 {
     use HasFactory;
     protected $fillable = [
         'nama',
-        'alamat',
-        'telepon',
-        'penanggung_jawab',
-        'telepon_penanggung_jawab',
-        'user_id'
+        'rw',
+        'kecamatan_id',
+        'kelurahan_id',
+        'alamat_lengkap',
+        'user_id',
+        'status'
     ];
     public function user()
     {

@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('master_puskesmas', function (Blueprint $table) {
+        Schema::create('reg_posyandus', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('alamat');
-            $table->string('telepon');
-            $table->string('penanggung_jawab');
-            $table->string('telepon_penanggung_jawab');
+            $table->string('rw');
+            $table->foreignId('kecamatan_id');
+            $table->foreignId('kelurahan_id');
+            $table->string('alamat_lengkap');
             $table->foreignId('user_id');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('master_puskesmas');
+        Schema::dropIfExists('reg_posyandus');
     }
 };

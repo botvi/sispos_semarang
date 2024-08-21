@@ -42,6 +42,10 @@
                                 <input type="text" class="form-control" id="penanggung_jawab" name="penanggung_jawab" required>
                             </div>
                             <div class="col-md-6">
+                                <label for="telepon_penanggung_jawab" class="form-label">Telepon Penanggung Jawab</label>
+                                <input type="text" class="form-control" id="telepon_penanggung_jawab" name="telepon_penanggung_jawab" required>
+                            </div>
+                            <div class="col-md-6">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" required>
                             </div>

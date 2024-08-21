@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MasterPuskesmas;
+use App\Models\MasterDinasKesehatan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
-class MasterPuskesmasController extends Controller
+class MasterDinasKesehatanController extends Controller
 {
-    // Display list of puskesmas
+    // Display list of dinkes
     public function index()
     {
-        $puskesmas = MasterPuskesmas::with('user')->get();
-        return view('pageadmin.master_puskesmas.index', compact('puskesmas'));
+        $dinkes = MasterDinasKesehatan::with('user')->get();
+        return view('pageadmin.master_dinkes.index', compact('dinkes'));
     }
 
-    // Show form for creating new puskesmas
+    // Show form for creating new dinkes
     public function create()
     {
-        return view('pageadmin.master_puskesmas.create');
+        return view('pageadmin.master_dinkes.create');
     }
 
-    // Store newly created puskesmas
+    // Store newly created dinkes
     public function store(Request $request)
     {
         $request->validate([
@@ -36,17 +36,17 @@ class MasterPuskesmasController extends Controller
             'password' => 'required|string|confirmed|min:6',
         ]);
 
-        // Create user with role 'puskesmas'
+        // Create user with role 'dinkes'
         $user = User::create([
             'nama' => $request->nama,
             'username' => $request->username,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'role' => 'puskesmas',
+            'role' => 'dinaskesehatan',
         ]);
 
-        // Create puskesmas
-        MasterPuskesmas::create([
+        // Create dinkes
+        MasterDinasKesehatan::create([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
             'telepon' => $request->telepon,
@@ -55,44 +55,43 @@ class MasterPuskesmasController extends Controller
             'user_id' => $user->id,
         ]);
 
-        Alert::success('Success', 'Puskesmas successfully created!');
-        return redirect()->route('puskesmas.index');
+        Alert::success('Success', 'Dinas Kesehatan successfully created!');
+        return redirect()->route('dinkes.index');
     }
 
-    // Show form for editing puskesmas
+    // Show form for editing dinkes
     public function edit($id)
     {
-        $puskesmas = MasterPuskesmas::findOrFail($id);
-        $user = User::findOrFail($puskesmas->user_id);
+        $dinkes = MasterDinasKesehatan::findOrFail($id);
+        $user = User::findOrFail($dinkes->user_id);
 
-        return view('pageadmin.master_puskesmas.edit', compact('puskesmas', 'user'));
+        return view('pageadmin.master_dinkes.edit', compact('dinkes', 'user'));
     }
 
-    // Update puskesmas
+    // Update dinkes
     public function update(Request $request, $id)
     {
         $request->validate([
             'nama' => 'required|string|max:255',
             'alamat' => 'required|string',
             'telepon' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users,email,' . $id,
             'penanggung_jawab' => 'required|string|max:255',
             'telepon_penanggung_jawab' => 'required|string|max:255',
             'username' => 'required|string|max:255',
             'password' => 'nullable|string|confirmed|min:6',
         ]);
 
-        // Update MasterPuskesmas
-        $puskesmas = MasterPuskesmas::findOrFail($id);
-        $user = User::findOrFail($puskesmas->user_id);
+        // Update dinkes
+        $dinkes = MasterDinasKesehatan::findOrFail($id);
+        $user = User::findOrFail($dinkes->user_id);
 
-        $puskesmas->update([
+        $dinkes->update([
             'nama' => $request->nama,
             'alamat' => $request->alamat,
             'telepon' => $request->telepon,
             'penanggung_jawab' => $request->penanggung_jawab,
             'telepon_penanggung_jawab' => $request->telepon_penanggung_jawab,
-
         ]);
 
         // Update User
@@ -103,20 +102,20 @@ class MasterPuskesmasController extends Controller
             'password' => $request->filled('password') ? bcrypt($request->password) : $user->password,
         ]);
 
-        Alert::success('Success', 'Puskesmas and associated user successfully updated!');
-        return redirect()->route('puskesmas.index');
+        Alert::success('Success', 'Dinas Kesehatan and associated user successfully updated!');
+        return redirect()->route('dinkes.index');
     }
 
-    // Delete puskesmas
+    // Delete dinkes
     public function destroy($id)
     {
-        $puskesmas = MasterPuskesmas::findOrFail($id);
-        $user = User::findOrFail($puskesmas->user_id);
+        $dinkes = MasterDinasKesehatan::findOrFail($id);
+        $user = User::findOrFail($dinkes->user_id);
 
-        $puskesmas->delete();
+        $dinkes->delete();
         $user->delete();
 
-        Alert::success('Deleted', 'Puskesmas and associated user successfully deleted!');
-        return redirect()->route('puskesmas.index');
+        Alert::success('Deleted', 'Dinas Kesehatan and associated user successfully deleted!');
+        return redirect()->route('dinkes.index');
     }
 }

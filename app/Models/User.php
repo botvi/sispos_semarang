@@ -49,4 +49,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(MasterPuskesmas::class);
     }
+    public function RegPosyandu()
+    {
+        return $this->hasOne(RegPosyandu::class);
+    }
 }

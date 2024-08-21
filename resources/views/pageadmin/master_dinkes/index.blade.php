@@ -10,23 +10,23 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Master Puskesmas</li>
+                        <li class="breadcrumb-item active" aria-current="page">Master Dinas Kesehatan</li>
                     </ol>
                 </nav>
             </div>
         </div>
         <!--breadcrumb-->
-        <h6 class="mb-0 text-uppercase">Data Master Puskesmas</h6>
+        <h6 class="mb-0 text-uppercase">Data Master Dinas Kesehatan</h6>
         <hr/>
         <div class="card">
             <div class="card-body">
-                <a href="{{ route('puskesmas.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
+                <a href="{{ route('dinkes.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
                 <div class="table-responsive">
                     <table id="example2" class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Puskesmas</th>
+                                <th>Nama Dinas Kesehatan</th>
                                 <th>Alamat</th>
                                 <th>Telepon</th>
                                 <th>Email</th>
@@ -36,7 +36,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($puskesmas as $index => $p)
+                            @foreach($dinkes as $index => $p)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ $p->nama }}</td>
@@ -46,8 +46,8 @@
                                 <td>{{ $p->penanggung_jawab }}</td>
                                 <td>{{ $p->telepon_penanggung_jawab }}</td>
                                 <td>
-                                    <a href="{{ route('puskesmas.edit', $p->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                    <form action="{{ route('puskesmas.destroy', $p->id) }}" method="POST" style="display:inline;" class="delete-form">
+                                    <a href="{{ route('dinkes.edit', $p->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                    <form action="{{ route('dinkes.destroy', $p->id) }}" method="POST" style="display:inline;" class="delete-form">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
@@ -59,7 +59,7 @@
                         <tfoot>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Puskesmas</th>
+                                <th>Nama Dinas Kesehatan</th>
                                 <th>Alamat</th>
                                 <th>Telepon</th>
                                 <th>Email</th>

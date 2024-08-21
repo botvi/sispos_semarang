@@ -16,6 +16,13 @@
         </a>
     </li>
     <li>
+        <a href="/dinaskesehatan">
+            <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i>
+            </div>
+            <div class="menu-title">MASTER DINAS KESEHATAN</div>
+        </a>
+    </li>
+    <li>
         <a href="/stratapos">
             <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i>
             </div>
