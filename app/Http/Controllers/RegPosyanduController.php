@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\RegPosyandu;
 use App\Models\Kelurahan;
 use App\Models\Kecamatan;
+use App\Models\MasterPuskesmas;
+use App\Models\Puskesmas;
 use Illuminate\Http\Request;
 use App\Models\User;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -24,8 +26,9 @@ class RegPosyanduController extends Controller
 {
     // Fetch all kecamatans
     $kecamatans = Kecamatan::all();
+    $puskesmas = MasterPuskesmas::all();
 
-    return view('auth.registrasi', compact('kecamatans')); // Pass the kecamatans to the view
+    return view('auth.registrasi', compact('kecamatans','puskesmas')); // Pass the kecamatans to the view
 }
 
 
@@ -39,6 +42,8 @@ class RegPosyanduController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'rw' => 'required|string|max:10',
+            'rt' => 'required|string|max:10',
+            'puskesmas_id' => 'required|integer',
             'kecamatan_id' => 'required|integer',
             'kelurahan_id' => 'required|integer',
             'alamat_lengkap' => 'required|string|max:255',
@@ -60,6 +65,8 @@ class RegPosyanduController extends Controller
         RegPosyandu::create([
             'nama' => $request->nama,
             'rw' => $request->rw,
+            'rt' => $request->rt,
+            'puskesmas_id' => $request->puskesmas_id,
             'kecamatan_id' => $request->kecamatan_id,
             'kelurahan_id' => $request->kelurahan_id,
             'alamat_lengkap' => $request->alamat_lengkap,

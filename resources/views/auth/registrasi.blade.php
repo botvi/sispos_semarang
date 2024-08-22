@@ -62,6 +62,15 @@
                                             </div>
                                           
                                             <div class="col-12">
+                                                <label for="puskesmas_id" class="form-label">Puskesmas</label>
+                                                <select class="form-select" id="puskesmas_id" name="puskesmas_id" required>
+                                                    <option selected disabled>Pilih Puskesmas</option>
+                                                    @foreach ($puskesmas as $puskesmas)
+                                                        <option value="{{ $puskesmas->id }}">{{ $puskesmas->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-12">
                                                 <label for="kecamatan_id" class="form-label">Kecamatan</label>
                                                 <select class="form-select" id="kecamatan_id" name="kecamatan_id" required>
                                                     <option selected disabled>Pilih Kecamatan</option>
@@ -76,7 +85,11 @@
                                                     <option selected disabled>Pilih Kelurahan</option>
                                                 </select>
                                             </div>
-                                            <div class="col-12">
+                                            <div class="col-6">
+                                                <label for="rt" class="form-label">RT</label>
+                                                <input type="text" class="form-control" id="rt" name="rt" required>
+                                            </div>
+                                            <div class="col-6">
                                                 <label for="rw" class="form-label">RW</label>
                                                 <input type="text" class="form-control" id="rw" name="rw" required>
                                             </div>

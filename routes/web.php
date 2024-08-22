@@ -9,7 +9,18 @@ use App\Http\Controllers\{
     KelurahanController,
     MasterDinasKesehatanController,
     WilayahController,
-    RegPosyanduController
+    RegPosyanduController,
+    DataRequestPosyanduController,
+    LoginController,
+    DataPosyanduController,
+    DataKaderController,
+    DataSasaranController,
+    MasterPeralatanKesController,
+    MasterPerbekalanKesController,
+    MasterInstrumenController,
+    DataPeralatanKesController,
+    DataPerbekalanKesController,
+    DataInstrumenKesController
 };
 
 /*
@@ -25,6 +36,9 @@ use App\Http\Controllers\{
 Route::get('/kelurahan/{kecamatan_id}', [RegPosyanduController::class, 'getKelurahanByKecamatan'])->name('kelurahan.get');
 
 
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('registrasi', [RegPosyanduController::class, 'showRegistrationForm'])->name('register.index');
 Route::post('registrasi', [RegPosyanduController::class, 'register'])->name('register.store')->withoutMiddleware('auth');
@@ -59,8 +73,52 @@ Route::get('/save-kecamatan', [KecamatanController::class, 'storeKecamatanData']
 Route::get('/save-kelurahan', [KelurahanController::class, 'storeKelurahanData']);
 Route::get('/wilayah', [WilayahController::class, 'index'])->name('wilayah.index');
 Route::post('/wilayah/delete-all', [WilayahController::class, 'deleteAll'])->name('wilayah.deleteAll');
+
+Route::get('master-peralatankes', [MasterPeralatanKesController::class, 'index'])->name('master-peralatankes.index');
+Route::get('master-peralatankes/create', [MasterPeralatanKesController::class, 'create'])->name('master-peralatankes.create');
+Route::post('master-peralatankes', [MasterPeralatanKesController::class, 'store'])->name('master-peralatankes.store');
+Route::get('master-peralatankes/{id}/edit', [MasterPeralatanKesController::class, 'edit'])->name('master-peralatankes.edit');
+Route::put('master-peralatankes/{id}', [MasterPeralatanKesController::class, 'update'])->name('master-peralatankes.update');
+Route::delete('master-peralatankes/{id}', [MasterPeralatanKesController::class, 'destroy'])->name('master-peralatankes.destroy');
+
+Route::get('master-perbekalankes', [MasterPerbekalanKesController::class, 'index'])->name('master-perbekalankes.index');
+Route::get('master-perbekalankes/create', [MasterPerbekalanKesController::class, 'create'])->name('master-perbekalankes.create');
+Route::post('master-perbekalankes', [MasterPerbekalanKesController::class, 'store'])->name('master-perbekalankes.store');
+Route::get('master-perbekalankes/{id}/edit', [MasterPerbekalanKesController::class, 'edit'])->name('master-perbekalankes.edit');
+Route::put('master-perbekalankes/{id}', [MasterPerbekalanKesController::class, 'update'])->name('master-perbekalankes.update');
+Route::delete('master-perbekalankes/{id}', [MasterPerbekalanKesController::class, 'destroy'])->name('master-perbekalankes.destroy');
+
+Route::get('master-instrumen', [MasterInstrumenController::class, 'index'])->name('master-instrumen.index');
+Route::get('master-instrumen/create', [MasterInstrumenController::class, 'create'])->name('master-instrumen.create');
+Route::post('master-instrumen', [MasterInstrumenController::class, 'store'])->name('master-instrumen.store');
+Route::get('master-instrumen/{id}/edit', [MasterInstrumenController::class, 'edit'])->name('master-instrumen.edit');
+Route::put('master-instrumen/{id}', [MasterInstrumenController::class, 'update'])->name('master-instrumen.update');
+Route::delete('master-instrumen/{id}', [MasterInstrumenController::class, 'destroy'])->name('master-instrumen.destroy');
 // SUPERADMIN
 
 
+
+// PUSKESMAS
+Route::get('request-posyandu', [DataRequestPosyanduController::class, 'index'])->name('request-posyandu.index');
+Route::get('/request-posyandu/{id}/edit', [DataRequestPosyanduController::class, 'edit'])->name('request-posyandu.edit');
+Route::put('/request-posyandu/{id}', [DataRequestPosyanduController::class, 'update'])->name('request-posyandu.update');
+// PUSKESMAS
+
+// POSYANDU USER
+Route::get('/dataposyandu', [DataPosyanduController::class, 'index'])->name('dataposyandu.index');
+Route::post('/dataposyandu', [DataPosyanduController::class, 'storeOrUpdateDataPosyandu'])->name('dataposyandu.store');
+Route::put('/dataposyandu/{dataPosyandu}', [DataPosyanduController::class, 'storeOrUpdateDataPosyandu'])->name('dataposyandu.update');
+
+Route::resource('data-kader', DataKaderController::class)->withoutMiddleware('auth');
+
+Route::post('/data-sasaran', [DataSasaranController::class, 'store'])->name('dataSasaran.store');
+Route::put('/data-sasaran', [DataSasaranController::class, 'store'])->name('dataSasaran.update');// POSYANDU USER
+
+Route::post('data-peralatan-kes/storeOrUpdate', [DataPeralatanKesController::class, 'storeOrUpdate'])->name('data-peralatan-kes.storeOrUpdate');
+
+Route::post('data-perbekalan-kes/storeOrUpdate', [DataPerbekalanKesController::class, 'storeOrUpdate'])->name('data-perbekalan-kes.storeOrUpdate');
+
+Route::post('data-instrumen-kes/storeOrUpdate', [DataInstrumenKesController::class, 'storeOrUpdate'])->name('data-instrumen-kes.storeOrUpdate');
+// POSYANDU USER
 
 

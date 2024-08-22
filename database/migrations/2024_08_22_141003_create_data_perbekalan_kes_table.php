@@ -11,17 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reg_posyandus', function (Blueprint $table) {
+        Schema::create('data_perbekalan_kes', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('rw');
-            $table->string('rt');
-            $table->foreignId('puskesmas_id');
-            $table->foreignId('kecamatan_id');
-            $table->foreignId('kelurahan_id');
-            $table->string('alamat_lengkap');
             $table->foreignId('user_id');
-            $table->string('status');
+            $table->json('perbekalan');
             $table->timestamps();
         });
     }
@@ -31,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reg_posyandus');
+        Schema::dropIfExists('data_perbekalan_kes');
     }
 };
