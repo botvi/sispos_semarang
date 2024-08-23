@@ -20,7 +20,9 @@ use App\Http\Controllers\{
     MasterInstrumenController,
     DataPeralatanKesController,
     DataPerbekalanKesController,
-    DataInstrumenKesController
+    DataInstrumenKesController,
+    BulananBalitaController,
+    BulananIbuHamilController
 };
 
 /*
@@ -119,6 +121,11 @@ Route::post('data-peralatan-kes/storeOrUpdate', [DataPeralatanKesController::cla
 Route::post('data-perbekalan-kes/storeOrUpdate', [DataPerbekalanKesController::class, 'storeOrUpdate'])->name('data-perbekalan-kes.storeOrUpdate');
 
 Route::post('data-instrumen-kes/storeOrUpdate', [DataInstrumenKesController::class, 'storeOrUpdate'])->name('data-instrumen-kes.storeOrUpdate');
+
+Route::get('/bulanan-balita', [BulananBalitaController::class, 'index'])->name('bulanan_balita.index');
+Route::post('/bulanan-balita/store', [BulananBalitaController::class, 'store'])->name('bulanan_balita.store');
+
+Route::resource('bulanan_ibu_hamil', BulananIbuHamilController::class);
 // POSYANDU USER
 
 

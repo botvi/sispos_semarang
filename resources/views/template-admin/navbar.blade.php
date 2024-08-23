@@ -73,5 +73,15 @@
             </div>
             <div class="menu-title">POSYANDU</div>
         </a>
+        <a href="/bulanan-balita">
+            <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i>
+            </div>
+            <div class="menu-title">BULANAN BALITA</div>
+        </a>
+        <a href="/bulanan_ibu_hamil">
+            <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i>
+            </div>
+            <div class="menu-title">BULANAN IBU HAMIL</div>
+        </a>
     </li>
 </ul>
