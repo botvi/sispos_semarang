@@ -83,5 +83,15 @@
             </div>
             <div class="menu-title">BULANAN IBU HAMIL</div>
         </a>
+        <a href="/bulanan-anak-dan-remaja">
+            <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i>
+            </div>
+            <div class="menu-title">BULANAN ANAK DAN REMAJA</div>
+        </a>
+        <a href="/bulanan-dewasa-dan-lansia">
+            <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i>
+            </div>
+            <div class="menu-title">BULANAN DEWASA DAN LANSIA</div>
+        </a>
     </li>
 </ul>

@@ -22,7 +22,9 @@ use App\Http\Controllers\{
     DataPerbekalanKesController,
     DataInstrumenKesController,
     BulananBalitaController,
-    BulananIbuHamilController
+    BulananIbuHamilController,
+    BulananAnakDanRemajaController,
+    BulananDewasaDanLansiaController
 };
 
 /*
@@ -126,6 +128,15 @@ Route::get('/bulanan-balita', [BulananBalitaController::class, 'index'])->name('
 Route::post('/bulanan-balita/store', [BulananBalitaController::class, 'store'])->name('bulanan_balita.store');
 
 Route::resource('bulanan_ibu_hamil', BulananIbuHamilController::class);
+
+Route::get('/bulanan-anak-dan-remaja', [BulananAnakDanRemajaController::class, 'index'])->name('bulanan_anak_dan_remaja.index');
+Route::post('/bulanan-anak-dan-remaja/store', [BulananAnakDanRemajaController::class, 'store'])->name('bulanan_anak_dan_remaja.store');
+
+
+Route::get('/bulanan-dewasa-dan-lansia', [BulananDewasaDanLansiaController::class, 'index'])->name('bulanan_dewasa_dan_lansia.index');
+
+// Route untuk menyimpan data
+Route::post('/bulanan-dewasa-dan-lansia/store', [BulananDewasaDanLansiaController::class, 'store'])->name('bulanan_dewasa_dan_lansia.store');
 // POSYANDU USER
 
 

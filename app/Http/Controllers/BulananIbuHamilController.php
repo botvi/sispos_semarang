@@ -11,9 +11,11 @@ class BulananIbuHamilController extends Controller
 {
     public function index()
     {
-        // Get data grouped by month and year for the logged-in user
+        // Ambil data grafik per bulan
         $dataPerBulan = BulananIbuHamil::where('user_id', Auth::id())
-            ->selectRaw('MONTH(tanggal_pelaksanaan) as month, YEAR(tanggal_pelaksanaan) as year,
+            ->selectRaw('
+                MONTH(tanggal_pelaksanaan) as month, 
+                YEAR(tanggal_pelaksanaan) as year,
                 SUM(jumlah_ibu_hamil_nifas_menyusui) as total_nifas_menyusui,
                 SUM(jumlah_ibu_hamil_bb_garis_merah) as total_bb_garis_merah,
                 SUM(jumlah_ibu_hamil_lila) as total_lila,
@@ -21,13 +23,14 @@ class BulananIbuHamilController extends Controller
                 SUM(jumlah_ibu_hamil_mendapat_ttd) as total_mendapat_ttd,
                 SUM(jumlah_ibu_hamil_makanan_tambahan_kek) as total_makanan_tambahan_kek,
                 SUM(jumlah_ibu_hamil_ikut_kelas) as total_ikut_kelas,
-                SUM(jumlah_ibu_hamil_dirujuk_ke_puskesmas) as total_dirujuk_ke_puskesmas')
+                SUM(jumlah_ibu_hamil_dirujuk_ke_puskesmas) as total_dirujuk_ke_puskesmas
+            ')
             ->groupBy('month', 'year')
             ->orderBy('year', 'asc')
             ->orderBy('month', 'asc')
             ->get();
 
-        // Prepare data for the chart
+        // Create arrays for chart labels and data
         $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         $nifasMenyusuiData = array_fill(0, 12, 0);
         $bbGarisMerahData = array_fill(0, 12, 0);
@@ -39,7 +42,7 @@ class BulananIbuHamilController extends Controller
         $dirujukKePuskesmasData = array_fill(0, 12, 0);
 
         foreach ($dataPerBulan as $data) {
-            $index = $data->month - 1; // Adjust month index to 0-based
+            $index = $data->month - 1;
             $nifasMenyusuiData[$index] = $data->total_nifas_menyusui;
             $bbGarisMerahData[$index] = $data->total_bb_garis_merah;
             $lilaData[$index] = $data->total_lila;
@@ -51,14 +54,14 @@ class BulananIbuHamilController extends Controller
         }
 
         return view('pageadmin.bulanan_ibu_hamil.index', compact(
-            'months',
-            'nifasMenyusuiData',
-            'bbGarisMerahData',
-            'lilaData',
-            'risikoTbcData',
-            'mendapatTtdData',
-            'makananTambahanKekData',
-            'ikutKelasData',
+            'months', 
+            'nifasMenyusuiData', 
+            'bbGarisMerahData', 
+            'lilaData', 
+            'risikoTbcData', 
+            'mendapatTtdData', 
+            'makananTambahanKekData', 
+            'ikutKelasData', 
             'dirujukKePuskesmasData'
         ));
     }

@@ -119,77 +119,80 @@
     </div>
 </div>
 
-@push('scripts')
+@section('script')
+<!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
 <script>
+    console.log(@json($nifasMenyusuiData));
+console.log(@json($bbGarisMerahData));
+
     var ctx = document.getElementById('ibuHamilChart').getContext('2d');
     var ibuHamilChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: @json($months),
-            datasets: [{
-                label: 'Jumlah Ibu Hamil/Nifas/Menyusui',
-                data: @json($nifasMenyusuiData),
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }, {
-                label: 'Jumlah Ibu Hamil BB Garis Merah',
-                data: @json($bbGarisMerahData),
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }, {
-                label: 'Jumlah Ibu Hamil LILA ≤ 23.5 cm',
-                data: @json($lilaData),
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(54, 162, 235, 1)',
-                borderWidth: 1
-            }, {
-                label: 'Jumlah Ibu Hamil Berisiko TBC',
-                data: @json($risikoTbcData),
-                backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                borderColor: 'rgba(255, 206, 86, 1)',
-                borderWidth: 1
-            }, {
-                label: 'Jumlah Ibu Hamil Mendapat TTD',
-                data: @json($mendapatTtdData),
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }, {
-                label: 'Jumlah Ibu Hamil Makanan Tambahan KEK',
-                data: @json($makananTambahanKekData),
-                backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                borderColor: 'rgba(153, 102, 255, 1)',
-                borderWidth: 1
-            }, {
-                label: 'Jumlah Ibu Hamil Ikut Kelas',
-                data: @json($ikutKelasData),
-                backgroundColor: 'rgba(255, 159, 64, 0.2)',
-                borderColor: 'rgba(255, 159, 64, 1)',
-                borderWidth: 1
-            }, {
-                label: 'Jumlah Ibu Hamil Dirujuk ke Puskesmas',
-                data: @json($dirujukKePuskesmasData),
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }]
+            datasets: [
+                {
+                    label: 'Jumlah Ibu Hamil Nifas/Menyusui',
+                    data: @json($nifasMenyusuiData),
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Jumlah Ibu Hamil BB Garis Merah',
+                    data: @json($bbGarisMerahData),
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Jumlah Ibu Hamil LILA',
+                    data: @json($lilaData),
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Jumlah Ibu Hamil Risiko TBC',
+                    data: @json($risikoTbcData),
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Jumlah Ibu Hamil Mendapat TTD',
+                    data: @json($mendapatTtdData),
+                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Jumlah Ibu Hamil Makanan Tambahan KEK',
+                    data: @json($makananTambahanKekData),
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Jumlah Ibu Hamil Ikut Kelas',
+                    data: @json($ikutKelasData),
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Jumlah Ibu Hamil Dirujuk ke Puskesmas',
+                    data: @json($dirujukKePuskesmasData),
+                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                    borderColor: 'rgba(255, 206, 86, 1)',
+                    borderWidth: 1
+                }
+            ]
         },
         options: {
-            plugins: {
-                datalabels: {
-                    anchor: 'end',
-                    align: 'top',
-                    color: 'black',
-                    font: {
-                        weight: 'bold'
-                    }
-                }
-            },
             scales: {
                 y: {
                     beginAtZero: true
@@ -198,5 +201,7 @@
         }
     });
 </script>
-@endpush
+
+
+@endsection
 @endsection
