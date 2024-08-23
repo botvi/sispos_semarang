@@ -33,7 +33,7 @@ class LoginController extends Controller
             $user = Auth::user();
 
             // Check the role of the user and redirect accordingly
-            if (in_array($user->role, ['superadmin', 'dinaskesehatan', 'puskesmas'])) {
+            if (in_array($user->role, ['superadmin', 'dinaskesehatan', 'puskesmas','superadmin'])) {
                 Alert::success('Login Successful', 'Welcome back!');
                 return redirect()->intended('dashboard');
             }

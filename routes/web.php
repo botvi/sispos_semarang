@@ -24,7 +24,8 @@ use App\Http\Controllers\{
     BulananBalitaController,
     BulananIbuHamilController,
     BulananAnakDanRemajaController,
-    BulananDewasaDanLansiaController
+    BulananDewasaDanLansiaController,
+    ProfilController
 };
 
 /*
@@ -140,3 +141,7 @@ Route::post('/bulanan-dewasa-dan-lansia/store', [BulananDewasaDanLansiaControlle
 // POSYANDU USER
 
 
+// PROFIL
+Route::get('/profile', [ProfilController::class, 'editProfile'])->name('profile.edit');
+Route::put('/profile/update', [ProfilController::class, 'updateProfile'])->name('profile.update');
+// PROFIL

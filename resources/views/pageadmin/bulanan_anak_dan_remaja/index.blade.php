@@ -103,9 +103,10 @@
                                         <input type="number" class="form-control" id="masalah_kesehatan" name="masalah_kesehatan">
                                     </div>
                                 </div>
-                                <div class="row mb-3">
-                                    <div class="col-sm-9 offset-sm-3">
-                                        <button type="submit" class="btn btn-primary">Simpan Data</button>
+                                <div class="row">
+                                    <label class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9">
+                                        <button type="submit" class="btn btn-info px-5">Save Changes</button>
                                     </div>
                                 </div>
                             </form>
