@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     DashboardController,
@@ -26,8 +26,17 @@ use App\Http\Controllers\{
     BulananAnakDanRemajaController,
     BulananDewasaDanLansiaController,
     ListPosyanduController,
+    ListPuskesmasController,
     ProfilController
 };
+
+Route::get('/run-superadmin', function () {
+    Artisan::call('db:seed', [
+        '--class' => 'SuperAdminSeeder'
+    ]);
+
+    return "SuperAdminSeeder has been create successfully!";
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +63,8 @@ Route::post('registrasi', [RegPosyanduController::class, 'register'])->name('reg
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
 
 // SUPERADMIN
+Route::group(['middleware' => ['role:superadmin']], function () {
+
 Route::get('/puskesmas', [MasterPuskesmasController::class, 'index'])->name('puskesmas.index');
 Route::get('/puskesmas/create', [MasterPuskesmasController::class, 'create'])->name('puskesmas.create');
 Route::post('/puskesmas/store', [MasterPuskesmasController::class, 'store'])->name('puskesmas.store');
@@ -100,15 +111,14 @@ Route::post('master-instrumen', [MasterInstrumenController::class, 'store'])->na
 Route::get('master-instrumen/{id}/edit', [MasterInstrumenController::class, 'edit'])->name('master-instrumen.edit');
 Route::put('master-instrumen/{id}', [MasterInstrumenController::class, 'update'])->name('master-instrumen.update');
 Route::delete('master-instrumen/{id}', [MasterInstrumenController::class, 'destroy'])->name('master-instrumen.destroy');
+});
+
 // SUPERADMIN
 
 
-
-// PUSKESMAS
-
-// PUSKESMAS
-
 // POSYANDU USER
+Route::group(['middleware' => ['role:posyandu']], function () {
+
 Route::get('/dataposyandu', [DataPosyanduController::class, 'index'])->name('dataposyandu.index');
 Route::post('/dataposyandu', [DataPosyanduController::class, 'storeOrUpdateDataPosyandu'])->name('dataposyandu.store');
 Route::put('/dataposyandu/{dataPosyandu}', [DataPosyanduController::class, 'storeOrUpdateDataPosyandu'])->name('dataposyandu.update');
@@ -135,8 +145,8 @@ Route::post('/bulanan-anak-dan-remaja/store', [BulananAnakDanRemajaController::c
 
 Route::get('/bulanan-dewasa-dan-lansia', [BulananDewasaDanLansiaController::class, 'index'])->name('bulanan_dewasa_dan_lansia.index');
 
-// Route untuk menyimpan data
 Route::post('/bulanan-dewasa-dan-lansia/store', [BulananDewasaDanLansiaController::class, 'store'])->name('bulanan_dewasa_dan_lansia.store');
+});
 // POSYANDU USER
 
 
@@ -147,10 +157,25 @@ Route::put('/profile/update', [ProfilController::class, 'updateProfile'])->name(
 
 
 // PUSKESMAS USER
+Route::group(['middleware' => ['role:puskesmas']], function () {
+
 Route::get('request-posyandu', [DataRequestPosyanduController::class, 'index'])->name('request-posyandu.index');
 Route::get('/request-posyandu/{id}/edit', [DataRequestPosyanduController::class, 'edit'])->name('request-posyandu.edit');
 Route::put('/request-posyandu/{id}', [DataRequestPosyanduController::class, 'update'])->name('request-posyandu.update');
 
 Route::get('/daftarposyandu', [ListPosyanduController::class, 'index'])->name('daftarposyandu.index');
 Route::get('/daftarposyandu/{user_id}/detail', [ListPosyanduController::class, 'show'])->name('daftarposyandu.detail');
+});
 // PUSKESMAS USER
+
+
+// DINAS KESEHATAN USER
+Route::group(['middleware' => ['role:dinaskesehatan']], function () {
+
+Route::get('/daftarpuskesmas', [ListPuskesmasController::class, 'index'])->name('daftarpuskesmas.index');
+Route::get('/daftarpuskesmas/{puskesmas_id}/posyandu', [ListPuskesmasController::class, 'showPosyandu'])->name('daftarposyandubypuskes.index');
+Route::get('/daftarpuskesmas/{user_id}/detailposyandu', [ListPuskesmasController::class, 'show'])->name('daftarposyandubypuskes.detail');
+
+});
+
+// DINAS KESEHATAN USER

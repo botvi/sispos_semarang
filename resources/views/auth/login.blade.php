@@ -38,7 +38,7 @@
 								<div class="border p-4 rounded">
 									<div class="text-center">
 										<h3 class="">Masuk</h3>
-										<p>Kamu belum mendaftar? <a href="authentication-signup.html">Daftar Disini</a>
+										<p>Kamu belum mendaftar? <a href="/registrasi">Daftar Disini</a>
 										</p>
 									</div>
 								
@@ -65,9 +65,9 @@
                                                     <label class="form-check-label" for="flexSwitchCheckChecked">Remember Me</label>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 text-end">
+                                            {{-- <div class="col-md-6 text-end">
                                                 <a href="authentication-forgot-password.html">Forgot Password ?</a>
-                                            </div>
+                                            </div> --}}
                                             <div class="col-12">
                                                 <div class="d-grid">
                                                     <button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Sign in</button>
