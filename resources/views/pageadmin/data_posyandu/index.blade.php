@@ -56,7 +56,7 @@
             <li class="nav-item" role="presentation">
                 <a class="nav-link" data-bs-toggle="pill" href="#instrumenKes" role="tab" aria-selected="false">
                     <div class="d-flex align-items-center">
-                        <div class="tab-title">PERALATAN KESEHATAN</div>
+                        <div class="tab-title">INSTRUMEN KESEHATAN</div>
                     </div>
                 </a>
             </li>
