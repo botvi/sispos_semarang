@@ -25,6 +25,7 @@ use App\Http\Controllers\{
     BulananIbuHamilController,
     BulananAnakDanRemajaController,
     BulananDewasaDanLansiaController,
+    ListPosyanduController,
     ProfilController
 };
 
@@ -104,9 +105,7 @@ Route::delete('master-instrumen/{id}', [MasterInstrumenController::class, 'destr
 
 
 // PUSKESMAS
-Route::get('request-posyandu', [DataRequestPosyanduController::class, 'index'])->name('request-posyandu.index');
-Route::get('/request-posyandu/{id}/edit', [DataRequestPosyanduController::class, 'edit'])->name('request-posyandu.edit');
-Route::put('/request-posyandu/{id}', [DataRequestPosyanduController::class, 'update'])->name('request-posyandu.update');
+
 // PUSKESMAS
 
 // POSYANDU USER
@@ -145,3 +144,13 @@ Route::post('/bulanan-dewasa-dan-lansia/store', [BulananDewasaDanLansiaControlle
 Route::get('/profile', [ProfilController::class, 'editProfile'])->name('profile.edit');
 Route::put('/profile/update', [ProfilController::class, 'updateProfile'])->name('profile.update');
 // PROFIL
+
+
+// PUSKESMAS USER
+Route::get('request-posyandu', [DataRequestPosyanduController::class, 'index'])->name('request-posyandu.index');
+Route::get('/request-posyandu/{id}/edit', [DataRequestPosyanduController::class, 'edit'])->name('request-posyandu.edit');
+Route::put('/request-posyandu/{id}', [DataRequestPosyanduController::class, 'update'])->name('request-posyandu.update');
+
+Route::get('/daftarposyandu', [ListPosyanduController::class, 'index'])->name('daftarposyandu.index');
+Route::get('/daftarposyandu/{user_id}/detail', [ListPosyanduController::class, 'show'])->name('daftarposyandu.detail');
+// PUSKESMAS USER

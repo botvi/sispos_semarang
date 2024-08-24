@@ -7,7 +7,7 @@
             <div class="menu-title">DASHBOARD</div>
         </a>
     </li>
-    <li class="menu-label">MASTER DATA</li>
+    <li class="menu-label">MASTER DATA SUPERADMIN</li>
     <li>
         <a href="/puskesmas">
             <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i>
@@ -58,7 +58,7 @@
         </a>
     </li>
     
-    <li class="menu-label">MANAGE STATUS POSYANDU</li>
+    <li class="menu-label">KALAU PUSKESMAS LOGIN</li>
     <li>
         <a href="/request-posyandu">
             <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i>
@@ -66,7 +66,14 @@
             <div class="menu-title">REQUEST POSYANDU</div>
         </a>
     </li>
-    <li class="menu-label">MANAGE POSYANDU</li>
+    <li>
+        <a href="/daftarposyandu">
+            <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i>
+            </div>
+            <div class="menu-title">DAFTAR POSYANDU</div>
+        </a>
+    </li>
+    <li class="menu-label">KALAU POSYANDU LOGIN</li>
     <li>
         <a href="/dataposyandu">
             <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i>

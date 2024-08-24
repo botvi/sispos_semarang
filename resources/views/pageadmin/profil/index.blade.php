@@ -115,73 +115,74 @@
                                         </div>
                                     </div>
 
-                                    <!-- RW -->
-                                    <div class="row mb-3">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">RW</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <input type="text" name="rw" class="form-control" value="{{ old('rw', $regPosyandu->rw) }}" required>
-                                        </div>
+                                   <!-- RW -->
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">RW</h6>
                                     </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="rw" class="form-control" value="{{ old('rw', $regPosyandu->rw) }}" disabled>
+                                    </div>
+                                </div>
 
-                                    <!-- RT -->
-                                    <div class="row mb-3">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">RT</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <input type="text" name="rt" class="form-control" value="{{ old('rt', $regPosyandu->rt) }}" required>
-                                        </div>
+                                <!-- RT -->
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">RT</h6>
                                     </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="rt" class="form-control" value="{{ old('rt', $regPosyandu->rt) }}" disabled>
+                                    </div>
+                                </div>
 
-                                    <!-- Puskesmas -->
-                                    <div class="row mb-3">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Puskesmas</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <select name="puskesmas_id" class="form-control" required>
-                                                @foreach($puskesmasList as $puskesmas)
-                                                    <option value="{{ $puskesmas->id }}" {{ old('puskesmas_id', $regPosyandu->puskesmas_id) == $puskesmas->id ? 'selected' : '' }}>
-                                                        {{ $puskesmas->nama }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                <!-- Puskesmas -->
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Puskesmas</h6>
                                     </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <select name="puskesmas_id" class="form-control" disabled>
+                                            @foreach($puskesmasList as $puskesmas)
+                                                <option value="{{ $puskesmas->id }}" {{ old('puskesmas_id', $regPosyandu->puskesmas_id) == $puskesmas->id ? 'selected' : '' }}>
+                                                    {{ $puskesmas->nama }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
 
-                                    <!-- Kecamatan -->
-                                    <div class="row mb-3">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Kecamatan</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <select name="kecamatan_id" class="form-control" required>
-                                                @foreach($kecamatans as $kecamatan)
-                                                    <option value="{{ $kecamatan->kecamatan_id }}" {{ old('kecamatan_id', $regPosyandu->kecamatan_id) == $kecamatan->kecamatan_id ? 'selected' : '' }}>
-                                                        {{ $kecamatan->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                <!-- Kecamatan -->
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Kecamatan</h6>
                                     </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <select name="kecamatan_id" class="form-control" disabled>
+                                            @foreach($kecamatans as $kecamatan)
+                                                <option value="{{ $kecamatan->kecamatan_id }}" {{ old('kecamatan_id', $regPosyandu->kecamatan_id) == $kecamatan->kecamatan_id ? 'selected' : '' }}>
+                                                    {{ $kecamatan->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
 
-                                    <!-- Kelurahan -->
-                                    <div class="row mb-3">
-                                        <div class="col-sm-3">
-                                            <h6 class="mb-0">Kelurahan</h6>
-                                        </div>
-                                        <div class="col-sm-9 text-secondary">
-                                            <select name="kelurahan_id" class="form-control" required>
-                                                @foreach($kelurahans as $kelurahan)
-                                                    <option value="{{ $kelurahan->kelurahan_id }}" {{ old('kelurahan_id', $regPosyandu->kelurahan_id) == $kelurahan->kelurahan_id ? 'selected' : '' }}>
-                                                        {{ $kelurahan->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                <!-- Kelurahan -->
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Kelurahan</h6>
                                     </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <select name="kelurahan_id" class="form-control" disabled>
+                                            @foreach($kelurahans as $kelurahan)
+                                                <option value="{{ $kelurahan->kelurahan_id }}" {{ old('kelurahan_id', $regPosyandu->kelurahan_id) == $kelurahan->kelurahan_id ? 'selected' : '' }}>
+                                                    {{ $kelurahan->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
 
                                     <!-- Submit Button -->
                                     <div class="row">
