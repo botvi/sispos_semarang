@@ -28,7 +28,7 @@ use App\Http\Controllers\{
     BulananDewasaDanLansiaController,
     ListPosyanduController,
     ListPuskesmasController,
-    AkunDinasKesehatanController, AkunPuskesmasController, AkunSuperadminController};
+    AkunDinasKesehatanController, AkunPuskesmasController, AkunSuperadminController, DashboardPosyanduController};
 
 Route::get('/run-superadmin', function () {
     Artisan::call('db:seed', [
@@ -60,7 +60,7 @@ Route::post('registrasi', [RegPosyanduController::class, 'register'])->name('reg
 
 
 
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/dashboard', [DashboardPosyanduController::class, 'index'])->name('posyandu.dashboard');
 
 // SUPERADMIN
 Route::group(['middleware' => ['role:superadmin']], function () {
