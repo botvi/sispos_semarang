@@ -30,8 +30,8 @@
 			<div class="container-fluid">
 				<div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
 					<div class="col mx-auto">
-						<div class="mb-4 text-center">
-							<img src="{{ asset('admin') }}/assets/images/logo-img.png" width="180" alt="" />
+						<div class="mb-4 text-center mt-3">
+							<img src="{{ asset('env') }}/logoforum.png" width="180" alt="" />
 						</div>
 						<div class="card">
 							<div class="card-body">
