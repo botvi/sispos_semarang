@@ -2,6 +2,7 @@
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
+    AkunPosyanduController,
     DashboardController,
     MasterPuskesmasController,
     MasterStrataPosyanduController,
@@ -27,8 +28,7 @@ use App\Http\Controllers\{
     BulananDewasaDanLansiaController,
     ListPosyanduController,
     ListPuskesmasController,
-    ProfilController
-};
+    AkunDinasKesehatanController, AkunPuskesmasController, AkunSuperadminController};
 
 Route::get('/run-superadmin', function () {
     Artisan::call('db:seed', [
@@ -150,11 +150,6 @@ Route::post('/bulanan-dewasa-dan-lansia/store', [BulananDewasaDanLansiaControlle
 // POSYANDU USER
 
 
-// PROFIL
-Route::get('/profile', [ProfilController::class, 'editProfile'])->name('profile.edit');
-Route::put('/profile/update', [ProfilController::class, 'updateProfile'])->name('profile.update');
-// PROFIL
-
 
 // PUSKESMAS USER
 Route::group(['middleware' => ['role:puskesmas']], function () {
@@ -179,3 +174,19 @@ Route::get('/daftarpuskesmas/{user_id}/detailposyandu', [ListPuskesmasController
 });
 
 // DINAS KESEHATAN USER
+
+
+
+// CHANGE USER
+Route::get('/akun-posyandu', [AkunPosyanduController::class, 'index'])->name('akun-posyandu.index');
+Route::post('/akun-posyandu/update', [AkunPosyanduController::class, 'update'])->name('akun-posyandu.update');
+
+Route::get('/akun-dinas-kesehatan', [AkunDinasKesehatanController::class, 'index'])->name('akun-dinas-kesehatan.index');
+Route::post('/akun-dinas-kesehatan/update', [AkunDinasKesehatanController::class, 'update'])->name('akun-dinas-kesehatan.update');
+
+Route::get('/akun-puskesmas', [AkunPuskesmasController::class, 'index'])->name('akun-puskesmas.index');
+Route::post('/akun-puskesmas/update', [AkunPuskesmasController::class, 'update'])->name('akun-puskesmas.update');
+
+Route::get('/akun-superadmin', [AkunSuperadminController::class, 'index'])->name('akun-superadmin.index');
+Route::put('/akun-superadmin/update', [AkunSuperadminController::class, 'update'])->name('akun-superadmin.update');
+// CHANGE USER

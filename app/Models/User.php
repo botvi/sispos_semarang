@@ -53,4 +53,13 @@ class User extends Authenticatable
     {
         return $this->hasOne(RegPosyandu::class);
     }
+    public function masterDinasKesehatan()
+{
+    return $this->hasOne(MasterDinasKesehatan::class, 'user_id');
+}
+    public function masterPuskes()
+{
+    return $this->hasOne(MasterPuskesmas::class, 'user_id');
+}
+
 }

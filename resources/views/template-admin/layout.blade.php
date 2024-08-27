@@ -68,44 +68,7 @@
 								<a class="nav-link" href="#">	<i class='bx bx-search'></i>
 								</a>
 							</li> --}}
-							<li class="nav-item dropdown dropdown-large">
-								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">	<i class='bx bx-category'></i>
-								</a>
-								<div class="dropdown-menu dropdown-menu-end">
-									<div class="row row-cols-3 g-3 p-3">
-										<div class="col text-center">
-											<div class="app-box mx-auto bg-gradient-cosmic text-white"><i class='bx bx-group'></i>
-											</div>
-											<div class="app-title">Teams</div>
-										</div>
-										<div class="col text-center">
-											<div class="app-box mx-auto bg-gradient-burning text-white"><i class='bx bx-atom'></i>
-											</div>
-											<div class="app-title">Projects</div>
-										</div>
-										<div class="col text-center">
-											<div class="app-box mx-auto bg-gradient-lush text-white"><i class='bx bx-shield'></i>
-											</div>
-											<div class="app-title">Tasks</div>
-										</div>
-										<div class="col text-center">
-											<div class="app-box mx-auto bg-gradient-kyoto text-dark"><i class='bx bx-notification'></i>
-											</div>
-											<div class="app-title">Feeds</div>
-										</div>
-										<div class="col text-center">
-											<div class="app-box mx-auto bg-gradient-blues text-dark"><i class='bx bx-file'></i>
-											</div>
-											<div class="app-title">Files</div>
-										</div>
-										<div class="col text-center">
-											<div class="app-box mx-auto bg-gradient-moonlit text-white"><i class='bx bx-filter-alt'></i>
-											</div>
-											<div class="app-title">Alerts</div>
-										</div>
-									</div>
-								</div>
-							</li>
+							
 							<li class="nav-item dropdown dropdown-large">
 								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span class="alert-count">7</span>
 									<i class='bx bx-bell'></i>
@@ -377,23 +340,52 @@
 					</div>
 					<div class="user-box dropdown">
 						<a class="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-							<img src="{{ asset('admin') }}/assets/images/avatars/avatar-2.png" class="user-img" alt="user avatar">
+							<img src="
+							@auth
+								@if(Auth::user()->role === 'superadmin')
+									{{ asset('admin/assets/images/superadmin.png') }}
+								@elseif(Auth::user()->role === 'dinaskesehatan')
+									{{ asset('https://sippn.menpan.go.id/images/article/large/logo-pemkot4.jpg') }}
+								@elseif(Auth::user()->role === 'puskesmas')
+									{{ asset('https://i0.wp.com/pkmgemarang.ngawikab.go.id/wp-content/uploads/2022/09/cropped-Logo-Puskermas-removebg-preview.png?ssl=1') }}
+								@elseif(Auth::user()->role === 'posyandu')
+									{{ asset('https://www.linggapura.desa.id/wp-content/uploads/2024/04/Posyandu.png') }}"
+									style="width: 80px; height: auto;" 
+								@else
+									{{ asset('images/default.png') }}
+								@endif
+							@else
+								{{ asset('images/guest.png') }} <!-- Fallback for guests -->
+							@endauth
+							" class="user-img" alt="user avatar">
+						
 							<div class="user-info ps-3">
-								<p class="user-name mb-0">Pauline Seitz</p>
-								<p class="designattion mb-0">Web Designer</p>
+								@auth
+									<p class="user-name mb-0">{{ Auth::user()->nama }}</p>
+									<p class="designation mb-0">{{ '@' . Auth::user()->username }}</p>
+								@else
+									<p class="user-name mb-0">Guest</p>
+									<p class="designation mb-0">Not Logged In</p>
+								@endauth
 							</div>
 						</a>
+						
 						<ul class="dropdown-menu dropdown-menu-end">
-							<li><a class="dropdown-item" href="/profile"><i class="bx bx-user"></i><span>Profile</span></a>
+							<li>
+								@if(Auth::user()->role == 'dinaskesehatan')
+									<a class="dropdown-item" href="/akun-dinas-kesehatan"><i class="bx bx-user"></i><span>Account Setting</span></a>
+								@elseif(Auth::user()->role == 'puskesmas')
+									<a class="dropdown-item" href="/akun-puskesmas"><i class="bx bx-user"></i><span>Account Setting</span></a>
+								@elseif(Auth::user()->role == 'posyandu')
+									<a class="dropdown-item" href="/akun-posyandu"><i class="bx bx-user"></i><span>Account Setting</span></a>
+								@elseif(Auth::user()->role == 'superadmin')
+									<a class="dropdown-item" href="/akun-superadmin"><i class="bx bx-user"></i><span>Account Setting</span></a>
+								@else
+									<!-- Optional: handle other roles or no role case -->
+									<a class="dropdown-item" href="#"><i class="bx bx-user"></i><span>Account Setting</span></a>
+								@endif
 							</li>
-							<li><a class="dropdown-item" href="javascript:;"><i class="bx bx-cog"></i><span>Settings</span></a>
-							</li>
-							<li><a class="dropdown-item" href="javascript:;"><i class='bx bx-home-circle'></i><span>Dashboard</span></a>
-							</li>
-							<li><a class="dropdown-item" href="javascript:;"><i class='bx bx-dollar-circle'></i><span>Earnings</span></a>
-							</li>
-							<li><a class="dropdown-item" href="javascript:;"><i class='bx bx-download'></i><span>Downloads</span></a>
-							</li>
+							
 							<li>
 								<div class="dropdown-divider mb-0"></div>
 							</li>
