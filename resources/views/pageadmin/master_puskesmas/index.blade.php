@@ -46,7 +46,7 @@
                                 <td>{{ $p->penanggung_jawab }}</td>
                                 <td>{{ $p->telepon_penanggung_jawab }}</td>
                                 <td>
-                                    <a href="{{ route('puskesmas.edit', $p->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                    {{-- <a href="{{ route('puskesmas.edit', $p->id) }}" class="btn btn-sm btn-warning">Edit</a> --}}
                                     <form action="{{ route('puskesmas.destroy', $p->id) }}" method="POST" style="display:inline;" class="delete-form">
                                         @csrf
                                         @method('DELETE')

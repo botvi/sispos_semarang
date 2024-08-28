@@ -1,11 +1,37 @@
 <ul class="metismenu" id="menu">
-    <li class="menu-label">MENCAKUP SEMUA ROLE</li>
+    @if(Auth::user()->role == 'posyandu')
+    <li class="menu-label">DASHBOARD</li>
     <li>
-        <a href="/dashboard">
+        <a href="/dashboard-posyandu">
             <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
             <div class="menu-title">DASHBOARD</div>
         </a>
     </li>
+    @elseif(Auth::user()->role == 'puskesmas')
+    <li class="menu-label">DASHBOARD</li>
+    <li>
+        <a href="/dashboard-puskesmas">
+            <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
+            <div class="menu-title">DASHBOARD</div>
+        </a>
+    </li>
+    @elseif(Auth::user()->role == 'dinaskesehatan')
+    <li class="menu-label">DASHBOARD</li>
+    <li>
+        <a href="/dashboard-dinaskesehatan">
+            <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
+            <div class="menu-title">DASHBOARD</div>
+        </a>
+    </li>
+    @elseif(Auth::user()->role == 'superadmin')
+    <li class="menu-label">DASHBOARD</li>
+    <li>
+        <a href="/dashboard-superadmin">
+            <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
+            <div class="menu-title">DASHBOARD</div>
+        </a>
+    </li>
+    @endif
 
     @if(Auth::user()->role == 'superadmin')
         <li class="menu-label">KALAU SUPERADMIN LOGIN</li>

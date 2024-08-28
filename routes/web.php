@@ -28,7 +28,13 @@ use App\Http\Controllers\{
     BulananDewasaDanLansiaController,
     ListPosyanduController,
     ListPuskesmasController,
-    AkunDinasKesehatanController, AkunPuskesmasController, AkunSuperadminController, DashboardPosyanduController};
+    AkunDinasKesehatanController,
+    AkunPuskesmasController,
+    AkunSuperadminController,
+    DashboardDinkesController,
+    DashboardPosyanduController,
+    DashboardPuskesmasController,
+    DashboardSuperadminController};
 
 Route::get('/run-superadmin', function () {
     Artisan::call('db:seed', [
@@ -59,8 +65,22 @@ Route::get('registrasi', [RegPosyanduController::class, 'showRegistrationForm'])
 Route::post('registrasi', [RegPosyanduController::class, 'register'])->name('register.store')->withoutMiddleware('auth');
 
 
+Route::group(['middleware' => ['role:posyandu']], function () {
+Route::get('/dashboard-posyandu', [DashboardPosyanduController::class, 'index'])->name('posyandu.dashboard');
+});
 
-Route::get('/dashboard', [DashboardPosyanduController::class, 'index'])->name('posyandu.dashboard');
+Route::group(['middleware' => ['role:puskesmas']], function () {
+Route::get('/dashboard-puskesmas', [DashboardPuskesmasController::class, 'index'])->name('puskesmas.dashboard');
+});
+
+Route::group(['middleware' => ['role:dinaskesehatan']], function () {
+Route::get('/dashboard-dinaskesehatan', [DashboardDinkesController::class, 'index'])->name('dinaskesehatan.dashboard');
+});
+
+Route::group(['middleware' => ['role:superadmin']], function () {
+Route::get('/dashboard-superadmin', [DashboardSuperadminController::class, 'index'])->name('superadmin.dashboard');
+});
+
 
 // SUPERADMIN
 Route::group(['middleware' => ['role:superadmin']], function () {
@@ -178,15 +198,24 @@ Route::get('/daftarpuskesmas/{user_id}/detailposyandu', [ListPuskesmasController
 
 
 // CHANGE USER
+Route::group(['middleware' => ['role:posyandu']], function () {
 Route::get('/akun-posyandu', [AkunPosyanduController::class, 'index'])->name('akun-posyandu.index');
 Route::post('/akun-posyandu/update', [AkunPosyanduController::class, 'update'])->name('akun-posyandu.update');
+});
 
+Route::group(['middleware' => ['role:dinaskesehatan']], function () {
 Route::get('/akun-dinas-kesehatan', [AkunDinasKesehatanController::class, 'index'])->name('akun-dinas-kesehatan.index');
 Route::post('/akun-dinas-kesehatan/update', [AkunDinasKesehatanController::class, 'update'])->name('akun-dinas-kesehatan.update');
+});
 
+Route::group(['middleware' => ['role:puskesmas']], function () {
 Route::get('/akun-puskesmas', [AkunPuskesmasController::class, 'index'])->name('akun-puskesmas.index');
 Route::post('/akun-puskesmas/update', [AkunPuskesmasController::class, 'update'])->name('akun-puskesmas.update');
+});
 
+Route::group(['middleware' => ['role:superadmin']], function () {
 Route::get('/akun-superadmin', [AkunSuperadminController::class, 'index'])->name('akun-superadmin.index');
 Route::put('/akun-superadmin/update', [AkunSuperadminController::class, 'update'])->name('akun-superadmin.update');
+});
+
 // CHANGE USER
