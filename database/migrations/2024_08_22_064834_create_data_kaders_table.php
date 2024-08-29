@@ -21,8 +21,12 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin');
             $table->date('pertama_kali');
-            // $table->string('pelatihan_diikuti');
-            $table->string('sertifikat')->nullable();
+            $table->string('pelatihan_diikuti1');
+            $table->string('sertifikat1')->nullable();
+            $table->string('pelatihan_diikuti2');
+            $table->string('sertifikat2')->nullable();
+            $table->string('pelatihan_diikuti3');
+            $table->string('sertifikat3')->nullable();
     
             $table->timestamps();
         });

@@ -203,7 +203,7 @@
                                                     <h6 class="mb-0">TEMPAT KEGIATAN POSYANDU</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                    <input type="text" name="tempat_kegiatan" class="form-control" value="{{ old('tempat_kegiatan', $dataPosyandu->tempat_kegiatan ?? '') }}" required />
+                                                    <input type="text" name="tempat_kegiatan" class="form-control" value="{{ old('tempat_kegiatan', $dataPosyandu->tempat_kegiatan ?? '') }}" placeholder="Contoh: Balai Desa" required />
                                                 </div>
                                             </div>
                                             <div class="row mb-3">
@@ -231,7 +231,8 @@
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-sm-3">
-                                                    <h6 class="mb-0">Lampirkan foto lokasi*</h6>
+                                                    <h6 class="mb-0">Lampirkan foto lokasi</h6>
+                                                    <span class="text-danger">*Tampak depan menampilkan nama posyandu</span>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
                                                     <input type="file" name="foto_lokasi" class="form-control" />
@@ -274,8 +275,10 @@
                                                         <th>No HP</th>
                                                         <th>Jabatan</th>
                                                         <th>Jenis Kelamin</th>
-                                                        <th>Pertama KaliMenjadi Kader</th>
-                                                        <th>Sertifikat</th>
+                                                        <th>Pertama Kali Menjadi Kader Posyandu</th>
+                                                        <th>Pelatihan Pertama & Sertifikat</th>
+                                                        <th>Pelatihan Kedua & Sertifikat</th>
+                                                        <th>Pelatihan Ketiga & Sertifikat</th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -288,7 +291,9 @@
                                                             <td>{{ $kader->jabatan }}</td>
                                                             <td>{{ $kader->jenis_kelamin }}</td>
                                                             <td>{{ $kader->pertama_kali }}</td>
-                                                            <td> <a href="{{ asset($kader->sertifikat) }}" target="_blank">Lihat Sertifikat</a></td>
+                                                            <td>{{ $kader->pelatihan_diikuti1 }} / <a href="{{ asset($kader->sertifikat1) }}" target="_blank">Lihat Sertifikat</a></td>
+                                                            <td>{{ $kader->pelatihan_diikuti2 }} / <a href="{{ asset($kader->sertifikat2) }}" target="_blank">Lihat Sertifikat</a></td>
+                                                            <td>{{ $kader->pelatihan_diikuti3 }} / <a href="{{ asset($kader->sertifikat3) }}" target="_blank">Lihat Sertifikat</a></td>
                                                             <td>
                                                                 <a href="{{ route('data-kader.edit', $kader->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                                                 <form action="{{ route('data-kader.destroy', $kader->id) }}" method="POST" style="display:inline-block;" class="delete-form">
@@ -307,8 +312,10 @@
                                                         <th>No HP</th>
                                                         <th>Jabatan</th>
                                                         <th>Jenis Kelamin</th>
-                                                        <th>Pertama KaliMenjadi Kader</th>
-                                                        <th>Sertifikat</th>
+                                                        <th>Pertama Kali Menjadi Kader Posyandu</th>
+                                                        <th>Pelatihan Pertama & Sertifikat</th>
+                                                        <th>Pelatihan Kedua & Sertifikat</th>
+                                                        <th>Pelatihan Ketiga & Sertifikat</th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </tfoot>
@@ -428,7 +435,7 @@
                                                 <div class="row mb-3">
                                                  
                                                     <div class="col-sm-6">
-                                                        <img src="{{ asset('uploads/gambar_peralatankes/' . $item->gambar) }}" width="70" alt="{{ $item->nama }}">
+                                                        <img src="{{ asset('uploads/gambar_peralatankes/' . $item->gambar) }}" width="170" alt="{{ $item->nama }}">
                                                         <h6 class="mb-0">{{ $item->nama }}</h6>
                                                         <input type="number" class="form-control" name="peralatan[{{ $item->id }}]"
                                                             value="{{ $peralatanData[$item->id]['jumlah'] ?? 0 }}" 
@@ -465,7 +472,7 @@
                                                 <div class="row mb-3">
                                                  
                                                     <div class="col-sm-6">
-                                                        <img src="{{ asset('uploads/gambar_perbekalankes/' . $item->gambar) }}" width="70" alt="{{ $item->nama }}">
+                                                        <img src="{{ asset('uploads/gambar_perbekalankes/' . $item->gambar) }}" width="170" alt="{{ $item->nama }}">
                                                         <h6 class="mb-0">{{ $item->nama }}</h6>
                                                         <input type="number" class="form-control" name="perbekalan[{{ $item->id }}]"
                                                             value="{{ $perbekalanData[$item->id]['jumlah'] ?? 0 }}" 
@@ -502,7 +509,7 @@
                                                 <div class="row mb-3">
                                                  
                                                     <div class="col-sm-6">
-                                                        <img src="{{ asset('uploads/gambar_instrumen/' . $item->gambar) }}" width="70" alt="{{ $item->nama }}">
+                                                        <img src="{{ asset('uploads/gambar_instrumen/' . $item->gambar) }}" width="170" alt="{{ $item->nama }}">
                                                         <h6 class="mb-0">{{ $item->nama }}</h6>
                                                         <input type="number" class="form-control" name="instrumen[{{ $item->id }}]"
                                                             value="{{ $instrumenData[$item->id]['jumlah'] ?? 0 }}" 

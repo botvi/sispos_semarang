@@ -76,23 +76,51 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="pertama_kali" class="col-sm-3 col-form-label">Pertama Kali Menjadi Kader</label>
+                                <label for="pertama_kali" class="col-sm-3 col-form-label">Pertama Kali Menjadi Kader Posyandu</label>
                                 <div class="col-sm-9">
                                     <input type="date" class="form-control" id="pertama_kali" name="pertama_kali" required>
                                 </div>
                             </div>
-                            {{-- <div class="row mb-3">
-                                <label for="pelatihan_diikuti" class="col-sm-3 col-form-label">Pelatihan Diikuti</label>
-                                <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="pelatihan_diikuti" name="pelatihan_diikuti" required>
-                                </div>
-                            </div> --}}
+                            <hr>
                             <div class="row mb-3">
-                                <label for="sertifikat" class="col-sm-3 col-form-label">Pelatihan yang pernah diikuti (5 tahun terakhir) Sertifikat *pdf</label>
+                                <label for="pelatihan_diikuti1" class="col-sm-3 col-form-label text-success">Pelatihan Pertama Diikuti</label>
                                 <div class="col-sm-9">
-                                    <input type="file" class="form-control" id="sertifikat" name="sertifikat">
+                                    <input type="text" class="form-control" id="pelatihan_diikuti1" name="pelatihan_diikuti1" required>
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <label for="sertifikat1" class="col-sm-3 col-form-label text-success">Sertifikat Pelatihan Pertama *pdf</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control text-success" id="sertifikat1" name="sertifikat1">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row mb-3">
+                                <label for="pelatihan_diikuti2" class="col-sm-3 col-form-label text-warning">Pelatihan Kedua Diikuti</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="pelatihan_diikuti2" name="pelatihan_diikuti2" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="sertifikat2" class="col-sm-3 col-form-label text-warning">Sertifikat Pelatihan Kedua *pdf</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control text-warning" id="sertifikat2" name="sertifikat2">
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row mb-3">
+                                <label for="pelatihan_diikuti3" class="col-sm-3 col-form-label text-primary">Pelatihan Ketiga Diikuti</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="pelatihan_diikuti3" name="pelatihan_diikuti3" required>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label for="sertifikat3" class="col-sm-3 col-form-label text-primary">Sertifikat Pelatihan Ketiga *pdf</label>
+                                <div class="col-sm-9">
+                                    <input type="file" class="form-control text-primary" id="sertifikat3" name="sertifikat3">
+                                </div>
+                            </div>
+                            <hr>
                             <div class="row mb-3">
                                 <div class="col-sm-9 offset-sm-3">
                                     <button type="submit" class="btn btn-primary">Simpan</button>

@@ -9,7 +9,6 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class DataKaderController extends Controller
 {
-
     // VIEW NYA ADA DI DATA POSYANDU CONTROLLER
     
     // public function index()
@@ -33,14 +32,25 @@ class DataKaderController extends Controller
             'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required|string',
             'pertama_kali' => 'required|date',
-            // 'pelatihan_diikuti' => 'required|string|max:255',
-            'sertifikat' => 'nullable|file|mimes:jpg,png,pdf',
+            'pelatihan_diikuti1' => 'required|string|max:255',
+            'sertifikat1' => 'nullable|file|mimes:jpg,png,pdf',
+            'pelatihan_diikuti2' => 'required|string|max:255',
+            'sertifikat2' => 'nullable|file|mimes:jpg,png,pdf',
+            'pelatihan_diikuti3' => 'required|string|max:255',
+            'sertifikat3' => 'nullable|file|mimes:jpg,png,pdf',
         ]);
 
-        $sertifikatPath = null;
-        if ($request->hasFile('sertifikat')) {
-            $sertifikatPath = $request->file('sertifikat')->move('uploads/sertifkader', time() . '_' . $request->file('sertifikat')->getClientOriginalName());
-        }
+        $sertifikatPath1 = $request->hasFile('sertifikat1')
+            ? $request->file('sertifikat1')->move('uploads/sertifkader1', time() . '_' . $request->file('sertifikat1')->getClientOriginalName())
+            : null;
+
+        $sertifikatPath2 = $request->hasFile('sertifikat2')
+            ? $request->file('sertifikat2')->move('uploads/sertifkader2', time() . '_' . $request->file('sertifikat2')->getClientOriginalName())
+            : null;
+
+        $sertifikatPath3 = $request->hasFile('sertifikat3')
+            ? $request->file('sertifikat3')->move('uploads/sertifkader3', time() . '_' . $request->file('sertifikat3')->getClientOriginalName())
+            : null;
 
         DataKader::create([
             'nama' => $request->nama,
@@ -50,8 +60,12 @@ class DataKaderController extends Controller
             'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
             'pertama_kali' => $request->pertama_kali,
-            // 'pelatihan_diikuti' => $request->pelatihan_diikuti,
-            'sertifikat' => $sertifikatPath,
+            'pelatihan_diikuti1' => $request->pelatihan_diikuti1,
+            'sertifikat1' => $sertifikatPath1,
+            'pelatihan_diikuti2' => $request->pelatihan_diikuti2,
+            'sertifikat2' => $sertifikatPath2,
+            'pelatihan_diikuti3' => $request->pelatihan_diikuti3,
+            'sertifikat3' => $sertifikatPath3,
             'user_id' => Auth::id(),
         ]);
 
@@ -75,11 +89,16 @@ class DataKaderController extends Controller
             'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required|string',
             'pertama_kali' => 'required|date',
-            // 'pelatihan_diikuti' => 'required|string|max:255',
-            'sertifikat' => 'nullable|file|mimes:jpg,png,pdf',
+            'pelatihan_diikuti1' => 'required|string|max:255',
+            'sertifikat1' => 'nullable|file|mimes:jpg,png,pdf',
+            'pelatihan_diikuti2' => 'required|string|max:255',
+            'sertifikat2' => 'nullable|file|mimes:jpg,png,pdf',
+            'pelatihan_diikuti3' => 'required|string|max:255',
+            'sertifikat3' => 'nullable|file|mimes:jpg,png,pdf',
         ]);
 
         $dataKader = DataKader::findOrFail($id);
+
         $dataKader->nama = $request->nama;
         $dataKader->no_hp = $request->no_hp;
         $dataKader->jabatan = $request->jabatan;
@@ -87,15 +106,29 @@ class DataKaderController extends Controller
         $dataKader->tanggal_lahir = $request->tanggal_lahir;
         $dataKader->jenis_kelamin = $request->jenis_kelamin;
         $dataKader->pertama_kali = $request->pertama_kali;
-        // $dataKader->pelatihan_diikuti = $request->pelatihan_diikuti;
+        $dataKader->pelatihan_diikuti1 = $request->pelatihan_diikuti1;
+        $dataKader->pelatihan_diikuti2 = $request->pelatihan_diikuti2;
+        $dataKader->pelatihan_diikuti3 = $request->pelatihan_diikuti3;
 
-        if ($request->hasFile('sertifikat')) {
-            // Delete old file if exists
-            if ($dataKader->sertifikat && file_exists(public_path($dataKader->sertifikat))) {
-                unlink(public_path($dataKader->sertifikat));
+        if ($request->hasFile('sertifikat1')) {
+            if ($dataKader->sertifikat1 && file_exists(public_path($dataKader->sertifikat1))) {
+                unlink(public_path($dataKader->sertifikat1));
             }
-            $sertifikatPath = $request->file('sertifikat')->move('uploads/sertifkader', time() . '_' . $request->file('sertifikat')->getClientOriginalName());
-            $dataKader->sertifikat = $sertifikatPath;
+            $dataKader->sertifikat1 = $request->file('sertifikat1')->move('uploads/sertifkader1', time() . '_' . $request->file('sertifikat1')->getClientOriginalName());
+        }
+
+        if ($request->hasFile('sertifikat2')) {
+            if ($dataKader->sertifikat2 && file_exists(public_path($dataKader->sertifikat2))) {
+                unlink(public_path($dataKader->sertifikat2));
+            }
+            $dataKader->sertifikat2 = $request->file('sertifikat2')->move('uploads/sertifkader2', time() . '_' . $request->file('sertifikat2')->getClientOriginalName());
+        }
+
+        if ($request->hasFile('sertifikat3')) {
+            if ($dataKader->sertifikat3 && file_exists(public_path($dataKader->sertifikat3))) {
+                unlink(public_path($dataKader->sertifikat3));
+            }
+            $dataKader->sertifikat3 = $request->file('sertifikat3')->move('uploads/sertifkader3', time() . '_' . $request->file('sertifikat3')->getClientOriginalName());
         }
 
         $dataKader->save();
@@ -108,9 +141,16 @@ class DataKaderController extends Controller
     {
         $dataKader = DataKader::findOrFail($id);
 
-        // Delete the associated file if it exists
-        if ($dataKader->sertifikat && file_exists(public_path($dataKader->sertifikat))) {
-            unlink(public_path($dataKader->sertifikat));
+        if ($dataKader->sertifikat1 && file_exists(public_path($dataKader->sertifikat1))) {
+            unlink(public_path($dataKader->sertifikat1));
+        }
+
+        if ($dataKader->sertifikat2 && file_exists(public_path($dataKader->sertifikat2))) {
+            unlink(public_path($dataKader->sertifikat2));
+        }
+
+        if ($dataKader->sertifikat3 && file_exists(public_path($dataKader->sertifikat3))) {
+            unlink(public_path($dataKader->sertifikat3));
         }
 
         $dataKader->delete();

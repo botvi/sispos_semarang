@@ -185,6 +185,13 @@
                     borderWidth: 1
                 },
                 {
+                    label: 'IMT Normal',
+                    data: @json($imtNormalData),
+                    borderColor: 'rgba(255, 205, 86, 1)',
+                    backgroundColor: 'rgba(255, 205, 86, 0.2)',
+                    borderWidth: 1
+                },
+                {
                     label: 'TD Rendah',
                     data: @json($tdRendahData),
                     borderColor: 'rgba(153, 102, 255, 1)',
@@ -194,6 +201,13 @@
                 {
                     label: 'TD Tinggi',
                     data: @json($tdTinggiData),
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'TD Normal',
+                    data: @json($tdNormalData),
                     borderColor: 'rgba(255, 159, 64, 1)',
                     backgroundColor: 'rgba(255, 159, 64, 0.2)',
                     borderWidth: 1
@@ -215,6 +229,13 @@
                 {
                     label: 'Remaja Putri Anemia',
                     data: @json($remajaPutriAnemiaData),
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Tidak Anemia',
+                    data: @json($tidakAnemiaData),
                     borderColor: 'rgba(75, 192, 192, 1)',
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderWidth: 1

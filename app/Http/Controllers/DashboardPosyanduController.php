@@ -22,11 +22,14 @@ class DashboardPosyanduController extends Controller
                 SUM(imt_kurus) as total_imt_kurus,
                 SUM(imt_gemuk) as total_imt_gemuk,
                 SUM(imt_obesitas) as total_imt_obesitas,
+                SUM(imt_normal) as total_imt_normal,
                 SUM(td_rendah) as total_td_rendah,
                 SUM(td_tinggi) as total_td_tinggi,
+                SUM(td_normal) as total_td_normal,
                 SUM(gula_darah_rendah) as total_gula_darah_rendah,
                 SUM(gula_darah_tinggi) as total_gula_darah_tinggi,
                 SUM(remaja_putri_anemia) as total_remaja_putri_anemia,
+                SUM(tidak_anemia) as total_tidak_anemia,
                 SUM(risiko_tbc) as total_risiko_tbc,
                 SUM(masalah_kesehatan) as total_masalah_kesehatan
             ')
@@ -89,11 +92,14 @@ class DashboardPosyanduController extends Controller
         $imtKurusData = array_fill(0, 12, 0);
         $imtGemukData = array_fill(0, 12, 0);
         $imtObesitasData = array_fill(0, 12, 0);
+        $imtNormalData = array_fill(0, 12, 0);
         $tdRendahData = array_fill(0, 12, 0);
         $tdTinggiData = array_fill(0, 12, 0);
+        $tdNormalData = array_fill(0, 12, 0);
         $gulaDarahRendahData = array_fill(0, 12, 0);
         $gulaDarahTinggiData = array_fill(0, 12, 0);
         $remajaPutriAnemiaData = array_fill(0, 12, 0);
+        $tidakAnemiaData = array_fill(0, 12, 0);
         $risikoTbcData = array_fill(0, 12, 0);
         $masalahKesehatanData = array_fill(0, 12, 0);
         $sasaranData = array_fill(0, 12, 0);
@@ -119,11 +125,14 @@ class DashboardPosyanduController extends Controller
             $imtKurusData[$index] = $dataAnakRemaja->total_imt_kurus;
             $imtGemukData[$index] = $dataAnakRemaja->total_imt_gemuk;
             $imtObesitasData[$index] = $dataAnakRemaja->total_imt_obesitas;
+            $imtNormalData[$index] = $dataAnakRemaja->total_imt_normal;
             $tdRendahData[$index] = $dataAnakRemaja->total_td_rendah;
             $tdTinggiData[$index] = $dataAnakRemaja->total_td_tinggi;
+            $tdNormalData[$index] = $dataAnakRemaja->total_td_normal;
             $gulaDarahRendahData[$index] = $dataAnakRemaja->total_gula_darah_rendah;
             $gulaDarahTinggiData[$index] = $dataAnakRemaja->total_gula_darah_tinggi;
             $remajaPutriAnemiaData[$index] = $dataAnakRemaja->total_remaja_putri_anemia;
+            $tidakAnemiaData[$index] = $dataAnakRemaja->total_tidak_anemia;
             $risikoTbcData[$index] = $dataAnakRemaja->total_risiko_tbc;
             $masalahKesehatanData[$index] = $dataAnakRemaja->total_masalah_kesehatan;
         }
@@ -162,11 +171,14 @@ class DashboardPosyanduController extends Controller
             'imtKurusData' => $imtKurusData,
             'imtGemukData' => $imtGemukData,
             'imtObesitasData' => $imtObesitasData,
+            'imtNormalData' => $imtNormalData,
             'tdRendahData' => $tdRendahData,
             'tdTinggiData' => $tdTinggiData,
+            'tdNormalData' => $tdNormalData,
             'gulaDarahRendahData' => $gulaDarahRendahData,
             'gulaDarahTinggiData' => $gulaDarahTinggiData,
             'remajaPutriAnemiaData' => $remajaPutriAnemiaData,
+            'tidakAnemiaData' => $tidakAnemiaData,
             'risikoTbcData' => $risikoTbcData,
             'masalahKesehatanData' => $masalahKesehatanData,
             'sasaranData' => $sasaranData,

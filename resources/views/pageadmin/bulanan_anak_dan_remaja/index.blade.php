@@ -44,33 +44,45 @@
                                 </div>
                                 <!-- Add additional fields here -->
                                 <div class="row mb-3">
-                                    <label for="imt_kurus" class="col-sm-3 col-form-label">IMT Kurus</label>
+                                    <label for="imt_kurus" class="col-sm-3 col-form-label">Index Massa Tubuh Kurus</label>
                                     <div class="col-sm-9">
                                         <input type="number" class="form-control" id="imt_kurus" name="imt_kurus">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="imt_gemuk" class="col-sm-3 col-form-label">IMT Gemuk</label>
+                                    <label for="imt_gemuk" class="col-sm-3 col-form-label">Index Massa Tubuh Gemuk</label>
                                     <div class="col-sm-9">
                                         <input type="number" class="form-control" id="imt_gemuk" name="imt_gemuk">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="imt_obesitas" class="col-sm-3 col-form-label">IMT Obesitas</label>
+                                    <label for="imt_obesitas" class="col-sm-3 col-form-label">Index Massa Tubuh Obesitas</label>
                                     <div class="col-sm-9">
                                         <input type="number" class="form-control" id="imt_obesitas" name="imt_obesitas">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="td_rendah" class="col-sm-3 col-form-label">TD Rendah</label>
+                                    <label for="imt_normal" class="col-sm-3 col-form-label">Index Massa Tubuh Normal</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="imt_normal" name="imt_normal">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="td_rendah" class="col-sm-3 col-form-label">Tekanan Darah Rendah</label>
                                     <div class="col-sm-9">
                                         <input type="number" class="form-control" id="td_rendah" name="td_rendah">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="td_tinggi" class="col-sm-3 col-form-label">TD Tinggi</label>
+                                    <label for="td_tinggi" class="col-sm-3 col-form-label">Tekanan Darah Tinggi</label>
                                     <div class="col-sm-9">
                                         <input type="number" class="form-control" id="td_tinggi" name="td_tinggi">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="td_normal" class="col-sm-3 col-form-label">Tekanan Darah Normal</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="td_normal" name="td_normal">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -89,6 +101,12 @@
                                     <label for="remaja_putri_anemia" class="col-sm-3 col-form-label">Remaja Putri Anemia</label>
                                     <div class="col-sm-9">
                                         <input type="number" class="form-control" id="remaja_putri_anemia" name="remaja_putri_anemia">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="tidak_anemia" class="col-sm-3 col-form-label">Tidak Anemia</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control" id="tidak_anemia" name="tidak_anemia">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -174,6 +192,13 @@
                     borderWidth: 1
                 },
                 {
+                    label: 'IMT Normal',
+                    data: @json($imtNormalData),
+                    borderColor: 'rgba(255, 205, 86, 1)',
+                    backgroundColor: 'rgba(255, 205, 86, 0.2)',
+                    borderWidth: 1
+                },
+                {
                     label: 'TD Rendah',
                     data: @json($tdRendahData),
                     borderColor: 'rgba(153, 102, 255, 1)',
@@ -183,6 +208,13 @@
                 {
                     label: 'TD Tinggi',
                     data: @json($tdTinggiData),
+                    borderColor: 'rgba(255, 159, 64, 1)',
+                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'TD Normal',
+                    data: @json($tdNormalData),
                     borderColor: 'rgba(255, 159, 64, 1)',
                     backgroundColor: 'rgba(255, 159, 64, 0.2)',
                     borderWidth: 1
@@ -204,6 +236,13 @@
                 {
                     label: 'Remaja Putri Anemia',
                     data: @json($remajaPutriAnemiaData),
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Tidak Anemia',
+                    data: @json($tidakAnemiaData),
                     borderColor: 'rgba(75, 192, 192, 1)',
                     backgroundColor: 'rgba(75, 192, 192, 0.2)',
                     borderWidth: 1

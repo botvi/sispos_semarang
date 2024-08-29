@@ -16,8 +16,12 @@ class DataKader extends Model
         'tanggal_lahir',
         'jenis_kelamin',
         'pertama_kali',
-        // 'pelatihan_diikuti',
-        'sertifikat',
+        'pelatihan_diikuti1',
+        'sertifikat1',
+        'pelatihan_diikuti2',
+        'sertifikat2',
+        'pelatihan_diikuti3',
+        'sertifikat3',
         'user_id'
     ];
     public function user()
