@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\MasterPeralatanKes;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Support\Facades\Storage;
 
 class MasterPeralatanKesController extends Controller
 {
@@ -28,7 +27,7 @@ class MasterPeralatanKesController extends Controller
         ]);
 
         $imageName = time() . '.' . $request->gambar->extension();
-        $request->gambar->move(public_path('uploads/gambar_peralatankes'), $imageName);
+        $request->gambar->move('uploads/gambar_peralatankes', $imageName);
 
         MasterPeralatanKes::create([
             'nama' => $request->nama,
@@ -58,11 +57,11 @@ class MasterPeralatanKesController extends Controller
 
         if ($request->hasFile('gambar')) {
             $imageName = time() . '.' . $request->gambar->extension();
-            $request->gambar->move(public_path('uploads/gambar_peralatankes'), $imageName);
+            $request->gambar->move('uploads/gambar_peralatankes', $imageName);
 
-            // Delete old image
+            // Hapus gambar lama
             if ($peralatan->gambar) {
-                unlink(public_path('uploads/gambar_peralatankes/' . $peralatan->gambar));
+                unlink('uploads/gambar_peralatankes/' . $peralatan->gambar);
             }
 
             $data['gambar'] = $imageName;
@@ -79,7 +78,7 @@ class MasterPeralatanKesController extends Controller
         $peralatan = MasterPeralatanKes::findOrFail($id);
 
         if ($peralatan->gambar) {
-            unlink(public_path('uploads/gambar_peralatankes/' . $peralatan->gambar));
+            unlink('uploads/gambar_peralatankes/' . $peralatan->gambar);
         }
 
         $peralatan->delete();

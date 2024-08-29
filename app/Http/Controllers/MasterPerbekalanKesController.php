@@ -27,7 +27,7 @@ class MasterPerbekalanKesController extends Controller
         ]);
 
         $imageName = time() . '.' . $request->gambar->extension();
-        $request->gambar->move(public_path('uploads/gambar_perbekalankes'), $imageName);
+        $request->gambar->move('uploads/gambar_perbekalankes', $imageName);
 
         MasterPerbekalanKes::create([
             'nama' => $request->nama,
@@ -57,10 +57,11 @@ class MasterPerbekalanKesController extends Controller
 
         if ($request->hasFile('gambar')) {
             $imageName = time() . '.' . $request->gambar->extension();
-            $request->gambar->move(public_path('uploads/gambar_perbekalankes'), $imageName);
+            $request->gambar->move('uploads/gambar_perbekalankes', $imageName);
 
+            // Hapus gambar lama
             if ($perbekalan->gambar) {
-                unlink(public_path('uploads/gambar_perbekalankes/' . $perbekalan->gambar));
+                unlink('uploads/gambar_perbekalankes/' . $perbekalan->gambar);
             }
 
             $data['gambar'] = $imageName;
@@ -77,7 +78,7 @@ class MasterPerbekalanKesController extends Controller
         $perbekalan = MasterPerbekalanKes::findOrFail($id);
 
         if ($perbekalan->gambar) {
-            unlink(public_path('uploads/gambar_perbekalankes/' . $perbekalan->gambar));
+            unlink('uploads/gambar_perbekalankes/' . $perbekalan->gambar);
         }
 
         $perbekalan->delete();

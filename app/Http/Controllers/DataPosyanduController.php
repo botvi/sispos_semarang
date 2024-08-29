@@ -97,17 +97,17 @@ class DataPosyanduController extends Controller
         if ($request->hasFile('sk_kelurahan')) {
             $file = $request->file('sk_kelurahan');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/sk_kelurahan'), $filename);
+            $file->move('uploads/sk_kelurahan', $filename);
             $data['sk_kelurahan'] = 'uploads/sk_kelurahan/' . $filename;
         }
-
+        
         if ($request->hasFile('foto_lokasi')) {
             $file = $request->file('foto_lokasi');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('uploads/foto_lokasi'), $filename);
+            $file->move('uploads/foto_lokasi', $filename);
             $data['foto_lokasi'] = 'uploads/foto_lokasi/' . $filename;
         }
-
+        
         if ($dataPosyandu) {
             $dataPosyandu->update($data);
             $message = 'Data updated successfully!';

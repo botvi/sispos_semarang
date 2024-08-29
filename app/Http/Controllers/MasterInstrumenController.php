@@ -27,7 +27,7 @@ class MasterInstrumenController extends Controller
         ]);
 
         $imageName = time() . '.' . $request->gambar->extension();
-        $request->gambar->move(public_path('uploads/gambar_instrumen'), $imageName);
+        $request->gambar->move('uploads/gambar_instrumen', $imageName);
 
         MasterInstrumen::create([
             'nama' => $request->nama,
@@ -57,11 +57,11 @@ class MasterInstrumenController extends Controller
 
         if ($request->hasFile('gambar')) {
             $imageName = time() . '.' . $request->gambar->extension();
-            $request->gambar->move(public_path('uploads/gambar_instrumen'), $imageName);
+            $request->gambar->move('uploads/gambar_instrumen', $imageName);
 
-            // Delete old image
+            // Hapus gambar lama
             if ($instrumen->gambar) {
-                unlink(public_path('uploads/gambar_instrumen/' . $instrumen->gambar));
+                unlink('uploads/gambar_instrumen/' . $instrumen->gambar);
             }
 
             $data['gambar'] = $imageName;
@@ -78,7 +78,7 @@ class MasterInstrumenController extends Controller
         $instrumen = MasterInstrumen::findOrFail($id);
 
         if ($instrumen->gambar) {
-            unlink(public_path('uploads/gambar_instrumen/' . $instrumen->gambar));
+            unlink('uploads/gambar_instrumen/' . $instrumen->gambar);
         }
 
         $instrumen->delete();
