@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin');
             $table->date('pertama_kali');
-            $table->string('pelatihan_diikuti');
+            // $table->string('pelatihan_diikuti');
             $table->string('sertifikat')->nullable();
     
             $table->timestamps();

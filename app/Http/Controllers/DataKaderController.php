@@ -33,8 +33,8 @@ class DataKaderController extends Controller
             'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required|string',
             'pertama_kali' => 'required|date',
-            'pelatihan_diikuti' => 'required|string|max:255',
-            'sertifikat' => 'nullable|file|mimes:jpg,png,pdf|max:2048',
+            // 'pelatihan_diikuti' => 'required|string|max:255',
+            'sertifikat' => 'nullable|file|mimes:jpg,png,pdf',
         ]);
 
         $sertifikatPath = null;
@@ -50,7 +50,7 @@ class DataKaderController extends Controller
             'tanggal_lahir' => $request->tanggal_lahir,
             'jenis_kelamin' => $request->jenis_kelamin,
             'pertama_kali' => $request->pertama_kali,
-            'pelatihan_diikuti' => $request->pelatihan_diikuti,
+            // 'pelatihan_diikuti' => $request->pelatihan_diikuti,
             'sertifikat' => $sertifikatPath,
             'user_id' => Auth::id(),
         ]);
@@ -75,8 +75,8 @@ class DataKaderController extends Controller
             'tanggal_lahir' => 'required|date',
             'jenis_kelamin' => 'required|string',
             'pertama_kali' => 'required|date',
-            'pelatihan_diikuti' => 'required|string|max:255',
-            'sertifikat' => 'nullable|file|mimes:jpg,png,pdf|max:2048',
+            // 'pelatihan_diikuti' => 'required|string|max:255',
+            'sertifikat' => 'nullable|file|mimes:jpg,png,pdf',
         ]);
 
         $dataKader = DataKader::findOrFail($id);
@@ -87,7 +87,7 @@ class DataKaderController extends Controller
         $dataKader->tanggal_lahir = $request->tanggal_lahir;
         $dataKader->jenis_kelamin = $request->jenis_kelamin;
         $dataKader->pertama_kali = $request->pertama_kali;
-        $dataKader->pelatihan_diikuti = $request->pelatihan_diikuti;
+        // $dataKader->pelatihan_diikuti = $request->pelatihan_diikuti;
 
         if ($request->hasFile('sertifikat')) {
             // Delete old file if exists

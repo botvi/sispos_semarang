@@ -78,19 +78,19 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="pertama_kali" class="col-sm-3 col-form-label">Pertama Kali</label>
+                                <label for="pertama_kali" class="col-sm-3 col-form-label">Pertama Kali Menjadi Kader</label>
                                 <div class="col-sm-9">
                                     <input type="date" class="form-control" id="pertama_kali" name="pertama_kali" value="{{ $dataKader->pertama_kali }}" required>
                                 </div>
                             </div>
-                            <div class="row mb-3">
+                            {{-- <div class="row mb-3">
                                 <label for="pelatihan_diikuti" class="col-sm-3 col-form-label">Pelatihan Diikuti</label>
                                 <div class="col-sm-9">
                                     <input type="text" class="form-control" id="pelatihan_diikuti" name="pelatihan_diikuti" value="{{ $dataKader->pelatihan_diikuti }}" required>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="row mb-3">
-                                <label for="sertifikat" class="col-sm-3 col-form-label">Sertifikat</label>
+                                <label for="sertifikat" class="col-sm-3 col-form-label">Pelatihan yang pernah diikuti (5 tahun terakhir) Sertifikat *pdf</label>
                                 <div class="col-sm-9">
                                     <input type="file" class="form-control" id="sertifikat" name="sertifikat">
                                     @if ($dataKader->sertifikat)

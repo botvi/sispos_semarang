@@ -274,6 +274,8 @@
                                                         <th>No HP</th>
                                                         <th>Jabatan</th>
                                                         <th>Jenis Kelamin</th>
+                                                        <th>Pertama KaliMenjadi Kader</th>
+                                                        <th>Sertifikat</th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </thead>
@@ -285,6 +287,8 @@
                                                             <td>{{ $kader->no_hp }}</td>
                                                             <td>{{ $kader->jabatan }}</td>
                                                             <td>{{ $kader->jenis_kelamin }}</td>
+                                                            <td>{{ $kader->pertama_kali }}</td>
+                                                            <td> <a href="{{ asset($kader->sertifikat) }}" target="_blank">Lihat Sertifikat</a></td>
                                                             <td>
                                                                 <a href="{{ route('data-kader.edit', $kader->id) }}" class="btn btn-sm btn-warning">Edit</a>
                                                                 <form action="{{ route('data-kader.destroy', $kader->id) }}" method="POST" style="display:inline-block;" class="delete-form">
@@ -303,6 +307,8 @@
                                                         <th>No HP</th>
                                                         <th>Jabatan</th>
                                                         <th>Jenis Kelamin</th>
+                                                        <th>Pertama KaliMenjadi Kader</th>
+                                                        <th>Sertifikat</th>
                                                         <th>Aksi</th>
                                                     </tr>
                                                 </tfoot>
