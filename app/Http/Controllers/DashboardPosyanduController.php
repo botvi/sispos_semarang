@@ -113,6 +113,8 @@ class DashboardPosyanduController extends Controller
         $nifasMenyusuiData = array_fill(0, 12, 0);
         $bbGarisMerahData = array_fill(0, 12, 0);
         $lilaData = array_fill(0, 12, 0);
+        $risikoTbcIbuHamilData = array_fill(0, 12, 0);
+
         $mendapatTtdData = array_fill(0, 12, 0);
         $makananTambahanKekData = array_fill(0, 12, 0);
         $ikutKelasData = array_fill(0, 12, 0);
@@ -158,6 +160,8 @@ class DashboardPosyanduController extends Controller
             $nifasMenyusuiData[$index] = $dataIbuHamil->total_nifas_menyusui;
             $bbGarisMerahData[$index] = $dataIbuHamil->total_bb_garis_merah;
             $lilaData[$index] = $dataIbuHamil->total_lila;
+            $risikoTbcIbuHamilData[$index] = $dataIbuHamil->total_risiko_tbc;
+
             $mendapatTtdData[$index] = $dataIbuHamil->total_mendapat_ttd;
             $makananTambahanKekData[$index] = $dataIbuHamil->total_makanan_tambahan_kek;
             $ikutKelasData[$index] = $dataIbuHamil->total_ikut_kelas;
@@ -192,6 +196,8 @@ class DashboardPosyanduController extends Controller
             'nifasMenyusuiData' => $nifasMenyusuiData,
             'bbGarisMerahData' => $bbGarisMerahData,
             'lilaData' => $lilaData,
+            'risikoTbcIbuHamilData' => $risikoTbcIbuHamilData,
+
             'mendapatTtdData' => $mendapatTtdData,
             'makananTambahanKekData' => $makananTambahanKekData,
             'ikutKelasData' => $ikutKelasData,
