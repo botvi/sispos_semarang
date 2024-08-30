@@ -78,6 +78,5 @@ class RegPosyanduController extends Controller
         Alert::success('Success', 'Posyandu successfully created!');
 
         // Redirect to the registration form or another route
-        return redirect()->route('register.index');
-    }
+        return redirect('/login');    }
 }

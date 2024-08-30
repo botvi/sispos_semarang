@@ -17,15 +17,6 @@ class RegPosyandu extends Model
         return $this->belongsTo(User::class);
     }
 
-    // public function kecamatan()
-    // {
-    //     return $this->belongsTo(Kecamatan::class, 'kecamatan_id', 'id');
-    // }
-
-    // public function kelurahan()
-    // {
-    //     return $this->belongsTo(Kelurahan::class, 'kelurahan_id', 'id');
-    // }
     public function kecamatan()
 {
     return $this->belongsTo(Kecamatan::class, 'kecamatan_id', 'kecamatan_id');
