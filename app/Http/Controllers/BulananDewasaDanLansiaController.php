@@ -11,6 +11,8 @@ class BulananDewasaDanLansiaController extends Controller
 {
     public function index()
     {
+        $bulananDewasaDanLansias = BulananDewasaDanLansia::where('user_id', Auth::id())->get();
+
         // Ambil data grafik per bulan
         $dataPerBulan = BulananDewasaDanLansia::where('user_id', Auth::id())
             ->selectRaw('
@@ -46,7 +48,8 @@ class BulananDewasaDanLansiaController extends Controller
             'risikoPpokData', 
             'gangguanJiwaData', 
             'skriningSklData', 
-            'dirujukPuskesmasData'
+            'dirujukPuskesmasData',
+            'bulananDewasaDanLansias'
         ));
     }
 
@@ -72,5 +75,22 @@ class BulananDewasaDanLansiaController extends Controller
 
         Alert::success('Success', 'Data berhasil disimpan');
         return redirect()->route('bulanan_dewasa_dan_lansia.index');
+    }
+    public function update(Request $request, $id)
+    {
+        $dewasaDanLansia = BulananDewasaDanLansia::findOrFail($id);
+
+        $request->validate([
+            'tanggal_pelaksanaan' => 'required|date',
+            'jumlah_usia_dewasa_risiko_ppok' => 'required|integer',
+            'jumlah_usia_dewasa_gangguan_jiwa' => 'required|integer',
+            'jumlah_lansia_skrining_skl' => 'required|integer',
+            'jumlah_lansia_dirujuk_puskesmas' => 'required|integer',
+        ]);
+
+        $dewasaDanLansia->update($request->all());
+
+        Alert::success('Success', 'Data updated successfully!');
+        return redirect()->back();
     }
 }

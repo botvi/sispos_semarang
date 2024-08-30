@@ -18,110 +18,8 @@
         <!--breadcrumb-->
 
         <div class="row">
-            <div class="col-xl-6 mx-auto">
-                <hr/>
-                <div class="card border-top border-0 border-4 border-info">
-                    <div class="card-body">
-                        <div class="border p-4 rounded">
-                            <div class="card-title d-flex align-items-center">
-                                <div><i class="bx bxs-data me-1 font-22 text-info"></i>
-                                </div>
-                                <h5 class="mb-0 text-info">Proses Tiap Bulan Balita</h5>
-                            </div>
-                            <hr/>
-                            <form action="{{ route('bulanan_balita.store') }}" method="POST">
-                                @csrf
-                            
-                                <div class="row mb-3">
-                                    <label for="tanggal_pelaksanaan" class="col-sm-3 col-form-label">Tanggal Pelaksanaan</label>
-                                    <div class="col-sm-9">
-                                        <input type="date" class="form-control" id="tanggal_pelaksanaan" name="tanggal_pelaksanaan">
-                                    </div>
-                                </div>
-                            
-                                <div class="row mb-3">
-                                    <label for="jumlah_sasaran_balita" class="col-sm-3 col-form-label">Jumlah Sasaran Balita (S)</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_sasaran_balita" name="jumlah_sasaran_balita">
-                                    </div>
-                                </div>
-                            
-                                <div class="row mb-3">
-                                    <label for="jumlah_balita_kms" class="col-sm-3 col-form-label">Jumlah Balita Mempunyai KMS/Buku KIA (K)</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_balita_kms" name="jumlah_balita_kms">
-                                    </div>
-                                </div>
-                            
-                                <div class="row mb-3">
-                                    <label for="jumlah_balita_datang" class="col-sm-3 col-form-label">Jumlah Balita Datang (D)</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_balita_datang" name="jumlah_balita_datang">
-                                    </div>
-                                </div>
-                            
-                                <div class="row mb-3">
-                                    <label for="jumlah_balita_naik_timbangan" class="col-sm-3 col-form-label">Jumlah Balita Naik Timbangan (N)</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_balita_naik_timbangan" name="jumlah_balita_naik_timbangan">
-                                    </div>
-                                </div>
-                            
-                                <div class="row mb-3">
-                                    <label for="jumlah_balita_turun_timbangan" class="col-sm-3 col-form-label">Jumlah Balita Turun Timbangan</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_balita_turun_timbangan" name="jumlah_balita_turun_timbangan">
-                                    </div>
-                                </div>
-                            
-                                <div class="row mb-3">
-                                    <label for="jumlah_balita_bgm" class="col-sm-3 col-form-label">Jumlah Balita Dibawah Garis Merah (BGM)</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_balita_bgm" name="jumlah_balita_bgm">
-                                    </div>
-                                </div>
-                            
-                                <div class="row mb-3">
-                                    <label for="jumlah_balita_sakit" class="col-sm-3 col-form-label">Jumlah Balita Sakit</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_balita_sakit" name="jumlah_balita_sakit">
-                                    </div>
-                                </div>
-                            
-                                <div class="row mb-3">
-                                    <label for="jumlah_balita_vitamin_feb" class="col-sm-3 col-form-label">Jumlah Balita Mendapat Vitamin A (Februari)</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_balita_vitamin_feb" name="jumlah_balita_vitamin_feb">
-                                    </div>
-                                </div>
-                            
-                                <div class="row mb-3">
-                                    <label for="jumlah_balita_vitamin_aug" class="col-sm-3 col-form-label">Jumlah Balita Mendapat Vitamin A (Agustus)</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_balita_vitamin_aug" name="jumlah_balita_vitamin_aug">
-                                    </div>
-                                </div>
-                            
-                                <div class="row mb-3">
-                                    <label for="jumlah_balita_dirujuk" class="col-sm-3 col-form-label">Jumlah Balita Dirujuk ke Puskesmas</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_balita_dirujuk" name="jumlah_balita_dirujuk">
-                                    </div>
-                                </div>
-                            
-                                <div class="row">
-                                    <label class="col-sm-3 col-form-label"></label>
-                                    <div class="col-sm-9">
-                                        <button type="submit" class="btn btn-info px-5">Save Changes</button>
-                                    </div>
-                                </div>
-                            </form>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 mx-auto">
+            <div class="col-xl-12 mx-auto">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleFullScreenModal">Tambah Data</button>
                 <hr/>
                 <div class="card border-top border-0 border-4 border-info">
                     <div class="card-body">
@@ -147,8 +45,311 @@
                     </div>
                 </div>
             </div>
-        </div>
+            {{-- Tambah tampilan persentase D/S X 100
+            Tambah tampilan persentase N/S X 100 --}}
+            <div class="col-xl-12 mx-auto align-items-center">
+                <div class="row row-cols-1 row-cols-md-3 row-cols-xl-5">
+                    <div class="col">
+                        <div class="card radius-10">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <div class="widgets-icons rounded-circle mx-auto bg-light-primary text-primary mb-3 p-5"><span>D/S</span>
+                                    </div>
+                                    <h4 class="my-1">{{ number_format($persentaseDatang, 2) }}%</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card radius-10">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <div class="widgets-icons rounded-circle mx-auto bg-light-danger text-danger mb-3 p-5"><span>N/S</span>
+                                    </div>
+                                    <h4 class="my-1">{{ number_format($persentaseNaikTimbangan, 2) }}%</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- Tambah tampilan persentase D/S X 100
+            Tambah tampilan persentase N/S X 100 --}}
         <!--end row-->
+        <div class="modal fade" id="exampleFullScreenModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card border-top border-0 border-4 border-info">
+                            <div class="card-body">
+                                <div class="border p-4 rounded">
+                                    <div class="card-title d-flex align-items-center">
+                                        <div><i class="bx bxs-data me-1 font-22 text-info"></i>
+                                        </div>
+                                        <h5 class="mb-0 text-info">Proses Tiap Bulan Balita</h5>
+                                    </div>
+                                    <hr/>
+                                    <form action="{{ route('bulanan_balita.store') }}" method="POST">
+                                        @csrf
+                                    
+                                        <div class="row mb-3">
+                                            <label for="tanggal_pelaksanaan" class="col-sm-3 col-form-label">Tanggal Pelaksanaan</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" class="form-control" id="tanggal_pelaksanaan" name="tanggal_pelaksanaan">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="row mb-3">
+                                            <label for="jumlah_sasaran_balita" class="col-sm-3 col-form-label">Jumlah Sasaran Balita (S)</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_sasaran_balita" name="jumlah_sasaran_balita">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="row mb-3">
+                                            <label for="jumlah_balita_kms" class="col-sm-3 col-form-label">Jumlah Balita Mempunyai KMS/Buku KIA (K)</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_balita_kms" name="jumlah_balita_kms">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="row mb-3">
+                                            <label for="jumlah_balita_datang" class="col-sm-3 col-form-label">Jumlah Balita Datang (D)</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_balita_datang" name="jumlah_balita_datang">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="row mb-3">
+                                            <label for="jumlah_balita_naik_timbangan" class="col-sm-3 col-form-label">Jumlah Balita Naik Timbangan (N)</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_balita_naik_timbangan" name="jumlah_balita_naik_timbangan">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="row mb-3">
+                                            <label for="jumlah_balita_turun_timbangan" class="col-sm-3 col-form-label">Jumlah Balita Turun Timbangan</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_balita_turun_timbangan" name="jumlah_balita_turun_timbangan">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="row mb-3">
+                                            <label for="jumlah_balita_bgm" class="col-sm-3 col-form-label">Jumlah Balita Dibawah Garis Merah (BGM)</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_balita_bgm" name="jumlah_balita_bgm">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="row mb-3">
+                                            <label for="jumlah_balita_sakit" class="col-sm-3 col-form-label">Jumlah Balita Sakit</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_balita_sakit" name="jumlah_balita_sakit">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="row mb-3">
+                                            <label for="jumlah_balita_vitamin_feb" class="col-sm-3 col-form-label">Jumlah Balita Mendapat Vitamin A (Februari)</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_balita_vitamin_feb" name="jumlah_balita_vitamin_feb">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="row mb-3">
+                                            <label for="jumlah_balita_vitamin_aug" class="col-sm-3 col-form-label">Jumlah Balita Mendapat Vitamin A (Agustus)</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_balita_vitamin_aug" name="jumlah_balita_vitamin_aug">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="row mb-3">
+                                            <label for="jumlah_balita_dirujuk" class="col-sm-3 col-form-label">Jumlah Balita Dirujuk ke Puskesmas</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_balita_dirujuk" name="jumlah_balita_dirujuk">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="row">
+                                            <label class="col-sm-3 col-form-label"></label>
+                                            <div class="col-sm-9">
+                                                <button type="submit" class="btn btn-info px-5">Save Changes</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       <!-- Table Display -->
+       <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="example2" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Tanggal Pelaksanaan</th>
+                            <th>Jumlah Sasaran Balita (S)</th>
+                            <th>Jumlah Balita KMS (K)</th>
+                            <th>Jumlah Balita Datang (D)</th>
+                            <th>Jumlah Balita Naik Timbangan (N)</th>
+                            <th>Jumlah Balita Turun Timbangan</th>
+                            <th>Jumlah Balita BGM</th>
+                            <th>Jumlah Balita Sakit</th>
+                            <th>Jumlah Balita Vitamin FEB</th>
+                            <th>Jumlah Balita Vitamin AUG</th>
+                            <th>Jumlah Balita Dirujuk</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($bulananBalitas as $index => $balita)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $balita->tanggal_pelaksanaan }}</td>
+                            <td>{{ $balita->jumlah_sasaran_balita }}</td>
+                            <td>{{ $balita->jumlah_balita_kms }}</td>
+                            <td>{{ $balita->jumlah_balita_datang }}</td>
+                            <td>{{ $balita->jumlah_balita_naik_timbangan }}</td>
+                            <td>{{ $balita->jumlah_balita_turun_timbangan }}</td>
+                            <td>{{ $balita->jumlah_balita_bgm }}</td>
+                            <td>{{ $balita->jumlah_balita_sakit }}</td>
+                            <td>{{ $balita->jumlah_balita_vitamin_feb }}</td>
+                            <td>{{ $balita->jumlah_balita_vitamin_aug }}</td>
+                            <td>{{ $balita->jumlah_balita_dirujuk }}</td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal{{ $balita->id }}">Edit</button>
+                            </td>
+                        </tr>
+    
+                        <!-- Edit Modal -->
+                        <div class="modal fade" id="editModal{{ $balita->id }}" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-fullscreen">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Edit Data Balita - {{ $balita->tanggal_pelaksanaan }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form action="{{ route('bulananbalita.update', $balita->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="modal-body">
+                                            <div class="card border-top border-0 border-4 border-info">
+                                                <div class="card-body">
+                                                    <div class="border p-4 rounded">
+                                                        <div class="card-title d-flex align-items-center">
+                                                            <div><i class="bx bxs-data me-1 font-22 text-info"></i></div>
+                                                            <h5 class="mb-0 text-info">Proses Tiap Bulan Balita</h5>
+                                                        </div>
+                                                        <hr/>
+                                                        
+                                                        <div class="row mb-3">
+                                                            <label for="tanggal_pelaksanaan{{ $balita->id }}" class="col-sm-3 col-form-label">Tanggal Pelaksanaan</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="date" class="form-control" id="tanggal_pelaksanaan{{ $balita->id }}" name="tanggal_pelaksanaan" value="{{ $balita->tanggal_pelaksanaan }}">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_sasaran_balita{{ $balita->id }}" class="col-sm-3 col-form-label">Jumlah Sasaran Balita (S)</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_sasaran_balita{{ $balita->id }}" name="jumlah_sasaran_balita" value="{{ $balita->jumlah_sasaran_balita }}">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_balita_kms{{ $balita->id }}" class="col-sm-3 col-form-label">Jumlah Balita Mempunyai KMS/Buku KIA (K)</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_balita_kms{{ $balita->id }}" name="jumlah_balita_kms" value="{{ $balita->jumlah_balita_kms }}">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_balita_datang{{ $balita->id }}" class="col-sm-3 col-form-label">Jumlah Balita Datang (D)</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_balita_datang{{ $balita->id }}" name="jumlah_balita_datang" value="{{ $balita->jumlah_balita_datang }}">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_balita_naik_timbangan{{ $balita->id }}" class="col-sm-3 col-form-label">Jumlah Balita Naik Timbangan (N)</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_balita_naik_timbangan{{ $balita->id }}" name="jumlah_balita_naik_timbangan" value="{{ $balita->jumlah_balita_naik_timbangan }}">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_balita_turun_timbangan{{ $balita->id }}" class="col-sm-3 col-form-label">Jumlah Balita Turun Timbangan</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_balita_turun_timbangan{{ $balita->id }}" name="jumlah_balita_turun_timbangan" value="{{ $balita->jumlah_balita_turun_timbangan }}">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_balita_bgm{{ $balita->id }}" class="col-sm-3 col-form-label">Jumlah Balita Dibawah Garis Merah (BGM)</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_balita_bgm{{ $balita->id }}" name="jumlah_balita_bgm" value="{{ $balita->jumlah_balita_bgm }}">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_balita_sakit{{ $balita->id }}" class="col-sm-3 col-form-label">Jumlah Balita Sakit</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_balita_sakit{{ $balita->id }}" name="jumlah_balita_sakit" value="{{ $balita->jumlah_balita_sakit }}">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_balita_vitamin_feb{{ $balita->id }}" class="col-sm-3 col-form-label">Jumlah Balita Mendapat Vitamin A (Februari)</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_balita_vitamin_feb{{ $balita->id }}" name="jumlah_balita_vitamin_feb" value="{{ $balita->jumlah_balita_vitamin_feb }}">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_balita_vitamin_aug{{ $balita->id }}" class="col-sm-3 col-form-label">Jumlah Balita Mendapat Vitamin A (Agustus)</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_balita_vitamin_aug{{ $balita->id }}" name="jumlah_balita_vitamin_aug" value="{{ $balita->jumlah_balita_vitamin_aug }}">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_balita_dirujuk{{ $balita->id }}" class="col-sm-3 col-form-label">Jumlah Balita Dirujuk</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_balita_dirujuk{{ $balita->id }}" name="jumlah_balita_dirujuk" value="{{ $balita->jumlah_balita_dirujuk }}">
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Edit Modal -->
+    
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+
+        
     </div>
 </div>
 @endsection
@@ -203,4 +404,5 @@
               }
           });
       </script>
+
 @endsection

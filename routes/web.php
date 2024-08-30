@@ -156,16 +156,19 @@ Route::post('data-instrumen-kes/storeOrUpdate', [DataInstrumenKesController::cla
 
 Route::get('/bulanan-balita', [BulananBalitaController::class, 'index'])->name('bulanan_balita.index');
 Route::post('/bulanan-balita/store', [BulananBalitaController::class, 'store'])->name('bulanan_balita.store');
+Route::put('bulanan-balita/{id}', [BulananBalitaController::class, 'update'])->name('bulananbalita.update');
 
 Route::resource('bulanan_ibu_hamil', BulananIbuHamilController::class);
+Route::put('bulanan-ibu-hamil/{id}', [BulananIbuHamilController::class, 'update'])->name('bulananibuhamil.update');
 
 Route::get('/bulanan-anak-dan-remaja', [BulananAnakDanRemajaController::class, 'index'])->name('bulanan_anak_dan_remaja.index');
 Route::post('/bulanan-anak-dan-remaja/store', [BulananAnakDanRemajaController::class, 'store'])->name('bulanan_anak_dan_remaja.store');
+Route::put('bulanan-anak-dan-remaja/{id}', [BulananAnakDanRemajaController::class, 'update'])->name('bulanananakdanremaja.update');
 
 
 Route::get('/bulanan-dewasa-dan-lansia', [BulananDewasaDanLansiaController::class, 'index'])->name('bulanan_dewasa_dan_lansia.index');
-
 Route::post('/bulanan-dewasa-dan-lansia/store', [BulananDewasaDanLansiaController::class, 'store'])->name('bulanan_dewasa_dan_lansia.store');
+Route::put('bulanan-dewasa-dan-lansia/{id}', [BulananDewasaDanLansiaController::class, 'update'])->name('bulanandewasadanlansia.update');
 });
 // POSYANDU USER
 

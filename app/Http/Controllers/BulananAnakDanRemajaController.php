@@ -11,6 +11,7 @@ class BulananAnakDanRemajaController extends Controller
 {
     public function index()
     {
+        $bulananAnakDanRemajas = BulananAnakDanRemaja::where('user_id', Auth::id())->get();
         // Ambil data grafik per bulan
         $dataPerBulan = BulananAnakDanRemaja::where('user_id', Auth::id())
             ->selectRaw('
@@ -87,7 +88,8 @@ class BulananAnakDanRemajaController extends Controller
             'tidakAnemiaData', 
             'tidakAnemiaData', 
             'risikoTbcData', 
-            'masalahKesehatanData'
+            'masalahKesehatanData',
+            'bulananAnakDanRemajas'
         ));
     }
 
@@ -133,5 +135,36 @@ class BulananAnakDanRemajaController extends Controller
 
         Alert::success('Success', 'Data berhasil disimpan');
         return redirect()->route('bulanan_anak_dan_remaja.index');
+    }
+    public function update(Request $request, $id)
+    {
+        // Find the specific BulananAnakDanRemaja record by ID
+        $anakDanRemaja = BulananAnakDanRemaja::findOrFail($id);
+
+        // Validate the incoming request data
+        $request->validate([
+            'tanggal_pelaksanaan' => 'required|date',
+            'kunjungan_anak_remaja' => 'required|integer',
+            'imt_kurus' => 'required|integer',
+            'imt_gemuk' => 'required|integer',
+            'imt_obesitas' => 'required|integer',
+            'imt_normal' => 'required|integer',
+            'td_rendah' => 'required|integer',
+            'td_tinggi' => 'required|integer',
+            'td_normal' => 'required|integer',
+            'gula_darah_rendah' => 'required|integer',
+            'gula_darah_tinggi' => 'required|integer',
+            'remaja_putri_anemia' => 'required|integer',
+            'tidak_anemia' => 'required|integer',
+            'risiko_tbc' => 'required|integer',
+            'masalah_kesehatan' => 'nullable|string',
+        ]);
+
+        // Update the record with the new data
+        $anakDanRemaja->update($request->all());
+
+        // Redirect back to the previous page with a success message
+        Alert::success('Success', 'Data updated successfully!');
+        return redirect()->back();
     }
 }

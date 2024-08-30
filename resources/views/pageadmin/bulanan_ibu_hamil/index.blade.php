@@ -18,85 +18,10 @@
         <!--breadcrumb-->
 
         <div class="row">
-            <div class="col-xl-6 mx-auto">
-                <hr/>
-                <div class="card border-top border-0 border-4 border-info">
-                    <div class="card-body">
-                        <div class="border p-4 rounded">
-                            <div class="card-title d-flex align-items-center">
-                                <div><i class="bx bxs-data me-1 font-22 text-info"></i></div>
-                                <h5 class="mb-0 text-info">Proses Tiap Bulan Ibu Hamil</h5>
-                            </div>
-                            <hr/>
-                            <form action="{{ route('bulanan_ibu_hamil.store') }}" method="POST">
-                                @csrf
-                                <div class="row mb-3">
-                                    <label for="tanggal_pelaksanaan" class="col-sm-3 col-form-label">Tanggal Pelaksanaan</label>
-                                    <div class="col-sm-9">
-                                        <input type="date" class="form-control" id="tanggal_pelaksanaan" name="tanggal_pelaksanaan">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="jumlah_ibu_hamil_nifas_menyusui" class="col-sm-3 col-form-label">Jumlah Ibu Hamil/Nifas/Menyusui</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_ibu_hamil_nifas_menyusui" name="jumlah_ibu_hamil_nifas_menyusui">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="jumlah_ibu_hamil_bb_garis_merah" class="col-sm-3 col-form-label">Jumlah Ibu Hamil BB Garis Merah</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_ibu_hamil_bb_garis_merah" name="jumlah_ibu_hamil_bb_garis_merah">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="jumlah_ibu_hamil_lila" class="col-sm-3 col-form-label">Jumlah Ibu Hamil LILA ≤ 23.5 cm</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_ibu_hamil_lila" name="jumlah_ibu_hamil_lila">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="jumlah_ibu_hamil_risiko_tbc" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Berisiko TBC</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_ibu_hamil_risiko_tbc" name="jumlah_ibu_hamil_risiko_tbc">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="jumlah_ibu_hamil_mendapat_ttd" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Mendapat TTD</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_ibu_hamil_mendapat_ttd" name="jumlah_ibu_hamil_mendapat_ttd">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="jumlah_ibu_hamil_makanan_tambahan_kek" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Makanan Tambahan KEK</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_ibu_hamil_makanan_tambahan_kek" name="jumlah_ibu_hamil_makanan_tambahan_kek">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="jumlah_ibu_hamil_ikut_kelas" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Ikut Kelas</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_ibu_hamil_ikut_kelas" name="jumlah_ibu_hamil_ikut_kelas">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label for="jumlah_ibu_hamil_dirujuk_ke_puskesmas" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Dirujuk ke Puskesmas</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" class="form-control" id="jumlah_ibu_hamil_dirujuk_ke_puskesmas" name="jumlah_ibu_hamil_dirujuk_ke_puskesmas">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <label class="col-sm-3 col-form-label"></label>
-                                    <div class="col-sm-9">
-                                        <button type="submit" class="btn btn-info px-5">Save Changes</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
        
-            <div class="col-xl-6 mx-auto">
+            <div class="col-xl-12 mx-auto">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleFullScreenModal">Tambah Data</button>
+
                 <hr/>
 
                 <div class="card border-top border-0 border-4 border-info">
@@ -115,7 +40,233 @@
                 </div>
             </div>
         </div>
-
+        <div class="modal fade" id="exampleFullScreenModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card border-top border-0 border-4 border-info">
+                            <div class="card-body">
+                                <div class="border p-4 rounded">
+                                    <div class="card-title d-flex align-items-center">
+                                        <div><i class="bx bxs-data me-1 font-22 text-info"></i></div>
+                                        <h5 class="mb-0 text-info">Proses Tiap Bulan Ibu Hamil</h5>
+                                    </div>
+                                    <hr/>
+                                    <form action="{{ route('bulanan_ibu_hamil.store') }}" method="POST">
+                                        @csrf
+                                        <div class="row mb-3">
+                                            <label for="tanggal_pelaksanaan" class="col-sm-3 col-form-label">Tanggal Pelaksanaan</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" class="form-control" id="tanggal_pelaksanaan" name="tanggal_pelaksanaan">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="jumlah_ibu_hamil_nifas_menyusui" class="col-sm-3 col-form-label">Jumlah Ibu Hamil/Nifas/Menyusui</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_nifas_menyusui" name="jumlah_ibu_hamil_nifas_menyusui">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="jumlah_ibu_hamil_bb_garis_merah" class="col-sm-3 col-form-label">Jumlah Ibu Hamil BB Garis Merah</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_bb_garis_merah" name="jumlah_ibu_hamil_bb_garis_merah">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="jumlah_ibu_hamil_lila" class="col-sm-3 col-form-label">Jumlah Ibu Hamil LILA ≤ 23.5 cm</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_lila" name="jumlah_ibu_hamil_lila">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="jumlah_ibu_hamil_risiko_tbc" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Berisiko TBC</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_risiko_tbc" name="jumlah_ibu_hamil_risiko_tbc">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="jumlah_ibu_hamil_mendapat_ttd" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Mendapat TTD</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_mendapat_ttd" name="jumlah_ibu_hamil_mendapat_ttd">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="jumlah_ibu_hamil_makanan_tambahan_kek" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Makanan Tambahan KEK</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_makanan_tambahan_kek" name="jumlah_ibu_hamil_makanan_tambahan_kek">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="jumlah_ibu_hamil_ikut_kelas" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Ikut Kelas</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_ikut_kelas" name="jumlah_ibu_hamil_ikut_kelas">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="jumlah_ibu_hamil_dirujuk_ke_puskesmas" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Dirujuk ke Puskesmas</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_dirujuk_ke_puskesmas" name="jumlah_ibu_hamil_dirujuk_ke_puskesmas">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label class="col-sm-3 col-form-label"></label>
+                                            <div class="col-sm-9">
+                                                <button type="submit" class="btn btn-info px-5">Save Changes</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table id="example2" class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Tanggal Pelaksanaan</th>
+                                <th>Jumlah Ibu Hamil, Nifas, dan Menyusui</th>
+                                <th>Jumlah Ibu Hamil BB Garis Merah</th>
+                                <th>Jumlah Ibu Hamil LILA</th>
+                                <th>Jumlah Ibu Hamil Risiko TBC</th>
+                                <th>Jumlah Ibu Hamil Mendapat TTD</th>
+                                <th>Jumlah Ibu Hamil Mendapat Makanan Tambahan KEK</th>
+                                <th>Jumlah Ibu Hamil Ikut Kelas</th>
+                                <th>Jumlah Ibu Hamil Dirujuk ke Puskesmas</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($bulananIbuHamil as $index => $ibuHamil)
+                            <tr>
+                                <td>{{ $index + 1 }}</td>
+                                <td>{{ $ibuHamil->tanggal_pelaksanaan }}</td>
+                                <td>{{ $ibuHamil->jumlah_ibu_hamil_nifas_menyusui }}</td>
+                                <td>{{ $ibuHamil->jumlah_ibu_hamil_bb_garis_merah }}</td>
+                                <td>{{ $ibuHamil->jumlah_ibu_hamil_lila }}</td>
+                                <td>{{ $ibuHamil->jumlah_ibu_hamil_risiko_tbc }}</td>
+                                <td>{{ $ibuHamil->jumlah_ibu_hamil_mendapat_ttd }}</td>
+                                <td>{{ $ibuHamil->jumlah_ibu_hamil_makanan_tambahan_kek }}</td>
+                                <td>{{ $ibuHamil->jumlah_ibu_hamil_ikut_kelas }}</td>
+                                <td>{{ $ibuHamil->jumlah_ibu_hamil_dirujuk_ke_puskesmas }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal{{ $ibuHamil->id }}">Edit</button>
+                                </td>
+                            </tr>
+        
+                            <!-- Edit Modal -->
+                            <div class="modal fade" id="editModal{{ $ibuHamil->id }}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog modal-fullscreen">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Edit Data Ibu Hamil - {{ $ibuHamil->tanggal_pelaksanaan }}</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="card border-top border-0 border-4 border-info">
+                                            <div class="card-body">
+                                                <div class="border p-4 rounded">
+                                                    <div class="card-title d-flex align-items-center">
+                                                        <div><i class="bx bxs-data me-1 font-22 text-info"></i></div>
+                                                        <h5 class="mb-0 text-info">Proses Tiap Bulan Ibu Hamil</h5>
+                                                    </div>
+                                                    <hr/>
+                                        
+                                                    <form action="{{ route('bulananibuhamil.update', $ibuHamil->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                        
+                                                        <div class="row mb-3">
+                                                            <label for="tanggal_pelaksanaan_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Tanggal Pelaksanaan</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="date" class="form-control" id="tanggal_pelaksanaan_{{ $ibuHamil->id }}" name="tanggal_pelaksanaan" value="{{ $ibuHamil->tanggal_pelaksanaan }}">
+                                                            </div>
+                                                        </div>
+                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_ibu_hamil_nifas_menyusui_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Jumlah Ibu Hamil, Nifas, dan Menyusui</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_nifas_menyusui_{{ $ibuHamil->id }}" name="jumlah_ibu_hamil_nifas_menyusui" value="{{ $ibuHamil->jumlah_ibu_hamil_nifas_menyusui }}">
+                                                            </div>
+                                                        </div>
+                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_ibu_hamil_bb_garis_merah_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Jumlah Ibu Hamil BB Garis Merah</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_bb_garis_merah_{{ $ibuHamil->id }}" name="jumlah_ibu_hamil_bb_garis_merah" value="{{ $ibuHamil->jumlah_ibu_hamil_bb_garis_merah }}">
+                                                            </div>
+                                                        </div>
+                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_ibu_hamil_lila_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Jumlah Ibu Hamil LILA</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_lila_{{ $ibuHamil->id }}" name="jumlah_ibu_hamil_lila" value="{{ $ibuHamil->jumlah_ibu_hamil_lila }}">
+                                                            </div>
+                                                        </div>
+                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_ibu_hamil_risiko_tbc_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Risiko TBC</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_risiko_tbc_{{ $ibuHamil->id }}" name="jumlah_ibu_hamil_risiko_tbc" value="{{ $ibuHamil->jumlah_ibu_hamil_risiko_tbc }}">
+                                                            </div>
+                                                        </div>
+                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_ibu_hamil_mendapat_ttd_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Mendapat TTD</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_mendapat_ttd_{{ $ibuHamil->id }}" name="jumlah_ibu_hamil_mendapat_ttd" value="{{ $ibuHamil->jumlah_ibu_hamil_mendapat_ttd }}">
+                                                            </div>
+                                                        </div>
+                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_ibu_hamil_makanan_tambahan_kek_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Mendapat Makanan Tambahan KEK</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_makanan_tambahan_kek_{{ $ibuHamil->id }}" name="jumlah_ibu_hamil_makanan_tambahan_kek" value="{{ $ibuHamil->jumlah_ibu_hamil_makanan_tambahan_kek }}">
+                                                            </div>
+                                                        </div>
+                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_ibu_hamil_ikut_kelas_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Ikut Kelas</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_ikut_kelas_{{ $ibuHamil->id }}" name="jumlah_ibu_hamil_ikut_kelas" value="{{ $ibuHamil->jumlah_ibu_hamil_ikut_kelas }}">
+                                                            </div>
+                                                        </div>
+                                        
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_ibu_hamil_dirujuk_ke_puskesmas_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Dirujuk ke Puskesmas</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_dirujuk_ke_puskesmas_{{ $ibuHamil->id }}" name="jumlah_ibu_hamil_dirujuk_ke_puskesmas" value="{{ $ibuHamil->jumlah_ibu_hamil_dirujuk_ke_puskesmas }}">
+                                                            </div>
+                                                        </div>
+                                        
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Edit Modal -->
+        
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </div>
 

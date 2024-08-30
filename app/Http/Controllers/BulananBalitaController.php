@@ -12,6 +12,31 @@ class BulananBalitaController extends Controller
     public function index()
     {
 
+            // Tambah tampilan persentase D/S X 100
+            // Tambah tampilan persentase N/S X 100
+        $bulananBalitas = BulananBalita::where('user_id', Auth::id())->get();
+
+        $userId = Auth::id();
+
+        $data = BulananBalita::where('user_id', $userId)
+            ->selectRaw('
+                SUM(jumlah_sasaran_balita) as total_sasaran_balita,
+                SUM(jumlah_balita_datang) as total_balita_datang,
+                SUM(jumlah_balita_naik_timbangan) as total_balita_naik_timbangan
+            ')
+            ->first();
+    
+        $persentaseDatang = 0;
+        $persentaseNaikTimbangan = 0;
+    
+        if ($data->total_sasaran_balita > 0) {
+            $persentaseDatang = ($data->total_balita_datang / $data->total_sasaran_balita) * 100;
+            $persentaseNaikTimbangan = ($data->total_balita_naik_timbangan / $data->total_sasaran_balita) * 100;
+        }
+            // Tambah tampilan persentase D/S X 100
+            // Tambah tampilan persentase N/S X 100
+    
+
         // Ambil data grafik per bulan
         $dataPerBulan = BulananBalita::where('user_id', Auth::id())
             ->selectRaw('
@@ -42,7 +67,7 @@ class BulananBalitaController extends Controller
             $naikTimbanganData[$index] = $data->total_naik_timbangan;
         }
 
-        return view('pageadmin.bulanan_balita.index', compact( 'months', 'sasaranData', 'kmsData', 'datangData', 'naikTimbanganData'));
+        return view('pageadmin.bulanan_balita.index', compact( 'months', 'sasaranData', 'kmsData', 'datangData', 'naikTimbanganData','bulananBalitas','persentaseDatang', 'persentaseNaikTimbangan'));
     }
 
 
@@ -69,5 +94,32 @@ class BulananBalitaController extends Controller
     Alert::success('Success', 'Data has been saved successfully!');
     return redirect()->back();
 }
+public function update(Request $request, $id)
+    {
+        // Find the specific BulananBalita record by ID
+        $balita = BulananBalita::findOrFail($id);
+
+        // Validate the incoming request data
+        $request->validate([
+            'tanggal_pelaksanaan' => 'required|date',
+            'jumlah_sasaran_balita' => 'required|integer',
+            'jumlah_balita_kms' => 'required|integer',
+            'jumlah_balita_datang' => 'required|integer',
+            'jumlah_balita_naik_timbangan' => 'required|integer',
+            'jumlah_balita_turun_timbangan' => 'required|integer',
+            'jumlah_balita_bgm' => 'required|integer',
+            'jumlah_balita_sakit' => 'required|integer',
+            'jumlah_balita_vitamin_feb' => 'required|integer',
+            'jumlah_balita_vitamin_aug' => 'required|integer',
+            'jumlah_balita_dirujuk' => 'required|integer',
+        ]);
+
+        // Update the record with the new data
+        $balita->update($request->all());
+
+        // Redirect back to the previous page with a success message
+        Alert::success('Success', 'Data updated successfully!');
+    return redirect()->back();
+    }
 
 }

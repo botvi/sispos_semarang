@@ -11,6 +11,7 @@ class BulananIbuHamilController extends Controller
 {
     public function index()
     {
+        $bulananIbuHamil = BulananIbuHamil::where('user_id', Auth::id())->get();
         // Ambil data grafik per bulan
         $dataPerBulan = BulananIbuHamil::where('user_id', Auth::id())
             ->selectRaw('
@@ -62,7 +63,8 @@ class BulananIbuHamilController extends Controller
             'mendapatTtdData', 
             'makananTambahanKekData', 
             'ikutKelasData', 
-            'dirujukKePuskesmasData'
+            'dirujukKePuskesmasData',
+            'bulananIbuHamil'
         ));
     }
 
@@ -96,5 +98,30 @@ class BulananIbuHamilController extends Controller
 
         Alert::success('Success', 'Data berhasil disimpan');
         return redirect()->route('bulanan_ibu_hamil.index');
+    }
+    public function update(Request $request, $id)
+    {
+        // Find the specific record by ID
+        $ibuHamil = BulananIbuHamil::findOrFail($id);
+
+        // Validate the incoming request data
+        $request->validate([
+            'tanggal_pelaksanaan' => 'required|date',
+            'jumlah_ibu_hamil_nifas_menyusui' => 'required|integer',
+            'jumlah_ibu_hamil_bb_garis_merah' => 'required|integer',
+            'jumlah_ibu_hamil_lila' => 'required|integer',
+            'jumlah_ibu_hamil_risiko_tbc' => 'required|integer',
+            'jumlah_ibu_hamil_mendapat_ttd' => 'required|integer',
+            'jumlah_ibu_hamil_makanan_tambahan_kek' => 'required|integer',
+            'jumlah_ibu_hamil_ikut_kelas' => 'required|integer',
+            'jumlah_ibu_hamil_dirujuk_ke_puskesmas' => 'required|integer',
+        ]);
+
+        // Update the record with the new data
+        $ibuHamil->update($request->all());
+
+        // Redirect back to the previous page with a success message
+        Alert::success('Success', 'Data updated successfully!');
+        return redirect()->back();
     }
 }
