@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('strata_posyandu');
             $table->string('tempat_kegiatan');
-            $table->text('keterangan')->nullable();
             $table->string('sk_kelurahan')->nullable();
             $table->string('foto_lokasi')->nullable();
     $table->timestamps();

@@ -82,7 +82,6 @@ class DataPosyanduController extends Controller
         $validated = $request->validate([
             'strata_posyandu' => 'required|string',
             'tempat_kegiatan' => 'required|string',
-            'keterangan' => 'nullable|string',
             'sk_kelurahan' => 'nullable|file|mimes:pdf,jpg,png',
             'foto_lokasi' => 'nullable|file|mimes:jpg,png',
         ]);
@@ -90,7 +89,6 @@ class DataPosyanduController extends Controller
         $data = [
             'strata_posyandu' => $validated['strata_posyandu'],
             'tempat_kegiatan' => $validated['tempat_kegiatan'],
-            'keterangan' => $validated['keterangan'] ?? '',
             'user_id' => Auth::id(),
         ];
 

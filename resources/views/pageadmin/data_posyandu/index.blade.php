@@ -203,21 +203,15 @@
                                                     <h6 class="mb-0">TEMPAT KEGIATAN POSYANDU</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                    <input type="text" name="tempat_kegiatan" class="form-control" value="{{ old('tempat_kegiatan', $dataPosyandu->tempat_kegiatan ?? '') }}" placeholder="Contoh: Balai Desa" required />
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-sm-3">
-                                                    <h6 class="mb-0">KETERANGAN</h6>
-                                                </div>
-                                                <div class="col-sm-9 text-secondary">
-                                                    <select name="keterangan" class="form-select mb-3">
-                                                        <option value="" selected disabled>Pilih Keterangan</option>
-                                                        <option value="Permanen" {{ isset($dataPosyandu) && $dataPosyandu->keterangan == 'Permanen' ? 'selected' : '' }}>Permanen</option>
-                                                        <option value="Tidak Permanen" {{ isset($dataPosyandu) && $dataPosyandu->keterangan == 'Tidak Permanen' ? 'selected' : '' }}>Tidak Permanen</option>
+                                                    <select name="tempat_kegiatan" class="form-control" required>
+                                                        <option value="" disabled selected>Pilih Tempat Kegiatan</option>
+                                                        <option value="Rumah Warga" {{ old('tempat_kegiatan', $dataPosyandu->tempat_kegiatan ?? '') == 'Rumah Warga' ? 'selected' : '' }}>Rumah Warga</option>
+                                                        <option value="Fasilitas Umum" {{ old('tempat_kegiatan', $dataPosyandu->tempat_kegiatan ?? '') == 'Fasilitas Umum' ? 'selected' : '' }}>Fasilitas Umum</option>
                                                     </select>
                                                 </div>
                                             </div>
+                                            
+                                           
                                             <div class="row mb-3">
                                                 <div class="col-sm-3">
                                                     <h6 class="mb-0">Lampirkan SK dari Kelurahan*</h6>

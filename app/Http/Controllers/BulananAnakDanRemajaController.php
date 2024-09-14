@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Auth;
 
+
 class BulananAnakDanRemajaController extends Controller
 {
     public function index()

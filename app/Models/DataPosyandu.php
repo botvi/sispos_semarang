@@ -12,7 +12,6 @@ class DataPosyandu extends Model
         'user_id',
         'strata_posyandu',
         'tempat_kegiatan',
-        'keterangan',
         'sk_kelurahan',
         'foto_lokasi'
     ];
