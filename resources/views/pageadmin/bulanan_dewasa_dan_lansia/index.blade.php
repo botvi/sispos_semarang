@@ -88,6 +88,12 @@
                                                         <input type="number" class="form-control" id="jumlah_lansia_dirujuk_puskesmas" name="jumlah_lansia_dirujuk_puskesmas">
                                                     </div>
                                                 </div>
+                                                <div class="row mb-3">
+                                                    <label for="jumlah_akseptor_kb" class="col-sm-3 col-form-label">Jumlah Akseptor KB</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="number" class="form-control" id="jumlah_akseptor_kb" name="jumlah_akseptor_kb">
+                                                    </div>
+                                                </div>
                                                 <div class="row">
                                                     <label class="col-sm-3 col-form-label"></label>
                                                     <div class="col-sm-9">
@@ -105,7 +111,9 @@
             </div>
         </div>
         <div class="card">
+            
             <div class="card-body">
+                <a href="{{ route('export.bulanan.dewasa.dan.lansia') }}" class="btn btn-success mb-5"><i class='bx bxs-file-import'></i> Export to Excel</a>
                 <div class="table-responsive">
                     <table id="example2" class="table table-striped table-bordered">
                         <thead>
@@ -116,6 +124,7 @@
                                 <th>Jumlah Usia Dewasa Gangguan Jiwa</th>
                                 <th>Jumlah Lansia Skrining SKL</th>
                                 <th>Jumlah Lansia Dirujuk Puskesmas</th>
+                                <th>Jumlah Akseptor KB</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -128,6 +137,7 @@
                                 <td>{{ $dewasaDanLansia->jumlah_usia_dewasa_gangguan_jiwa }}</td>
                                 <td>{{ $dewasaDanLansia->jumlah_lansia_skrining_skl }}</td>
                                 <td>{{ $dewasaDanLansia->jumlah_lansia_dirujuk_puskesmas }}</td>
+                                <td>{{ $dewasaDanLansia->jumlah_akseptor_kb }}</td>
                                 <td>
                                     <button type="button" class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#editModal{{ $dewasaDanLansia->id }}">Edit</button>
                                 </td>
@@ -189,6 +199,12 @@
                                                                     <input type="number" class="form-control" id="jumlah_lansia_dirujuk_puskesmas{{ $dewasaDanLansia->id }}" name="jumlah_lansia_dirujuk_puskesmas" value="{{ $dewasaDanLansia->jumlah_lansia_dirujuk_puskesmas }}">
                                                                 </div>
                                                             </div>
+                                                            <div class="row mb-3">
+                                                                <label for="jumlah_akseptor_kb{{ $dewasaDanLansia->id }}" class="col-sm-3 col-form-label">Jumlah Akseptor KB</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="number" class="form-control" id="jumlah_akseptor_kb{{ $dewasaDanLansia->id }}" name="jumlah_akseptor_kb" value="{{ $dewasaDanLansia->jumlah_akseptor_kb }}">
+                                                                </div>
+                                                            </div>
                                                             
                                                         </div>
                                                     </div>
@@ -221,36 +237,46 @@
     var dewasaDanLansiaChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: @json($months),
-            datasets: [{
-                label: 'Risiko PPOK',
-                data: @json($risikoPpokData),
-                borderColor: 'rgba(255, 99, 132, 1)',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderWidth: 1
-            },
-            {
-                label: 'Gangguan Jiwa',
-                data: @json($gangguanJiwaData),
-                borderColor: 'rgba(54, 162, 235, 1)',
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderWidth: 1
-            },
-            {
-                label: 'Skrining SKL',
-                data: @json($skriningSklData),
-                borderColor: 'rgba(75, 192, 192, 1)',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderWidth: 1
-            },
-            {
-                label: 'Dirujuk ke Puskesmas',
-                data: @json($dirujukPuskesmasData),
-                borderColor: 'rgba(153, 102, 255, 1)',
-                backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                borderWidth: 1
-            }]
+    labels: @json($months),
+    datasets: [
+        {
+            label: 'Risiko PPOK',
+            data: @json($risikoPpokData),
+            borderColor: '#FF6384',
+            backgroundColor: '#FF6384',
+            borderWidth: 1
         },
+        {
+            label: 'Gangguan Jiwa',
+            data: @json($gangguanJiwaData),
+            borderColor: '#36A2EB',
+            backgroundColor: '#36A2EB',
+            borderWidth: 1
+        },
+        {
+            label: 'Skrining SKL',
+            data: @json($skriningSklData),
+            borderColor: '#4BC0C0',
+            backgroundColor: '#4BC0C0',
+            borderWidth: 1
+        },
+        {
+            label: 'Dirujuk ke Puskesmas',
+            data: @json($dirujukPuskesmasData),
+            borderColor: '#9966FF',
+            backgroundColor: '#9966FF',
+            borderWidth: 1
+        },
+        {
+            label: 'Akseptor KB',
+            data: @json($akseptorKb),
+            borderColor: '#9966FF',
+            backgroundColor: '#9966FF',
+            borderWidth: 1
+        }
+    ]
+}
+,
         options: {
             responsive: true,
             scales: {

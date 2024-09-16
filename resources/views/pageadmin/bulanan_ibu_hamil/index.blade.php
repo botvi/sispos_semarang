@@ -64,9 +64,21 @@
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="jumlah_ibu_hamil_nifas_menyusui" class="col-sm-3 col-form-label">Jumlah Ibu Hamil/Nifas/Menyusui</label>
+                                            <label for="jumlah_ibu_hamil" class="col-sm-3 col-form-label">Jumlah Ibu Hamil</label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_nifas_menyusui" name="jumlah_ibu_hamil_nifas_menyusui">
+                                                <input type="number" class="form-control" id="jumlah_ibu_hamil" name="jumlah_ibu_hamil">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="jumlah_ibu_nifas" class="col-sm-3 col-form-label">Jumlah Ibu Nifas</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_ibu_nifas" name="jumlah_ibu_nifas">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="jumlah_ibu_menyusui" class="col-sm-3 col-form-label">Jumlah Ibu Menyusui</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" id="jumlah_ibu_menyusui" name="jumlah_ibu_menyusui">
                                             </div>
                                         </div>
                                         <div class="row mb-3">
@@ -100,7 +112,7 @@
                                             </div>
                                         </div>
                                         <div class="row mb-3">
-                                            <label for="jumlah_ibu_hamil_ikut_kelas" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Ikut Kelas</label>
+                                            <label for="jumlah_ibu_hamil_ikut_kelas" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Ikut Kelas Ibu Hamil</label>
                                             <div class="col-sm-9">
                                                 <input type="number" class="form-control" id="jumlah_ibu_hamil_ikut_kelas" name="jumlah_ibu_hamil_ikut_kelas">
                                             </div>
@@ -126,20 +138,24 @@
             </div>
         </div>
         <div class="card">
+            
             <div class="card-body">
+                <a href="{{ route('export.bulanan.ibu.hamil') }}" class="btn btn-success mb-5"><i class='bx bxs-file-import'></i> Export to Excel</a>
                 <div class="table-responsive">
                     <table id="example2" class="table table-striped table-bordered">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Tanggal Pelaksanaan</th>
-                                <th>Jumlah Ibu Hamil, Nifas, dan Menyusui</th>
+                                <th>Jumlah Ibu Hamil</th>
+                                <th>Jumlah Ibu Nifas</th>
+                                <th>Jumlah Ibu Menyusui</th>
                                 <th>Jumlah Ibu Hamil BB Garis Merah</th>
                                 <th>Jumlah Ibu Hamil LILA</th>
                                 <th>Jumlah Ibu Hamil Risiko TBC</th>
                                 <th>Jumlah Ibu Hamil Mendapat TTD</th>
                                 <th>Jumlah Ibu Hamil Mendapat Makanan Tambahan KEK</th>
-                                <th>Jumlah Ibu Hamil Ikut Kelas</th>
+                                <th>Jumlah Ibu Hamil Ikut Kelas Ibu Hamil</th>
                                 <th>Jumlah Ibu Hamil Dirujuk ke Puskesmas</th>
                                 <th>Actions</th>
                             </tr>
@@ -149,7 +165,9 @@
                             <tr>
                                 <td>{{ $index + 1 }}</td>
                                 <td>{{ $ibuHamil->tanggal_pelaksanaan }}</td>
-                                <td>{{ $ibuHamil->jumlah_ibu_hamil_nifas_menyusui }}</td>
+                                <td>{{ $ibuHamil->jumlah_ibu_hamil }}</td>
+                                <td>{{ $ibuHamil->jumlah_ibu_nifas }}</td>
+                                <td>{{ $ibuHamil->jumlah_ibu_menyusui }}</td>
                                 <td>{{ $ibuHamil->jumlah_ibu_hamil_bb_garis_merah }}</td>
                                 <td>{{ $ibuHamil->jumlah_ibu_hamil_lila }}</td>
                                 <td>{{ $ibuHamil->jumlah_ibu_hamil_risiko_tbc }}</td>
@@ -191,9 +209,21 @@
                                                         </div>
                                         
                                                         <div class="row mb-3">
-                                                            <label for="jumlah_ibu_hamil_nifas_menyusui_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Jumlah Ibu Hamil, Nifas, dan Menyusui</label>
+                                                            <label for="jumlah_ibu_hamil_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Jumlah Ibu Hamil</label>
                                                             <div class="col-sm-9">
-                                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_nifas_menyusui_{{ $ibuHamil->id }}" name="jumlah_ibu_hamil_nifas_menyusui" value="{{ $ibuHamil->jumlah_ibu_hamil_nifas_menyusui }}">
+                                                                <input type="number" class="form-control" id="jumlah_ibu_hamil_{{ $ibuHamil->id }}" name="jumlah_ibu_hamil" value="{{ $ibuHamil->jumlah_ibu_hamil }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_ibu_nifas_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Jumlah Ibu Nifas</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_ibu_nifas_{{ $ibuHamil->id }}" name="jumlah_ibu_nifas" value="{{ $ibuHamil->jumlah_ibu_nifas }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <label for="jumlah_ibu_menyusui_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Jumlah Ibu Menyusui</label>
+                                                            <div class="col-sm-9">
+                                                                <input type="number" class="form-control" id="jumlah_ibu_menyusui_{{ $ibuHamil->id }}" name="jumlah_ibu_menyusui" value="{{ $ibuHamil->jumlah_ibu_menyusui }}">
                                                             </div>
                                                         </div>
                                         
@@ -233,7 +263,7 @@
                                                         </div>
                                         
                                                         <div class="row mb-3">
-                                                            <label for="jumlah_ibu_hamil_ikut_kelas_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Ikut Kelas</label>
+                                                            <label for="jumlah_ibu_hamil_ikut_kelas_{{ $ibuHamil->id }}" class="col-sm-3 col-form-label">Jumlah Ibu Hamil Ikut Kelas Ibu Hamil</label>
                                                             <div class="col-sm-9">
                                                                 <input type="number" class="form-control" id="jumlah_ibu_hamil_ikut_kelas_{{ $ibuHamil->id }}" name="jumlah_ibu_hamil_ikut_kelas" value="{{ $ibuHamil->jumlah_ibu_hamil_ikut_kelas }}">
                                                             </div>
@@ -276,73 +306,86 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
 <script>
-    console.log(@json($nifasMenyusuiData));
-console.log(@json($bbGarisMerahData));
 
     var ctx = document.getElementById('ibuHamilChart').getContext('2d');
     var ibuHamilChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: @json($months),
-            datasets: [
-                {
-                    label: 'Jumlah Ibu Hamil Nifas/Menyusui',
-                    data: @json($nifasMenyusuiData),
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Ibu Hamil BB Garis Merah',
-                    data: @json($bbGarisMerahData),
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Ibu Hamil LILA',
-                    data: @json($lilaData),
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Ibu Hamil Risiko TBC',
-                    data: @json($risikoTbcData),
-                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                    borderColor: 'rgba(255, 206, 86, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Ibu Hamil Mendapat TTD',
-                    data: @json($mendapatTtdData),
-                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Ibu Hamil Makanan Tambahan KEK',
-                    data: @json($makananTambahanKekData),
-                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
-                    borderColor: 'rgba(255, 159, 64, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Ibu Hamil Ikut Kelas',
-                    data: @json($ikutKelasData),
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Ibu Hamil Dirujuk ke Puskesmas',
-                    data: @json($dirujukKePuskesmasData),
-                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                    borderColor: 'rgba(255, 206, 86, 1)',
-                    borderWidth: 1
-                }
-            ]
+    labels: @json($months),
+    datasets: [
+        {
+            label: 'Jumlah Ibu Hamil',
+            data: @json($hamilData),
+            backgroundColor: '#36A2EB',
+            borderColor: '#36A2EB',
+            borderWidth: 1
         },
+        {
+            label: 'Jumlah Ibu Nifas',
+            data: @json($nifasData),
+            backgroundColor: '#36A2EB',
+            borderColor: '#36A2EB',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Menyusui',
+            data: @json($menyusuiData),
+            backgroundColor: '#36A2EB',
+            borderColor: '#36A2EB',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Hamil BB Garis Merah',
+            data: @json($bbGarisMerahData),
+            backgroundColor: '#FF6384',
+            borderColor: '#FF6384',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Hamil LILA',
+            data: @json($lilaData),
+            backgroundColor: '#4BC0C0',
+            borderColor: '#4BC0C0',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Hamil Risiko TBC',
+            data: @json($risikoTbcData),
+            backgroundColor: '#FFCE56',
+            borderColor: '#FFCE56',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Hamil Mendapat TTD',
+            data: @json($mendapatTtdData),
+            backgroundColor: '#9966FF',
+            borderColor: '#9966FF',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Hamil Makanan Tambahan KEK',
+            data: @json($makananTambahanKekData),
+            backgroundColor: '#FF9F40',
+            borderColor: '#FF9F40',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Hamil Ikut Kelas',
+            data: @json($ikutKelasData),
+            backgroundColor: '#36A2EB',
+            borderColor: '#36A2EB',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Hamil Dirujuk ke Puskesmas',
+            data: @json($dirujukKePuskesmasData),
+            backgroundColor: '#FFCE56',
+            borderColor: '#FFCE56',
+            borderWidth: 1
+        }
+    ]
+}
+,
         options: {
             scales: {
                 y: {

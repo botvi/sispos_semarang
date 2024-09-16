@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('data_sasarans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->integer('jumlah_bayi')->nullable();
+            $table->integer('jumlah_bayi_1')->nullable();
+            $table->integer('jumlah_bayi_2')->nullable();
             $table->integer('jumlah_balita')->nullable();
             $table->integer('jumlah_ibu_hamil')->nullable();
             $table->integer('jumlah_ibu_nifas_menyusui')->nullable();

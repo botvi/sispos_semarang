@@ -266,8 +266,9 @@
                                                     <tr>
                                                         <th>No</th>
                                                         <th>Nama</th>
-                                                        <th>No HP</th>
+                                                        <th>No. HP</th>
                                                         <th>Jabatan</th>
+                                                        <th>Tempat, Tanggal Lahir</th>
                                                         <th>Jenis Kelamin</th>
                                                         <th>Pertama Kali Menjadi Kader Posyandu</th>
                                                         <th>Pelatihan Pertama & Sertifikat</th>
@@ -283,6 +284,8 @@
                                                             <td>{{ $kader->nama }}</td>
                                                             <td>{{ $kader->no_hp }}</td>
                                                             <td>{{ $kader->jabatan }}</td>
+                                                            <td>{{ $kader->tempat_lahir }}, {{ $kader->tanggal_lahir }}</td>
+
                                                             <td>{{ $kader->jenis_kelamin }}</td>
                                                             <td>{{ $kader->pertama_kali }}</td>
                                                             <td>{{ $kader->pelatihan_diikuti1 }} / <a href="{{ asset($kader->sertifikat1) }}" target="_blank">Lihat Sertifikat</a></td>
@@ -342,13 +345,21 @@
                                                     <h6 class="mb-0">JUMLAH BAYI (0 -1 TAHUN)</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
-                                                    <input type="number" class="form-control" name="jumlah_bayi" value="{{ old('jumlah_bayi', $dataSasaran->jumlah_bayi ?? '') }}" required />
+                                                    <input type="number" class="form-control" name="jumlah_bayi_1" value="{{ old('jumlah_bayi_1', $dataSasaran->jumlah_bayi_1 ?? '') }}" required />
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-sm-3">
+                                                    <h6 class="mb-0">JUMLAH BAYI (0 -2 TAHUN)</h6>
+                                                </div>
+                                                <div class="col-sm-9 text-secondary">
+                                                    <input type="number" class="form-control" name="jumlah_bayi_2" value="{{ old('jumlah_bayi_2', $dataSasaran->jumlah_bayi_2 ?? '') }}" required />
                                                 </div>
                                             </div>
             
                                             <div class="row mb-3">
                                                 <div class="col-sm-3">
-                                                    <h6 class="mb-0">JUMLAH BALITA (1 - 6 TAHUN)</h6>
+                                                    <h6 class="mb-0">JUMLAH BALITA (1 - 5 TAHUN)</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
                                                     <input type="number" class="form-control" name="jumlah_balita" value="{{ old('jumlah_balita', $dataSasaran->jumlah_balita ?? '') }}" required />
@@ -375,7 +386,7 @@
             
                                             <div class="row mb-3">
                                                 <div class="col-sm-3">
-                                                    <h6 class="mb-0">JUMLAH ANAK USIA SEKOLAH (6 - 18 TAHUN)</h6>
+                                                    <h6 class="mb-0">JUMLAH ANAK USIA SEKOLAH (5 - 18 TAHUN)</h6>
                                                 </div>
                                                 <div class="col-sm-9 text-secondary">
                                                     <input type="number" class="form-control" name="jumlah_anak_usia_sekolah" value="{{ old('jumlah_anak_usia_sekolah', $dataSasaran->jumlah_anak_usia_sekolah ?? '') }}" required />

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('jumlah_usia_dewasa_gangguan_jiwa');
             $table->integer('jumlah_lansia_skrining_skl');
             $table->integer('jumlah_lansia_dirujuk_puskesmas');
+            $table->integer('jumlah_akseptor_kb');
             $table->timestamps();
         });
     }

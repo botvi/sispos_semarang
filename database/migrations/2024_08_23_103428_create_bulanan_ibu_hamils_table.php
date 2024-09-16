@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id'); // Menambahkan user_id sebagai foreign key
             $table->date('tanggal_pelaksanaan'); // Tanggal Pelaksanaan Posyandu
+            $table->integer('jumlah_ibu_hamil')->nullable();
+            $table->integer('jumlah_ibu_nifas')->nullable();
+            $table->integer('jumlah_ibu_menyusui')->nullable();
             $table->integer('jumlah_ibu_hamil_nifas_menyusui')->nullable();
             $table->integer('jumlah_ibu_hamil_bb_garis_merah')->nullable();
             $table->integer('jumlah_ibu_hamil_lila')->nullable();

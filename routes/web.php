@@ -1,4 +1,9 @@
 <?php
+use App\Exports\BulananIbuHamilExport;
+use App\Exports\AnakDanRemajaExport;
+use App\Exports\BulananDewasaDanLansiaExport;
+
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
@@ -157,18 +162,29 @@ Route::post('data-instrumen-kes/storeOrUpdate', [DataInstrumenKesController::cla
 Route::get('/bulanan-balita', [BulananBalitaController::class, 'index'])->name('bulanan_balita.index');
 Route::post('/bulanan-balita/store', [BulananBalitaController::class, 'store'])->name('bulanan_balita.store');
 Route::put('bulanan-balita/{id}', [BulananBalitaController::class, 'update'])->name('bulananbalita.update');
+Route::get('/export-balita', [BulananBalitaController::class, 'export'])->name('balita.export');
+
 
 Route::resource('bulanan_ibu_hamil', BulananIbuHamilController::class);
 Route::put('bulanan-ibu-hamil/{id}', [BulananIbuHamilController::class, 'update'])->name('bulananibuhamil.update');
+Route::get('/export-bulanan-ibu-hamil', function () {
+    return Excel::download(new BulananIbuHamilExport, 'bulanan_ibu_hamil.xlsx');
+})->name('export.bulanan.ibu.hamil');
 
 Route::get('/bulanan-anak-dan-remaja', [BulananAnakDanRemajaController::class, 'index'])->name('bulanan_anak_dan_remaja.index');
 Route::post('/bulanan-anak-dan-remaja/store', [BulananAnakDanRemajaController::class, 'store'])->name('bulanan_anak_dan_remaja.store');
 Route::put('bulanan-anak-dan-remaja/{id}', [BulananAnakDanRemajaController::class, 'update'])->name('bulanananakdanremaja.update');
+Route::get('/export-anak-dan-remaja', function () {
+    return Excel::download(new AnakDanRemajaExport, 'anak_dan_remaja.xlsx');
+})->name('export.anak.dan.remaja');
 
 
 Route::get('/bulanan-dewasa-dan-lansia', [BulananDewasaDanLansiaController::class, 'index'])->name('bulanan_dewasa_dan_lansia.index');
 Route::post('/bulanan-dewasa-dan-lansia/store', [BulananDewasaDanLansiaController::class, 'store'])->name('bulanan_dewasa_dan_lansia.store');
 Route::put('bulanan-dewasa-dan-lansia/{id}', [BulananDewasaDanLansiaController::class, 'update'])->name('bulanandewasadanlansia.update');
+Route::get('/export-bulanan-dewasa-dan-lansia', function () {
+    return Excel::download(new BulananDewasaDanLansiaExport, 'bulanan_dewasa_dan_lansia.xlsx');
+})->name('export.bulanan.dewasa.dan.lansia');
 });
 // POSYANDU USER
 

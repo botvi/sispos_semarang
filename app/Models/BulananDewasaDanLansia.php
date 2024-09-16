@@ -15,6 +15,7 @@ class BulananDewasaDanLansia extends Model
         'jumlah_usia_dewasa_gangguan_jiwa',
         'jumlah_lansia_skrining_skl',
         'jumlah_lansia_dirujuk_puskesmas',
+        'jumlah_akseptor_kb',
     ];
 
     public function user()

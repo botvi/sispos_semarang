@@ -35,18 +35,53 @@
                             <div class="mt-4">
                                 <h6>Keterangan:</h6>
                                 <ul>
-                                    <li><span style="color: rgba(54, 162, 235, 1);">Jumlah Sasaran Balita (S)</span></li>
+                                    <li><span style="color: rgb(235, 54, 54);">Jumlah Sasaran Balita (S)</span></li>
                                     <li><span style="color: rgba(255, 206, 86, 1);">Jumlah Balita KMS/Buku KIA (K)</span></li>
-                                    <li><span style="color: rgba(75, 192, 192, 1);">Jumlah Balita Datang (D)</span></li>
-                                    <li><span style="color: rgba(153, 102, 255, 1);">Jumlah Balita Naik Timbangan (N)</span></li>
+                                    <li><span style="color: rgb(69, 213, 90);">Jumlah Balita Datang (D)</span></li>
+                                    <li><span style="color: rgb(25, 221, 255);">Jumlah Balita Naik Timbangan (N)</span></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <form method="GET" action="{{ route('bulanan_balita.index') }}">
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <label for="month">Pilih Bulan</label>
+                        <select name="month" id="month" class="form-control">
+                            @foreach ($months as $index => $month)
+                                <option value="{{ $index + 1 }}" {{ ($index + 1) == $selectedMonth ? 'selected' : '' }}>
+                                    {{ $month }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="year">Pilih Tahun</label>
+                        <select name="year" id="year" class="form-control">
+                            @for ($i = now()->year; $i >= 2020; $i--)
+                                <option value="{{ $i }}" {{ $i == $selectedYear ? 'selected' : '' }}>
+                                    {{ $i }}
+                                </option>
+                            @endfor
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label>&nbsp;</label>
+                        <button type="submit" class="btn btn-primary w-100">Filter</button>
+                    </div>
+                    <div class="col-md-3">
+                        <label>&nbsp;</label>
+                        <!-- Reset filter button -->
+                        <a href="{{ route('bulanan_balita.index') }}" class="btn btn-secondary w-100">Reset Filter</a>
+                    </div>
+                </div>
+            </form>
+            
+            
             {{-- Tambah tampilan persentase D/S X 100
-            Tambah tampilan persentase N/S X 100 --}}
+            Tambah tampilan persentase N/D X 100 --}}
             <div class="col-xl-12 mx-auto align-items-center">
                 <div class="row row-cols-1 row-cols-md-3 row-cols-xl-5">
                     <div class="col">
@@ -64,7 +99,7 @@
                         <div class="card radius-10">
                             <div class="card-body">
                                 <div class="text-center">
-                                    <div class="widgets-icons rounded-circle mx-auto bg-light-danger text-danger mb-3 p-5"><span>N/S</span>
+                                    <div class="widgets-icons rounded-circle mx-auto bg-light-danger text-danger mb-3 p-5"><span>N/D</span>
                                     </div>
                                     <h4 class="my-1">{{ number_format($persentaseNaikTimbangan, 2) }}%</h4>
                                 </div>
@@ -189,7 +224,9 @@
         </div>
        <!-- Table Display -->
        <div class="card">
-        <div class="card-body">
+           
+           <div class="card-body">
+            <a href="{{ route('balita.export') }}" class="btn btn-success mb-5"><i class='bx bxs-file-import'></i> Export to Excel</a>
             <div class="table-responsive">
                 <table id="example2" class="table table-striped table-bordered">
                     <thead>
@@ -368,29 +405,29 @@
                       {
                           label: 'Jumlah Sasaran Balita (S)',
                           data: @json($sasaranData),
-                          backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                          borderColor: 'rgba(54, 162, 235, 1)',
+                          backgroundColor: '#EF5A6F',
+                          borderColor: '#EF5A6F',
                           borderWidth: 1
                       },
                       {
                           label: 'Jumlah Balita KMS/Buku KIA (K)',
                           data: @json($kmsData),
-                          backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                          borderColor: 'rgba(255, 206, 86, 1)',
+                          backgroundColor: '#FABC3F',
+                          borderColor: '#FABC3F',
                           borderWidth: 1
                       },
                       {
                           label: 'Jumlah Balita Datang (D)',
                           data: @json($datangData),
-                          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                          borderColor: 'rgba(75, 192, 192, 1)',
+                          backgroundColor: '#387F39',
+                          borderColor: '#387F39',
                           borderWidth: 1
                       },
                       {
                           label: 'Jumlah Balita Naik Timbangan (N)',
                           data: @json($naikTimbanganData),
-                          backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                          borderColor: 'rgba(153, 102, 255, 1)',
+                          backgroundColor: '#3FA2F6',
+                          borderColor: '#3FA2F6',
                           borderWidth: 1
                       }
                   ]

@@ -17,7 +17,9 @@ class BulananIbuHamilController extends Controller
             ->selectRaw('
                 MONTH(tanggal_pelaksanaan) as month, 
                 YEAR(tanggal_pelaksanaan) as year,
-                SUM(jumlah_ibu_hamil_nifas_menyusui) as total_nifas_menyusui,
+                SUM(jumlah_ibu_hamil) as total_hamil,
+                SUM(jumlah_ibu_nifas) as total_nifas,
+                SUM(jumlah_ibu_menyusui) as total_menyusui,
                 SUM(jumlah_ibu_hamil_bb_garis_merah) as total_bb_garis_merah,
                 SUM(jumlah_ibu_hamil_lila) as total_lila,
                 SUM(jumlah_ibu_hamil_risiko_tbc) as total_risiko_tbc,
@@ -33,7 +35,9 @@ class BulananIbuHamilController extends Controller
 
         // Create arrays for chart labels and data
         $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        $nifasMenyusuiData = array_fill(0, 12, 0);
+        $hamilData = array_fill(0, 12, 0);
+        $nifasData = array_fill(0, 12, 0);
+        $menyusuiData = array_fill(0, 12, 0);
         $bbGarisMerahData = array_fill(0, 12, 0);
         $lilaData = array_fill(0, 12, 0);
         $risikoTbcData = array_fill(0, 12, 0);
@@ -44,7 +48,9 @@ class BulananIbuHamilController extends Controller
 
         foreach ($dataPerBulan as $data) {
             $index = $data->month - 1;
-            $nifasMenyusuiData[$index] = $data->total_nifas_menyusui;
+            $hamilData[$index] = $data->total_hamil;
+            $nifasData[$index] = $data->total_nifas;
+            $menyusuiData[$index] = $data->total_menyusui;
             $bbGarisMerahData[$index] = $data->total_bb_garis_merah;
             $lilaData[$index] = $data->total_lila;
             $risikoTbcData[$index] = $data->total_risiko_tbc;
@@ -56,7 +62,9 @@ class BulananIbuHamilController extends Controller
 
         return view('pageadmin.bulanan_ibu_hamil.index', compact(
             'months', 
-            'nifasMenyusuiData', 
+            'hamilData', 
+            'nifasData', 
+            'menyusuiData', 
             'bbGarisMerahData', 
             'lilaData', 
             'risikoTbcData', 
@@ -73,7 +81,9 @@ class BulananIbuHamilController extends Controller
         // Validate and store the data
         $request->validate([
             'tanggal_pelaksanaan' => 'required|date',
-            'jumlah_ibu_hamil_nifas_menyusui' => 'required|integer',
+            'jumlah_ibu_hamil' => 'required|integer',
+            'jumlah_ibu_nifas' => 'required|integer',
+            'jumlah_ibu_menyusui' => 'required|integer',
             'jumlah_ibu_hamil_bb_garis_merah' => 'required|integer',
             'jumlah_ibu_hamil_lila' => 'required|integer',
             'jumlah_ibu_hamil_risiko_tbc' => 'required|integer',
@@ -86,7 +96,9 @@ class BulananIbuHamilController extends Controller
         BulananIbuHamil::create([
             'user_id' => Auth::id(),
             'tanggal_pelaksanaan' => $request->tanggal_pelaksanaan,
-            'jumlah_ibu_hamil_nifas_menyusui' => $request->jumlah_ibu_hamil_nifas_menyusui,
+            'jumlah_ibu_hamil' => $request->jumlah_ibu_hamil,
+            'jumlah_ibu_nifas' => $request->jumlah_ibu_nifas,
+            'jumlah_ibu_menyusui' => $request->jumlah_ibu_menyusui,
             'jumlah_ibu_hamil_bb_garis_merah' => $request->jumlah_ibu_hamil_bb_garis_merah,
             'jumlah_ibu_hamil_lila' => $request->jumlah_ibu_hamil_lila,
             'jumlah_ibu_hamil_risiko_tbc' => $request->jumlah_ibu_hamil_risiko_tbc,
@@ -107,7 +119,9 @@ class BulananIbuHamilController extends Controller
         // Validate the incoming request data
         $request->validate([
             'tanggal_pelaksanaan' => 'required|date',
-            'jumlah_ibu_hamil_nifas_menyusui' => 'required|integer',
+            'jumlah_ibu_hamil' => 'required|integer',
+            'jumlah_ibu_nifas' => 'required|integer',
+            'jumlah_ibu_menyusui' => 'required|integer',
             'jumlah_ibu_hamil_bb_garis_merah' => 'required|integer',
             'jumlah_ibu_hamil_lila' => 'required|integer',
             'jumlah_ibu_hamil_risiko_tbc' => 'required|integer',

@@ -19,7 +19,7 @@
             </div>
                     <div class="row">
                 <!-- First Column -->
-                <div class="col-xl-6">
+                <div class="col-xl-12">
                     <hr/>
                     <div class="card border-top border-0 border-4 border-info">
                         <div class="card-body">
@@ -35,7 +35,7 @@
                 </div>
             
                 <!-- Second Column -->
-                <div class="col-xl-6">
+                <div class="col-xl-12">
                     <hr/>
                     <div class="card border-top border-0 border-4 border-info">
                         <div class="card-body">
@@ -53,7 +53,7 @@
                 </div>
             
                 <!-- Third Column -->
-                <div class="col-xl-6">
+                <div class="col-xl-12">
                     <hr/>
                     <div class="card border-top border-0 border-4 border-info">
                         <div class="card-body">
@@ -72,7 +72,7 @@
                 </div>
             
                 <!-- Fourth Column -->
-                <div class="col-xl-6">
+                <div class="col-xl-12">
                     <hr/>
                     <div class="card border-top border-0 border-4 border-info">
                         <div class="card-body">
@@ -104,106 +104,105 @@
         type: 'bar',
         data: {
             labels: @json($months),
-            datasets: [
-                {
-                    label: 'Kunjungan Anak & Remaja',
-                    data: @json($kunjunganAnakRemajaData),
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'IMT Kurus',
-                    data: @json($imtKurusData),
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'IMT Gemuk',
-                    data: @json($imtGemukData),
-                    borderColor: 'rgba(255, 159, 64, 1)',
-                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'IMT Obesitas',
-                    data: @json($imtObesitasData),
-                    borderColor: 'rgba(255, 205, 86, 1)',
-                    backgroundColor: 'rgba(255, 205, 86, 0.2)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'IMT Normal',
-                    data: @json($imtNormalData),
-                    borderColor: 'rgba(255, 205, 86, 1)',
-                    backgroundColor: 'rgba(255, 205, 86, 0.2)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'TD Rendah',
-                    data: @json($tdRendahData),
-                    borderColor: 'rgba(153, 102, 255, 1)',
-                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'TD Tinggi',
-                    data: @json($tdTinggiData),
-                    borderColor: 'rgba(255, 159, 64, 1)',
-                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'TD Normal',
-                    data: @json($tdNormalData),
-                    borderColor: 'rgba(255, 159, 64, 1)',
-                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Gula Darah Rendah',
-                    data: @json($gulaDarahRendahData),
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Gula Darah Tinggi',
-                    data: @json($gulaDarahTinggiData),
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Remaja Putri Anemia',
-                    data: @json($remajaPutriAnemiaData),
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Tidak Anemia',
-                    data: @json($tidakAnemiaData),
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Risiko TBC',
-                    data: @json($risikoTbcData),
-                    borderColor: 'rgba(153, 102, 255, 1)',
-                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Masalah Kesehatan',
-                    data: @json($masalahKesehatanData),
-                    borderColor: 'rgba(255, 159, 64, 1)',
-                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
-                    borderWidth: 1
-                }
-            ]
+            datasets: [{
+                        label: 'Kunjungan Anak & Remaja',
+                        data: @json($kunjunganAnakRemajaData),
+                        borderColor: '#4BC0C0',
+                        backgroundColor: '#4BC0C0',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'IMT Kurus',
+                        data: @json($imtKurusData),
+                        borderColor: '#FF6384',
+                        backgroundColor: '#FF6384',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'IMT Gemuk',
+                        data: @json($imtGemukData),
+                        borderColor: '#FF9F40',
+                        backgroundColor: '#FF9F40',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'IMT Obesitas',
+                        data: @json($imtObesitasData),
+                        borderColor: '#FFCD56',
+                        backgroundColor: '#FFCD56',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'IMT Normal',
+                        data: @json($imtNormalData),
+                        borderColor: '#FFCD56',
+                        backgroundColor: '#FFCD56',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'TD Rendah',
+                        data: @json($tdRendahData),
+                        borderColor: '#9966FF',
+                        backgroundColor: '#9966FF',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'TD Tinggi',
+                        data: @json($tdTinggiData),
+                        borderColor: '#FF9F40',
+                        backgroundColor: '#FF9F40',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'TD Normal',
+                        data: @json($tdNormalData),
+                        borderColor: '#FF9F40',
+                        backgroundColor: '#FF9F40',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Gula Darah Rendah',
+                        data: @json($gulaDarahRendahData),
+                        borderColor: '#36A2EB',
+                        backgroundColor: '#36A2EB',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Gula Darah Tinggi',
+                        data: @json($gulaDarahTinggiData),
+                        borderColor: '#FF6384',
+                        backgroundColor: '#FF6384',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Remaja Putri Anemia',
+                        data: @json($remajaPutriAnemiaData),
+                        borderColor: '#4BC0C0',
+                        backgroundColor: '#4BC0C0',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Tidak Anemia',
+                        data: @json($tidakAnemiaData),
+                        borderColor: '#4BC0C0',
+                        backgroundColor: '#4BC0C0',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Risiko TBC',
+                        data: @json($risikoTbcData),
+                        borderColor: '#9966FF',
+                        backgroundColor: '#9966FF',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Masalah Kesehatan',
+                        data: @json($masalahKesehatanData),
+                        borderColor: '#FF9F40',
+                        backgroundColor: '#FF9F40',
+                        borderWidth: 1
+                    }
+                ]
         },
         options: {
             scales: {
@@ -224,35 +223,35 @@
         data: {
             labels: @json($months),
             datasets: [
-                {
-                    label: 'Jumlah Sasaran Balita (S)',
-                    data: @json($sasaranData),
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Balita KMS/Buku KIA (K)',
-                    data: @json($kmsData),
-                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                    borderColor: 'rgba(255, 206, 86, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Balita Datang (D)',
-                    data: @json($datangData),
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Balita Naik Timbangan (N)',
-                    data: @json($naikTimbanganData),
-                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
-                    borderWidth: 1
-                }
-            ]
+                      {
+                          label: 'Jumlah Sasaran Balita (S)',
+                          data: @json($sasaranData),
+                          backgroundColor: '#EF5A6F',
+                          borderColor: '#EF5A6F',
+                          borderWidth: 1
+                      },
+                      {
+                          label: 'Jumlah Balita KMS/Buku KIA (K)',
+                          data: @json($kmsData),
+                          backgroundColor: '#FABC3F',
+                          borderColor: '#FABC3F',
+                          borderWidth: 1
+                      },
+                      {
+                          label: 'Jumlah Balita Datang (D)',
+                          data: @json($datangData),
+                          backgroundColor: '#387F39',
+                          borderColor: '#387F39',
+                          borderWidth: 1
+                      },
+                      {
+                          label: 'Jumlah Balita Naik Timbangan (N)',
+                          data: @json($naikTimbanganData),
+                          backgroundColor: '#3FA2F6',
+                          borderColor: '#3FA2F6',
+                          borderWidth: 1
+                      }
+                  ]
         },
         options: {
             scales: {
@@ -269,34 +268,43 @@
         type: 'bar',
         data: {
             labels: @json($months),
-            datasets: [{
-                label: 'Risiko PPOK',
-                data: @json($risikoPpokData),
-                borderColor: 'rgba(255, 99, 132, 1)',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderWidth: 1
-            },
-            {
-                label: 'Gangguan Jiwa',
-                data: @json($gangguanJiwaData),
-                borderColor: 'rgba(54, 162, 235, 1)',
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderWidth: 1
-            },
-            {
-                label: 'Skrining SKL',
-                data: @json($skriningSklData),
-                borderColor: 'rgba(75, 192, 192, 1)',
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderWidth: 1
-            },
-            {
-                label: 'Dirujuk ke Puskesmas',
-                data: @json($dirujukPuskesmasData),
-                borderColor: 'rgba(153, 102, 255, 1)',
-                backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                borderWidth: 1
-            }]
+            datasets: [
+        {
+            label: 'Risiko PPOK',
+            data: @json($risikoPpokData),
+            borderColor: '#FF6384',
+            backgroundColor: '#FF6384',
+            borderWidth: 1
+        },
+        {
+            label: 'Gangguan Jiwa',
+            data: @json($gangguanJiwaData),
+            borderColor: '#36A2EB',
+            backgroundColor: '#36A2EB',
+            borderWidth: 1
+        },
+        {
+            label: 'Skrining SKL',
+            data: @json($skriningSklData),
+            borderColor: '#4BC0C0',
+            backgroundColor: '#4BC0C0',
+            borderWidth: 1
+        },
+        {
+            label: 'Dirujuk ke Puskesmas',
+            data: @json($dirujukPuskesmasData),
+            borderColor: '#9966FF',
+            backgroundColor: '#9966FF',
+            borderWidth: 1
+        },
+        {
+            label: 'Akseptor KB',
+            data: @json($akseptorKb),
+            borderColor: '#9966FF',
+            backgroundColor: '#9966FF',
+            borderWidth: 1
+        }
+    ]
         },
         options: {
             responsive: true,
@@ -312,8 +320,6 @@
     });
 </script>
 <script>
-    console.log(@json($nifasMenyusuiData));
-console.log(@json($bbGarisMerahData));
 
     var ctx = document.getElementById('ibuHamilChart').getContext('2d');
     var ibuHamilChart = new Chart(ctx, {
@@ -321,63 +327,77 @@ console.log(@json($bbGarisMerahData));
         data: {
             labels: @json($months),
             datasets: [
-                {
-                    label: 'Jumlah Ibu Hamil Nifas/Menyusui',
-                    data: @json($nifasMenyusuiData),
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Ibu Hamil BB Garis Merah',
-                    data: @json($bbGarisMerahData),
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255, 99, 132, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Ibu Hamil LILA',
-                    data: @json($lilaData),
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Ibu Hamil Risiko TBC',
-                    data: @json($risikoTbcIbuHamilData),
-                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                    borderColor: 'rgba(255, 206, 86, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Ibu Hamil Mendapat TTD',
-                    data: @json($mendapatTtdData),
-                    backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                    borderColor: 'rgba(153, 102, 255, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Ibu Hamil Makanan Tambahan KEK',
-                    data: @json($makananTambahanKekData),
-                    backgroundColor: 'rgba(255, 159, 64, 0.2)',
-                    borderColor: 'rgba(255, 159, 64, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Ibu Hamil Ikut Kelas',
-                    data: @json($ikutKelasData),
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                },
-                {
-                    label: 'Jumlah Ibu Hamil Dirujuk ke Puskesmas',
-                    data: @json($dirujukKePuskesmasData),
-                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
-                    borderColor: 'rgba(255, 206, 86, 1)',
-                    borderWidth: 1
-                }
-            ]
+        {
+            label: 'Jumlah Ibu Hamil',
+            data: @json($hamilData),
+            backgroundColor: '#36A2EB',
+            borderColor: '#36A2EB',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Nifas',
+            data: @json($nifasData),
+            backgroundColor: '#36A2EB',
+            borderColor: '#36A2EB',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Menyusui',
+            data: @json($menyusuiData),
+            backgroundColor: '#36A2EB',
+            borderColor: '#36A2EB',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Hamil BB Garis Merah',
+            data: @json($bbGarisMerahData),
+            backgroundColor: '#FF6384',
+            borderColor: '#FF6384',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Hamil LILA',
+            data: @json($lilaData),
+            backgroundColor: '#4BC0C0',
+            borderColor: '#4BC0C0',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Hamil Risiko TBC',
+            data: @json($risikoTbcIbuHamilData),
+            backgroundColor: '#FFCE56',
+            borderColor: '#FFCE56',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Hamil Mendapat TTD',
+            data: @json($mendapatTtdData),
+            backgroundColor: '#9966FF',
+            borderColor: '#9966FF',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Hamil Makanan Tambahan KEK',
+            data: @json($makananTambahanKekData),
+            backgroundColor: '#FF9F40',
+            borderColor: '#FF9F40',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Hamil Ikut Kelas',
+            data: @json($ikutKelasData),
+            backgroundColor: '#36A2EB',
+            borderColor: '#36A2EB',
+            borderWidth: 1
+        },
+        {
+            label: 'Jumlah Ibu Hamil Dirujuk ke Puskesmas',
+            data: @json($dirujukKePuskesmasData),
+            backgroundColor: '#FFCE56',
+            borderColor: '#FFCE56',
+            borderWidth: 1
+        }
+    ]
         },
         options: {
             scales: {

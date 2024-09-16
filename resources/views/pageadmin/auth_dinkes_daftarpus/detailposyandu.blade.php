@@ -111,10 +111,7 @@
                                         <th scope="row">Tempat Kegiatan</th>
                                         <td>{{ $dataPosyandu->tempat_kegiatan }}</td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">Keterangan</th>
-                                        <td>{{ $dataPosyandu->keterangan }}</td>
-                                    </tr>
+                                   
                                     <tr>
                                         <th scope="row">SK Kelurahan</th>
                                         <td>
@@ -157,26 +154,34 @@
                             <thead>
                                 <tr>
                                     <th>Nama</th>
-                                    <th>No. HP</th>
-                                    <th>Jabatan</th>
-                                    <th>Tempat, Tanggal Lahir</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Pelatihan Diikuti</th>
-                                    <th>Sertifikat</th>
+                                        <th>No. HP</th>
+                                        <th>Jabatan</th>
+                                        <th>Tempat, Tanggal Lahir</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Pertama Kali Menjadi Kader Posyandu</th>
+                                        <th>Pelatihan Pertama & Sertifikat</th>
+                                        <th>Pelatihan Kedua & Sertifikat</th>
+                                        <th>Pelatihan Ketiga & Sertifikat</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse($dataKader as $kader)
                                     <tr>
                                         <td>{{ $kader->nama }}</td>
-                                        <td>{{ $kader->no_hp }}</td>
-                                        <td>{{ $kader->jabatan }}</td>
-                                        <td>{{ $kader->tempat_lahir }}, {{ $kader->tanggal_lahir }}</td>
-                                        <td>{{ $kader->jenis_kelamin }}</td>
-                                        <td>{{ $kader->pelatihan_diikuti }}</td>
-                                        <td>
-                                            <a href="{{ asset($kader->sertifikat) }}" target="_blank">Lihat Sertifikat</a>
-                                        </td>
+                                            <td>{{ $kader->no_hp }}</td>
+                                            <td>{{ $kader->jabatan }}</td>
+                                            <td>{{ $kader->tempat_lahir }}, {{ $kader->tanggal_lahir }}</td>
+                                            <td>{{ $kader->jenis_kelamin }}</td>
+                                            <td>{{ $kader->pertama_kali }}</td>
+                                            <td>{{ $kader->pelatihan_diikuti1 }} / <a
+                                                    href="{{ asset($kader->sertifikat1) }}" target="_blank">Lihat
+                                                    Sertifikat</a></td>
+                                            <td>{{ $kader->pelatihan_diikuti2 }} / <a
+                                                    href="{{ asset($kader->sertifikat2) }}" target="_blank">Lihat
+                                                    Sertifikat</a></td>
+                                            <td>{{ $kader->pelatihan_diikuti3 }} / <a
+                                                    href="{{ asset($kader->sertifikat3) }}" target="_blank">Lihat
+                                                    Sertifikat</a></td>
                                     </tr>
                                 @empty
                                     <tr>

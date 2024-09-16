@@ -21,7 +21,8 @@ class BulananDewasaDanLansiaController extends Controller
                 SUM(jumlah_usia_dewasa_risiko_ppok) as total_risiko_ppok,
                 SUM(jumlah_usia_dewasa_gangguan_jiwa) as total_gangguan_jiwa,
                 SUM(jumlah_lansia_skrining_skl) as total_skrining_skl,
-                SUM(jumlah_lansia_dirujuk_puskesmas) as total_dirujuk_puskesmas
+                SUM(jumlah_lansia_dirujuk_puskesmas) as total_dirujuk_puskesmas,
+                SUM(jumlah_akseptor_kb) as total_akseptor_kb
             ')
             ->groupBy('month', 'year')
             ->orderBy('year', 'asc')
@@ -34,6 +35,7 @@ class BulananDewasaDanLansiaController extends Controller
         $gangguanJiwaData = array_fill(0, 12, 0);
         $skriningSklData = array_fill(0, 12, 0);
         $dirujukPuskesmasData = array_fill(0, 12, 0);
+        $akseptorKb = array_fill(0, 12, 0);
 
         foreach ($dataPerBulan as $data) {
             $index = $data->month - 1;
@@ -41,6 +43,7 @@ class BulananDewasaDanLansiaController extends Controller
             $gangguanJiwaData[$index] = $data->total_gangguan_jiwa;
             $skriningSklData[$index] = $data->total_skrining_skl;
             $dirujukPuskesmasData[$index] = $data->total_dirujuk_puskesmas;
+            $akseptorKb[$index] = $data->total_akseptor_kb;
         }
 
         return view('pageadmin.bulanan_dewasa_dan_lansia.index', compact(
@@ -49,6 +52,7 @@ class BulananDewasaDanLansiaController extends Controller
             'gangguanJiwaData', 
             'skriningSklData', 
             'dirujukPuskesmasData',
+            'akseptorKb',
             'bulananDewasaDanLansias'
         ));
     }
@@ -62,6 +66,7 @@ class BulananDewasaDanLansiaController extends Controller
             'jumlah_usia_dewasa_gangguan_jiwa' => 'required|integer',
             'jumlah_lansia_skrining_skl' => 'required|integer',
             'jumlah_lansia_dirujuk_puskesmas' => 'required|integer',
+            'jumlah_akseptor_kb' => 'required|integer',
         ]);
 
         BulananDewasaDanLansia::create([
@@ -71,6 +76,7 @@ class BulananDewasaDanLansiaController extends Controller
             'jumlah_usia_dewasa_gangguan_jiwa' => $request->jumlah_usia_dewasa_gangguan_jiwa,
             'jumlah_lansia_skrining_skl' => $request->jumlah_lansia_skrining_skl,
             'jumlah_lansia_dirujuk_puskesmas' => $request->jumlah_lansia_dirujuk_puskesmas,
+            'jumlah_akseptor_kb' => $request->jumlah_akseptor_kb,
         ]);
 
         Alert::success('Success', 'Data berhasil disimpan');
@@ -86,6 +92,7 @@ class BulananDewasaDanLansiaController extends Controller
             'jumlah_usia_dewasa_gangguan_jiwa' => 'required|integer',
             'jumlah_lansia_skrining_skl' => 'required|integer',
             'jumlah_lansia_dirujuk_puskesmas' => 'required|integer',
+            'jumlah_akseptor_kb' => 'required|integer',
         ]);
 
         $dewasaDanLansia->update($request->all());

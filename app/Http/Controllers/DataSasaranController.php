@@ -28,7 +28,8 @@ class DataSasaranController extends Controller
 
         // Validasi input
         $validated = $request->validate([
-            'jumlah_bayi' => 'required|numeric',
+            'jumlah_bayi_1' => 'required|numeric',
+            'jumlah_bayi_2' => 'required|numeric',
             'jumlah_balita' => 'required|numeric',
             'jumlah_ibu_hamil' => 'required|numeric',
             'jumlah_ibu_nifas_menyusui' => 'required|numeric',

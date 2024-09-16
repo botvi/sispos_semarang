@@ -57,7 +57,9 @@ class DashboardDinkesController extends Controller
                 SUM(jumlah_usia_dewasa_risiko_ppok) as total_risiko_ppok,
                 SUM(jumlah_usia_dewasa_gangguan_jiwa) as total_gangguan_jiwa,
                 SUM(jumlah_lansia_skrining_skl) as total_skrining_skl,
-                SUM(jumlah_lansia_dirujuk_puskesmas) as total_dirujuk_puskesmas
+                SUM(jumlah_lansia_dirujuk_puskesmas) as total_dirujuk_puskesmas,
+                                        SUM(jumlah_akseptor_kb) as total_akseptor_kb
+
             ')
             ->groupBy('month', 'year')
             ->orderBy('year', 'asc')
@@ -67,10 +69,12 @@ class DashboardDinkesController extends Controller
         $dataPerBulanIbuHamil = BulananIbuHamil::selectRaw('
                 MONTH(tanggal_pelaksanaan) as month, 
                 YEAR(tanggal_pelaksanaan) as year,
-                SUM(jumlah_ibu_hamil_nifas_menyusui) as total_nifas_menyusui,
+                      SUM(jumlah_ibu_hamil) as total_hamil,
+                SUM(jumlah_ibu_nifas) as total_nifas,
+                SUM(jumlah_ibu_menyusui) as total_menyusui,
                 SUM(jumlah_ibu_hamil_bb_garis_merah) as total_bb_garis_merah,
                 SUM(jumlah_ibu_hamil_lila) as total_lila,
-                SUM(jumlah_ibu_hamil_risiko_tbc) as total_risiko_tbc,
+                SUM(jumlah_ibu_hamil_risiko_tbc) as total_risiko_tbc_ibuhamil,
                 SUM(jumlah_ibu_hamil_mendapat_ttd) as total_mendapat_ttd,
                 SUM(jumlah_ibu_hamil_makanan_tambahan_kek) as total_makanan_tambahan_kek,
                 SUM(jumlah_ibu_hamil_ikut_kelas) as total_ikut_kelas,
@@ -116,6 +120,12 @@ class DashboardDinkesController extends Controller
         $ikutKelasData = array_fill(0, 12, 0);
         $dirujukKePuskesmasData = array_fill(0, 12, 0);
 
+        $akseptorKb = array_fill(0, 12, 0);
+        $hamilData = array_fill(0, 12, 0);
+        $nifasData = array_fill(0, 12, 0);
+        $menyusuiData = array_fill(0, 12, 0);
+
+
         // Assign data from each category
         foreach ($dataPerBulanAnakRemaja as $dataAnakRemaja) {
             $index = $dataAnakRemaja->month - 1;
@@ -149,14 +159,18 @@ class DashboardDinkesController extends Controller
             $gangguanJiwaData[$index] = $dataDewasaLansia->total_gangguan_jiwa;
             $skriningSklData[$index] = $dataDewasaLansia->total_skrining_skl;
             $dirujukPuskesmasData[$index] = $dataDewasaLansia->total_dirujuk_puskesmas;
+            $akseptorKb[$index] = $dataDewasaLansia->total_akseptor_kb;
+
         }
 
         foreach ($dataPerBulanIbuHamil as $dataIbuHamil) {
             $index = $dataIbuHamil->month - 1;
-            $nifasMenyusuiData[$index] = $dataIbuHamil->total_nifas_menyusui;
+            $hamilData[$index] = $dataIbuHamil->total_hamil;
+            $nifasData[$index] = $dataIbuHamil->total_nifas;
+            $menyusuiData[$index] = $dataIbuHamil->total_menyusui;
             $bbGarisMerahData[$index] = $dataIbuHamil->total_bb_garis_merah;
             $lilaData[$index] = $dataIbuHamil->total_lila;
-            $risikoTbcIbuHamilData[$index] = $dataIbuHamil->total_risiko_tbc;
+            $risikoTbcIbuHamilData[$index] = $dataIbuHamil->total_risiko_tbc_ibuhamil;
 
             $mendapatTtdData[$index] = $dataIbuHamil->total_mendapat_ttd;
             $makananTambahanKekData[$index] = $dataIbuHamil->total_makanan_tambahan_kek;
@@ -197,6 +211,11 @@ class DashboardDinkesController extends Controller
             'makananTambahanKekData' => $makananTambahanKekData,
             'ikutKelasData' => $ikutKelasData,
             'dirujukKePuskesmasData' => $dirujukKePuskesmasData,
+
+            'hamilData'=>$hamilData, 
+            'nifasData'=>$nifasData, 
+            'menyusuiData'=>$menyusuiData, 
+            'akseptorKb'=> $akseptorKb,
         ]);
     }
 }
