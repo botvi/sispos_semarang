@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('master_forum_pos_kotas', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('alamat');
+            $table->string('telepon');
+            $table->string('penanggung_jawab');
+            $table->string('telepon_penanggung_jawab');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

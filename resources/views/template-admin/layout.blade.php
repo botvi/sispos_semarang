@@ -346,6 +346,10 @@
 									{{ asset('admin/assets/images/superadmin.png') }}
 								@elseif(Auth::user()->role === 'dinaskesehatan')
 									{{ asset('https://sippn.menpan.go.id/images/article/large/logo-pemkot4.jpg') }}
+								@elseif(Auth::user()->role === 'forum_posyandu_kota')
+									{{ asset('https://sippn.menpan.go.id/images/article/large/logo-pemkot4.jpg') }}
+								@elseif(Auth::user()->role === 'kordinator_kecamatan')
+									{{ asset('https://sippn.menpan.go.id/images/article/large/logo-pemkot4.jpg') }}
 								@elseif(Auth::user()->role === 'puskesmas')
 									{{ asset('https://i0.wp.com/pkmgemarang.ngawikab.go.id/wp-content/uploads/2022/09/cropped-Logo-Puskermas-removebg-preview.png?ssl=1') }}
 								@elseif(Auth::user()->role === 'posyandu')
@@ -378,6 +382,10 @@
 									<a class="dropdown-item" href="/akun-puskesmas"><i class="bx bx-user"></i><span>Account Setting</span></a>
 								@elseif(Auth::user()->role == 'posyandu')
 									<a class="dropdown-item" href="/akun-posyandu"><i class="bx bx-user"></i><span>Account Setting</span></a>
+								@elseif(Auth::user()->role == 'forum_posyandu_kota')
+									<a class="dropdown-item" href="/akun-forumpos"><i class="bx bx-user"></i><span>Account Setting</span></a>
+								@elseif(Auth::user()->role == 'kordinator_kecamatan')
+									<a class="dropdown-item" href="/akun-kordinator"><i class="bx bx-user"></i><span>Account Setting</span></a>
 								@elseif(Auth::user()->role == 'superadmin')
 									<a class="dropdown-item" href="/akun-superadmin"><i class="bx bx-user"></i><span>Account Setting</span></a>
 								@else

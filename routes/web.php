@@ -34,12 +34,17 @@ use App\Http\Controllers\{
     ListPosyanduController,
     ListPuskesmasController,
     AkunDinasKesehatanController,
+    AkunForumPosyanduController,
+    AkunKordinatorKecController,
     AkunPuskesmasController,
     AkunSuperadminController,
     DashboardDinkesController,
     DashboardPosyanduController,
     DashboardPuskesmasController,
-    DashboardSuperadminController};
+    DashboardSuperadminController,
+    MasterForumPosKotaController,
+    MasterKordinatorKecController
+};
 
 Route::get('/run-superadmin', function () {
     Artisan::call('db:seed', [
@@ -78,7 +83,7 @@ Route::group(['middleware' => ['role:puskesmas']], function () {
 Route::get('/dashboard-puskesmas', [DashboardPuskesmasController::class, 'index'])->name('puskesmas.dashboard');
 });
 
-Route::group(['middleware' => ['role:dinaskesehatan']], function () {
+Route::group(['middleware' => ['role:dinaskesehatan,forum_posyandu_kota,kordinator_kecamatan']], function () {
 Route::get('/dashboard-dinaskesehatan', [DashboardDinkesController::class, 'index'])->name('dinaskesehatan.dashboard');
 });
 
@@ -96,6 +101,20 @@ Route::post('/puskesmas/store', [MasterPuskesmasController::class, 'store'])->na
 Route::get('/puskesmas/edit/{id}', [MasterPuskesmasController::class, 'edit'])->name('puskesmas.edit');
 Route::put('/puskesmas/update/{id}', [MasterPuskesmasController::class, 'update'])->name('puskesmas.update');
 Route::delete('/puskesmas/delete/{id}', [MasterPuskesmasController::class, 'destroy'])->name('puskesmas.destroy');
+
+Route::get('/forum_pos_kota', [MasterForumPosKotaController::class, 'index'])->name('forum_pos_kota.index');
+Route::get('/forum_pos_kota/create', [MasterForumPosKotaController::class, 'create'])->name('forum_pos_kota.create');
+Route::post('/forum_pos_kota/store', [MasterForumPosKotaController::class, 'store'])->name('forum_pos_kota.store');
+Route::get('/forum_pos_kota/edit/{id}', [MasterForumPosKotaController::class, 'edit'])->name('forum_pos_kota.edit');
+Route::put('/forum_pos_kota/update/{id}', [MasterForumPosKotaController::class, 'update'])->name('forum_pos_kota.update');
+Route::delete('/forum_pos_kota/destroy/{id}', [MasterForumPosKotaController::class, 'destroy'])->name('forum_pos_kota.destroy');
+
+Route::get('/kordinator_kec', [MasterKordinatorKecController::class, 'index'])->name('kordinator_kec.index');
+Route::get('/kordinator_kec/create', [MasterKordinatorKecController::class, 'create'])->name('kordinator_kec.create');
+Route::post('/kordinator_kec/store', [MasterKordinatorKecController::class, 'store'])->name('kordinator_kec.store');
+Route::get('/kordinator_kec/edit/{id}', [MasterKordinatorKecController::class, 'edit'])->name('kordinator_kec.edit');
+Route::put('/kordinator_kec/update/{id}', [MasterKordinatorKecController::class, 'update'])->name('kordinator_kec.update');
+Route::delete('/kordinator_kec/destroy/{id}', [MasterKordinatorKecController::class, 'destroy'])->name('kordinator_kec.destroy');
 
 Route::get('/dinaskesehatan', [MasterDinasKesehatanController::class, 'index'])->name('dinkes.index');
 Route::get('/dinaskesehatan/create', [MasterDinasKesehatanController::class, 'create'])->name('dinkes.create');
@@ -204,7 +223,7 @@ Route::get('/daftarposyandu/{user_id}/detail', [ListPosyanduController::class, '
 
 
 // DINAS KESEHATAN USER
-Route::group(['middleware' => ['role:dinaskesehatan']], function () {
+Route::group(['middleware' => ['role:dinaskesehatan,forum_posyandu_kota,kordinator_kecamatan']], function () {
 
 Route::get('/daftarpuskesmas', [ListPuskesmasController::class, 'index'])->name('daftarpuskesmas.index');
 Route::get('/daftarpuskesmas/{puskesmas_id}/posyandu', [ListPuskesmasController::class, 'showPosyandu'])->name('daftarposyandubypuskes.index');
@@ -237,4 +256,15 @@ Route::get('/akun-superadmin', [AkunSuperadminController::class, 'index'])->name
 Route::put('/akun-superadmin/update', [AkunSuperadminController::class, 'update'])->name('akun-superadmin.update');
 });
 
+Route::group(['middleware' => ['role:forum_posyandu_kota']], function () {
+Route::get('/akun-forumpos', [AkunForumPosyanduController::class, 'index'])->name('akun-forumpos.index');
+Route::put('/akun-forumpos/update', [AkunForumPosyanduController::class, 'update'])->name('akun-forumpos.update');
+});
+
+Route::group(['middleware' => ['role:kordinator_kecamatan']], function () {
+Route::get('/akun-kordinator', [AkunKordinatorKecController::class, 'index'])->name('akun-kordinator.index');
+Route::put('/akun-kordinator/update', [AkunKordinatorKecController::class, 'update'])->name('akun-kordinator.update');
+});
+
 // CHANGE USER
+Route::get('/test', [DashboardPuskesmasController::class, 'hitungRegPosyandu']);

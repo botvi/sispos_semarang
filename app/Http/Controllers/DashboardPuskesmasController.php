@@ -10,6 +10,7 @@ use App\Models\BulananBalita;
 use App\Models\BulananDewasaDanLansia;
 use App\Models\BulananIbuHamil;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class DashboardPuskesmasController extends Controller
@@ -61,8 +62,8 @@ class DashboardPuskesmasController extends Controller
         SUM(risiko_tbc) as total_risiko_tbc,
         SUM(masalah_kesehatan) as total_masalah_kesehatan
     ')
-    ->whereIn('user_id', $userIds)
-    ->groupBy('month', 'year')
+            ->whereIn('user_id', $userIds)
+            ->groupBy('month', 'year')
             ->orderBy('year', 'asc')
             ->orderBy('month', 'asc')
             ->get();
@@ -75,8 +76,8 @@ class DashboardPuskesmasController extends Controller
         SUM(jumlah_balita_datang) as total_datang,
         SUM(jumlah_balita_naik_timbangan) as total_naik_timbangan
     ')
-    ->whereIn('user_id', $userIds)
-    ->groupBy('month', 'year')
+            ->whereIn('user_id', $userIds)
+            ->groupBy('month', 'year')
             ->orderBy('year', 'asc')
             ->orderBy('month', 'asc')
             ->get();
@@ -91,8 +92,8 @@ class DashboardPuskesmasController extends Controller
                         SUM(jumlah_akseptor_kb) as total_akseptor_kb
 
     ')
-    ->whereIn('user_id', $userIds)
-    ->groupBy('month', 'year')
+            ->whereIn('user_id', $userIds)
+            ->groupBy('month', 'year')
             ->orderBy('year', 'asc')
             ->orderBy('month', 'asc')
             ->get();
@@ -111,8 +112,8 @@ class DashboardPuskesmasController extends Controller
         SUM(jumlah_ibu_hamil_ikut_kelas) as total_ikut_kelas,
         SUM(jumlah_ibu_hamil_dirujuk_ke_puskesmas) as total_dirujuk_ke_puskesmas
     ')
-    ->whereIn('user_id', $userIds)
-    ->groupBy('month', 'year')
+            ->whereIn('user_id', $userIds)
+            ->groupBy('month', 'year')
             ->orderBy('year', 'asc')
             ->orderBy('month', 'asc')
             ->get();
@@ -208,6 +209,16 @@ class DashboardPuskesmasController extends Controller
             $dirujukKePuskesmasData[$index] = $dataIbuHamil->total_dirujuk_ke_puskesmas;
         }
 
+        $puskesmasId = $masterPuskesmas->id;
+    
+        // Query untuk mendapatkan nama kelurahan dan jumlahnya di RegPosyandu berdasarkan puskesmas_id
+        $kelurahanCounts = DB::table('reg_posyandus')
+            ->join('kelurahans', 'reg_posyandus.kelurahan_id', '=', 'kelurahans.kelurahan_id')
+            ->select('kelurahans.name as kelurahan_name', DB::raw('COUNT(*) as count'))
+            ->where('reg_posyandus.puskesmas_id', $puskesmasId)
+            ->groupBy('kelurahans.name')
+            ->get();
+
         // Return the data as a JSON response
         return view('pageadmin.dashboard_puskesmas.index', [
             'months' => $months,
@@ -246,6 +257,36 @@ class DashboardPuskesmasController extends Controller
             'nifasData' => $nifasData,
             'menyusuiData' => $menyusuiData,
             'akseptorKb' => $akseptorKb,
+            'kelurahanCounts' => $kelurahanCounts,
         ]);
     }
+
+    // public function hitungRegPosyandu()
+    // {
+    //     // Ambil pengguna yang sedang login
+    //     $loggedInUser = Auth::user();
+    
+    //     if (!$loggedInUser) {
+    //         return response()->json(['error' => 'User not authenticated'], 401);
+    //     }
+    
+    //     // Temukan Puskesmas yang terkait dengan pengguna yang login
+    //     $masterPuskesmas = MasterPuskesmas::where('user_id', $loggedInUser->id)->first();
+    
+    //     if (!$masterPuskesmas) {
+    //         return response()->json(['error' => 'No Puskesmas associated with this user'], 404);
+    //     }
+    
+    //     $puskesmasId = $masterPuskesmas->id;
+    
+    //     // Query untuk mendapatkan nama kelurahan dan jumlahnya di RegPosyandu berdasarkan puskesmas_id
+    //     $kelurahanCounts = DB::table('reg_posyandus')
+    //         ->join('kelurahans', 'reg_posyandus.kelurahan_id', '=', 'kelurahans.kelurahan_id')
+    //         ->select('kelurahans.name as kelurahan_name', DB::raw('COUNT(*) as count'))
+    //         ->where('reg_posyandus.puskesmas_id', $puskesmasId)
+    //         ->groupBy('kelurahans.name')
+    //         ->get();
+    
+    //     return response()->json($kelurahanCounts);
+    // }
 }

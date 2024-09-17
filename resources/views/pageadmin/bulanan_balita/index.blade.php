@@ -226,7 +226,7 @@
        <div class="card">
            
            <div class="card-body">
-            <a href="{{ route('balita.export') }}" class="btn btn-success mb-5"><i class='bx bxs-file-import'></i> Export to Excel</a>
+            <a href="{{ route('balita.export') }}" class="btn btn-success mb-5"><i class='bx bxs-file-import'></i> Export All to Excel</a>
             <div class="table-responsive">
                 <table id="example2" class="table table-striped table-bordered">
                     <thead>

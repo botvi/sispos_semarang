@@ -23,6 +23,22 @@
             <div class="menu-title">DASHBOARD</div>
         </a>
     </li>
+    @elseif(Auth::user()->role == 'forum_posyandu_kota')
+    <li class="menu-label">DASHBOARD</li>
+    <li>
+        <a href="/dashboard-dinaskesehatan">
+            <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
+            <div class="menu-title">DASHBOARD</div>
+        </a>
+    </li>
+    @elseif(Auth::user()->role == 'kordinator_kecamatan')
+    <li class="menu-label">DASHBOARD</li>
+    <li>
+        <a href="/dashboard-dinaskesehatan">
+            <div class="parent-icon"><i class='bx bx-home-circle'></i></div>
+            <div class="menu-title">DASHBOARD</div>
+        </a>
+    </li>
     @elseif(Auth::user()->role == 'superadmin')
     <li class="menu-label">DASHBOARD</li>
     <li>
@@ -45,6 +61,18 @@
             <a href="/dinaskesehatan">
                 <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i></div>
                 <div class="menu-title">MASTER DINAS KESEHATAN</div>
+            </a>
+        </li>
+        <li>
+            <a href="/forum_pos_kota">
+                <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i></div>
+                <div class="menu-title">MASTER FORUM POSYANDU</div>
+            </a>
+        </li>
+        <li>
+            <a href="/kordinator_kec">
+                <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i></div>
+                <div class="menu-title">MASTER KORDINATOR KEC</div>
             </a>
         </li>
         <li>
@@ -94,7 +122,23 @@
         </li>
     
     @elseif(Auth::user()->role == 'dinaskesehatan')
-        <li class="menu-label">KALAU DINAS KESEHATAN LOGIN</li>
+        <li class="menu-label">DAFTAR PUSKESMAS</li>
+        <li>
+            <a href="/daftarpuskesmas">
+                <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i></div>
+                <div class="menu-title">DAFTAR PUSKESMAS</div>
+            </a>
+        </li>
+    @elseif(Auth::user()->role == 'forum_posyandu_kota')
+        <li class="menu-label">DAFTAR PUSKESMAS</li>
+        <li>
+            <a href="/daftarpuskesmas">
+                <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i></div>
+                <div class="menu-title">DAFTAR PUSKESMAS</div>
+            </a>
+        </li>
+    @elseif(Auth::user()->role == 'kordinator_kecamatan')
+        <li class="menu-label">DAFTAR PUSKESMAS</li>
         <li>
             <a href="/daftarpuskesmas">
                 <div class="parent-icon"><i class='bx bx-radio-circle-marked'></i></div>

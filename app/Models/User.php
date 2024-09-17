@@ -61,5 +61,13 @@ class User extends Authenticatable
 {
     return $this->hasOne(MasterPuskesmas::class, 'user_id');
 }
+    public function masterForumPos()
+{
+    return $this->hasOne(MasterForumPosKota::class, 'user_id');
+}
+    public function masterKordinator()
+{
+    return $this->hasOne(MasterKordinatorKec::class, 'user_id');
+}
 
 }
