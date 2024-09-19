@@ -43,7 +43,8 @@ use App\Http\Controllers\{
     DashboardPuskesmasController,
     DashboardSuperadminController,
     MasterForumPosKotaController,
-    MasterKordinatorKecController
+    MasterKordinatorKecController,
+    WebController
 };
 
 Route::get('/run-superadmin', function () {
@@ -268,3 +269,9 @@ Route::put('/akun-kordinator/update', [AkunKordinatorKecController::class, 'upda
 
 // CHANGE USER
 Route::get('/test', [DashboardPuskesmasController::class, 'hitungRegPosyandu']);
+
+
+
+// WEB
+Route::get('/', [WebController::class, 'index']);
+// WEB
